@@ -1,0 +1,35 @@
+/*  */
+
+
+/* for currency  */
+.currency_drowpdown li {
+  padding: 10px 40px;
+  list-style: none;
+}
+
+.currency_drowpdown li:hover {
+  background-color:#E5E4E4 ;
+}
+
+.currency_drowpdown li:not(:last-child) {
+  border-bottom: 0.1px #908b8b3f solid;
+}
+
+
+/* for nav list  */
+.nav_list li a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav_list li a:hover::before{
+  content: "";
+  position: absolute;
+  display: flex;
+  bottom: -10px;
+  height: 3px;
+  width: 5px;
+  background-color: black;
+}
