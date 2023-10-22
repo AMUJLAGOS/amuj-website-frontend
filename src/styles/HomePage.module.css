@@ -1,0 +1,26 @@
+/*  */
+
+.banner {
+  width: 50%;
+  transition: all .8s;
+}
+
+.banner img{
+  object-fit: cover;
+  height: 800px;
+  width: 100%;
+}
+
+
+.banner:hover {
+  width: 70%;
+}
+
+.banner:hover > .bannerText a {
+  display: block;
+}
+
+.bannerText a {
+  display: none;
+  transition: all .5s;
+}

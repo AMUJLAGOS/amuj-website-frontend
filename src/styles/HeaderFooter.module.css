@@ -28,8 +28,8 @@
   content: "";
   position: absolute;
   display: flex;
-  bottom: -10px;
-  height: 3px;
+  bottom: -8px;
+  height: 2px;
   width: 5px;
-  background-color: black;
+  background-color: #fff;
 }
