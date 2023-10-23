@@ -11,6 +11,7 @@ import ProductCard from "@/components/ProductCard";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 import SocialImage from "@/components/SocialImage";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const all = ["/collectionII_big.jpg", "/banner1.jpg"];
@@ -112,7 +113,9 @@ export default function Home() {
         </div>
       </section>
 
-      <Spacer height={650} />
+      <Spacer height={100} />
+      <Footer />
+      <Spacer height={100} />
       {/* <Slide
         arrows={false}
         indicators={true}
