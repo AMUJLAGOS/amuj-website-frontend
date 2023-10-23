@@ -1,13 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 
 //
+"use client";
 
 import Header from "@/components/Header";
 import style from "../styles/HomePage.module.css";
 import Link from "next/link";
 import Spacer from "@/components/Spacer";
+import ProductCard from "@/components/ProductCard";
+import "react-slideshow-image/dist/styles.css";
+import { Slide } from "react-slideshow-image";
+import SocialImage from "@/components/SocialImage";
 
 export default function Home() {
+  const all = ["/collectionII_big.jpg", "/banner1.jpg"];
   return (
     <main>
       <Header />
@@ -43,7 +49,7 @@ export default function Home() {
       </section>
       <Spacer height={650} />
       <section>
-        <div className="w-full relative">
+        <div className={`w-full relative ${style.collectionii}`}>
           {/* <p>dd</p> */}
           <img
             src="/collectionII_big.jpg"
@@ -58,27 +64,68 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <div className="h-[540px] w-[360px]">
-        <div className="flex items-center flex-col">
-          <div className="product">
-            <img
-              src="./product_image.jpg"
-              alt=""
-              className="h-[540px] w-[360px] object-cover"
-            />
-            <div className="absolute top-0">
-              <Link href={""}>QUICK VIEW</Link>
-            </div>
-          </div>
-          <p className="mt-3 text-[16px] font-bold tracking-[5px]">ALYA</p>
-          <p className="text-[10px] font-medium tracking-[2px] text-center">
-            CUSTOM PRINT CORSET RUCHED MINI DRESS
-          </p>
+      <Spacer height={10} />
+      <section>
+        <div className="flex">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </div>
-      </div>
+        <Spacer height={80} />
+        <div className="flex">
+          <ProductCard />
+          <ProductCard />
+          <div className="w-[50%]">
+            <img
+              src="/video.jpg"
+              alt=""
+              className="w-[100%] h-[540px] object-cover"
+            />
+          </div>
+        </div>
+      </section>
+      <Spacer height={80} />
+      <section>
+        <div className="w-full relative">
+          {/* <p>dd</p> */}
+          <img
+            src="/bigslider.jpg"
+            alt="collection2"
+            className="h-[380px] w-full object-cover object-center"
+          />
+        </div>
+      </section>
+      <Spacer height={20} />
+      <section>
+        <div>
+          <h1 className="text-[10px] tracking-[1px] text-center">
+            TAG @AMUJOFFICIAL TO BE FEATURED ON OUR INSTAGRAM
+          </h1>
+          <Spacer height={20} />
+          <div className="flex flex-wrap">
+            <SocialImage />
+            <SocialImage />
+            <SocialImage />
+            <SocialImage />
+          </div>
+        </div>
+      </section>
 
       <Spacer height={650} />
+      {/* <Slide
+        arrows={false}
+        indicators={true}
+        autoplay={true}
+        canSwipe={true}
+        duration={1000}
+      >
+        {all.map((item, index) => (
+          <div key={index}>
+            <img src={item} alt="" />
+          </div>
+        ))}
+      </Slide> */}
     </main>
   );
 }

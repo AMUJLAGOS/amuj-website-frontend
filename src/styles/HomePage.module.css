@@ -24,3 +24,7 @@
   display: none;
   transition: all .5s;
 }
+
+.collectionii img {
+  object-position: 0px -250px;
+}

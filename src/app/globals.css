@@ -32,3 +32,48 @@ body {
   outline: none;
   background: none;
 }
+
+.product {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product a {
+  position: absolute;
+  bottom: -70px;
+  /* margin-bottom: 200; */
+  background-color: #ffffff;
+  width: 70%;
+  text-align: center;
+  padding: 15px 0px;
+  font-size: 20px;
+  transition: all ease-in-out 0.5s;
+  
+}
+
+.product:hover >  a {
+  bottom: 30px;
+}
+
+.second_image {
+  display: none;
+}
+
+.product:hover > .first_image {
+  display: none;
+}
+
+.product:hover > .second_image {
+  display: block;
+}
+
+.insta {
+  display: none;
+  transition: all 1s;
+}
+
+.social:hover > .insta {
+  display: flex;
+}

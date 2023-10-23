@@ -1,0 +1,31 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+import React from "react";
+
+function ProductCard() {
+  return (
+    <div className="h-[540px] w-[360px]">
+      <div className="flex items-center flex-col">
+        <div className="product">
+          <img
+            src="./product_image.jpg"
+            alt=""
+            className="first_image h-[540px] w-[360px] object-cover"
+          />
+          <img
+            src="./second_image.jpg"
+            alt=""
+            className="h-[540px] w-[360px] object-cover second_image"
+          />
+          <Link href={""}>QUICK VIEW</Link>
+        </div>
+        <p className="mt-3 text-[16px] font-bold tracking-[5px]">ALYA</p>
+        <p className="text-[10px] font-medium tracking-[2px] text-center">
+          CUSTOM PRINT CORSET RUCHED MINI DRESS
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default ProductCard;
