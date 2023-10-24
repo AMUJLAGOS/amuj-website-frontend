@@ -90,11 +90,30 @@ export default function Home() {
       <section>
         <div className="w-full relative">
           {/* <p>dd</p> */}
-          <img
-            src="/bigslider.jpg"
-            alt="collection2"
-            className="h-[380px] w-full object-cover object-center"
-          />
+          <Slide arrows={false} indicators={true} duration={2000}>
+            <div className="w-full">
+              <img
+                src="/bigslider.jpg"
+                alt="collection2"
+                className="h-[380px] w-full object-cover object-center"
+              />
+            </div>
+            <div className="w-full">
+              <img
+                src="/video.jpg"
+                alt="collection2"
+                className="h-[380px] w-full object-cover object-center"
+              />
+            </div>
+
+            <div className="w-full">
+              <img
+                src="/video.jpg"
+                alt="collection2"
+                className="h-[380px] w-full object-cover object-center"
+              />
+            </div>
+          </Slide>
         </div>
       </section>
       <Spacer height={20} />

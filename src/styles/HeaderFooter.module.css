@@ -33,3 +33,11 @@
   width: 5px;
   background-color: #fff;
 }
+
+.footer_link a{
+  letter-spacing: 2px;
+  display: block;
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 17px;
+}
