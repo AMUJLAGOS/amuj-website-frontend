@@ -6,6 +6,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiSearchLine } from "react-icons/ri";
+import { VscMenu } from "react-icons/vsc";
 import styles from "../styles/HeaderFooter.module.css";
 
 function NavBar({ searchFunc }: any) {
@@ -20,11 +21,17 @@ function NavBar({ searchFunc }: any) {
   };
 
   return (
-    <header className="text-[12px] font-medium text-white">
+    <header className="text-[12px] font-medium bg-gradient-to-b from-black to-[#00000017] text-white">
       <nav>
-        <section className="flex justify-between items-center w-[1200px] m-auto  py-4">
+        <section className="flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4">
+          <div className="tablet:hidden block">
+            <VscMenu size={35} />
+          </div>
           {/* the dropdown */}
-          <div className="cursor-pointer" onClick={() => showCurrencyHandler()}>
+          <div
+            className="cursor-pointer tablet:block hidden"
+            onClick={() => showCurrencyHandler()}
+          >
             <div className="flex items-center relative px-1">
               <p>NGN ( ₦ )</p>
               <IoIosArrowDown size={"18"} />
@@ -45,22 +52,30 @@ function NavBar({ searchFunc }: any) {
           {/* amuj logo  */}
           <div>
             {/* <Image alt='amuj logo' src={'amuj-logo.png'} width={100} height={100}></Image> */}
-            <img src="/amuj-logo.svg" alt="amuj logo" className="h-[60px]" />
+            <img
+              src="/amuj-logo.svg"
+              alt="amuj logo"
+              className="phone:h-[50px] tablet:h-[60px] h-[35px]"
+            />
           </div>
           <div className="flex items-center">
-            <p className="px-1">0</p>
-            <img src="/cart.svg" alt="cart" className="h-[25px]" />
-            <p className="px-3">-</p>
-            <p className="px-1">NGN</p>
+            <p className="px-1 tablet:block hidden">0</p>
+            <img
+              src="/cart.svg"
+              alt="cart"
+              className="h-[25px] tablet:mr-0 mr-3"
+            />
+            <p className="px-3 tablet:block hidden">-</p>
+            <p className="px-1 tablet:block hidden">NGN</p>
 
-            <p className="px-[6px]">₦0.00</p>
+            <p className="px-[6px] tablet:block hidden">₦0.00</p>
             <div onClick={() => searchFunc()}>
               <RiSearchLine size={"25"} />
             </div>
           </div>
         </section>
         <br />
-        <section className="w-[1000px] m-auto  py-4">
+        <section className="xl:w-[1000px] tablet:block w-[85%] m-auto hidden py-4">
           <ul className={`flex justify-between ${styles.nav_list}`}>
             <li>
               <Link href={""}>NEW IN</Link>

@@ -37,7 +37,7 @@ export default function Home() {
         <div
           className={`${style.banner} relative flex items-center justify-center`}
         >
-          <img src="/banner1.jpg" alt="collection ii image" />
+          <img src="/banner2.jpg" alt="collection ii image" />
           <div
             className={`absolute text-white flex flex-col items-center ${style.bannerText}`}
           >
@@ -48,7 +48,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Spacer height={650} />
+      <Spacer height={640} />
       <section>
         <div className={`w-full relative ${style.collectionii}`}>
           {/* <p>dd</p> */}
@@ -65,7 +65,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Spacer height={10} />
+      {/* <Spacer height={10} /> */}
       <section>
         <div className="flex">
           <ProductCard />

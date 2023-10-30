@@ -9,12 +9,12 @@ import Link from "next/link";
 function Footer() {
   return (
     <main>
-      <div className="w-[1200px] m-auto flex justify-between">
-        <section className="w-[45%]">
-          <h1 className="text-[16px] font-black">
+      <div className="xl:w-[1200px] w-[95%] m-auto tablet:flex block justify-between">
+        <section className="tablet:w-[45%] w-[90%]">
+          <h1 className="phone:text-[16px] text-[14px] font-black">
             SUBSCRIBE TO OUR NEWSLETTER
           </h1>
-          <p className="text-[#676464] font-[300] text-[17px] mt-3 tracking-[1px]">
+          <p className="text-[#676464] font-[300] phone:text-[17px] text-[14px] mt-3 tracking-[1px]">
             Be the first to hear about our exclusive releases and offers
           </p>
           {/* subcribe  */}
@@ -28,7 +28,7 @@ function Footer() {
               <GrLinkNext size={"17"} className="" />
             </button>
           </div>
-          <div className="mt-8 flex justify-between">
+          <div className="mt-8 hidden tablet:flex justify-between">
             <div className="flex justify-between w-[130px]">
               <button className="border border-black p-1 rounded-full">
                 <GrTwitter size={20} />
@@ -48,10 +48,10 @@ function Footer() {
             </div>
           </div>
         </section>
-        <section className="w-[45%] flex justify-between">
-          <div className="w-[50%]">
+        <section className="tablet:w-[45%] w-[100%] phone:flex block justify-between tablet:mt-0 mt-10">
+          <div className="phone:w-[50%]">
             <div className="flex items-center">
-              <h1 className="text-[17px] font-bold">BRAND</h1>
+              <h1 className="phone:text-[17px] text-[14px] font-bold">BRAND</h1>
               <div className="w-[90%] h-[1px] bg-[#67646421] ml-2"></div>
             </div>
 
@@ -69,8 +69,10 @@ function Footer() {
             </div>
           </div>
           {/* policy  */}
-          <div className="w-[35%]">
-            <h1 className="text-[17px] font-bold">POLICIES</h1>
+          <div className="w-[35%] phone:mt-0 mt-6">
+            <h1 className="phone:text-[17px] text-[14px] font-bold">
+              POLICIES
+            </h1>
             <div className="flex justify-between">
               <div className={`${styles.footer_link}`}>
                 <Link href={""}>Privacy Policy</Link>
@@ -79,6 +81,25 @@ function Footer() {
             </div>
           </div>
         </section>
+        <div className="mt-8 flex justify-between tablet:hidden w-[90%]">
+          <div className="flex justify-between phone:w-[130px]">
+            <button className="border border-black p-1 rounded-full phone:text-[20px]">
+              <GrTwitter />
+            </button>
+            <button className="border border-black p-1 rounded-full phone:text-[20px]">
+              <FaFacebookF />
+            </button>
+            <button className="border border-black p-1 rounded-full phone:text-[20px]">
+              <PiInstagramLogo />
+            </button>
+          </div>
+          <div className="flex items-center">
+            <span>&copy;</span>
+            <h1 className="font-black phone:text-[16px] text-[12px] ml-2 tracking-[2px]">
+              2023 Amuj Official
+            </h1>
+          </div>
+        </div>
       </div>
     </main>
   );
