@@ -50,7 +50,7 @@ export default function Home() {
         </div>
 
         {/* mobile  */}
-        <div className="sm:hidden block h-[600px]">
+        <div className="sm:hidden block h-[600px] w-full">
           <img
             src="/second_image.jpg"
             alt=""
@@ -65,8 +65,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Spacer height={640} />
-      <section className="">
+      <section className="sm:mt-[640px] mt-[530px]">
         {/* destop  */}
         <div
           className={`w-full relative ${style.collectionii} sm:block hidden`}
@@ -127,27 +126,27 @@ export default function Home() {
       </section>
       {/* <Spacer height={10} /> */}
       <section>
-        <div className="flex">
+        <div className="md:flex block">
           <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
         </div>
-        <Spacer height={80} />
-        <div className="flex">
+        {/* <Spacer height={80} /> */}
+        <div className="md:flex block lg:mt-[80px] mt-[0px]">
           <ProductCard />
           <ProductCard />
-          <div className="w-[50%]">
+          <div className="w-[50%] md:block hidden">
             <img
               src="/video.jpg"
               alt=""
-              className="w-[100%] h-[540px] object-cover"
+              className="w-[100%] lg:h-[540px] h-[400px] object-cover"
             />
           </div>
         </div>
       </section>
-      <Spacer height={80} />
-      <section>
+      {/* <Spacer height={80} /> */}
+      <section className="lg:mt-[80px] mt-4">
         <div className="w-full relative">
           {/* <p>dd</p> */}
           <Slide arrows={false} indicators={true} duration={2000}>

@@ -4,13 +4,13 @@ import React from "react";
 
 function ProductCard() {
   return (
-    <div className="h-[540px] w-[360px]">
+    <div className=" md:w-[360px] w-full mt-4">
       <div className="flex items-center flex-col">
-        <div className="product">
+        <div className="product w-full">
           <img
             src="./product_image.jpg"
             alt=""
-            className="first_image h-[540px] w-[360px] object-cover"
+            className="first_image lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover"
           />
           <img
             src="./second_image.jpg"
