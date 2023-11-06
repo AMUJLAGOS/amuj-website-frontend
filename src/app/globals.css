@@ -76,3 +76,7 @@ body {
 .social:hover > .insta {
   display: flex;
 }
+
+.transitioncss {
+  transition: all 1s;
+}

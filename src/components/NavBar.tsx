@@ -9,7 +9,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import styles from "../styles/HeaderFooter.module.css";
 
-function NavBar({ searchFunc }: any) {
+function NavBar({ searchFunc, sideBarFunc }: any) {
   const [showCurrency, setShowCurrency] = useState(false);
 
   const showCurrencyHandler = () => {
@@ -24,7 +24,7 @@ function NavBar({ searchFunc }: any) {
     <header className="text-[12px] font-medium bg-gradient-to-b from-black to-[#00000017] text-white">
       <nav>
         <section className="flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4">
-          <div className="tablet:hidden block">
+          <div onClick={() => sideBarFunc()} className="tablet:hidden block">
             <VscMenu size={35} />
           </div>
           {/* the dropdown */}

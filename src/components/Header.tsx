@@ -1,26 +1,48 @@
-// 
+//
 "use client";
-import React, { useState } from 'react'
-import NavBar from './NavBar'
-import Search from './Search'
+import React, { useState } from "react";
+import NavBar from "./NavBar";
+import Search from "./Search";
+import SideBar from "./SideBar";
+import Cart from "./Cart";
 
 function Header() {
-  const [showSearch, setShowSearch] = useState(false)
+  const [showSearch, setShowSearch] = useState(false);
+  const [showSideBar, setShowSideBar] = useState(false);
 
+  // for search
   const showSearchHandler = () => {
-    setShowSearch(true)
-  }
+    setShowSearch(true);
+  };
 
   const hideSearchHandler = () => {
-    setShowSearch(false)
-  }
+    setShowSearch(false);
+  };
+
+  // for side bar
+  const showSideBarHandler = () => {
+    setShowSideBar(true);
+  };
+
+  const hideSideBarHandler = () => {
+    setShowSideBar(false);
+  };
+
+  const showClass =
+    "fixed w-full z-[150] right-0 bg-[#000000ad] h-[100%] top-0";
 
   return (
-    <div className='z-[10] relative'>
-      {showSearch && <Search searchFunc={hideSearchHandler} />}
-      <NavBar searchFunc={showSearchHandler}/>
+    <div className="z-[10] relative h-full">
+      <section className={`${showSearch ? showClass : ""}`}>
+        <Search searchFunc={hideSearchHandler} show={showSearch} />
+      </section>
+      <NavBar searchFunc={showSearchHandler} sideBarFunc={showSideBarHandler} />
+      <section className={`${showSideBar ? showClass : ""}`}>
+        <SideBar showFunc={hideSideBarHandler} show={showSideBar} />
+      </section>
+      {/* <Cart /> */}
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;

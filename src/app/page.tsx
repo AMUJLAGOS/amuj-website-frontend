@@ -136,7 +136,7 @@ export default function Home() {
         <div className="md:flex block lg:mt-[80px] mt-[0px]">
           <ProductCard />
           <ProductCard />
-          <div className="w-[50%] md:block hidden">
+          <div className="w-[50%] md:block hidden mt-4">
             <img
               src="/video.jpg"
               alt=""
@@ -182,7 +182,7 @@ export default function Home() {
             TAG @AMUJOFFICIAL TO BE FEATURED ON OUR INSTAGRAM
           </h1>
           <Spacer height={20} />
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap w-[90%] justify-between m-auto">
             <SocialImage />
             <SocialImage />
             <SocialImage />

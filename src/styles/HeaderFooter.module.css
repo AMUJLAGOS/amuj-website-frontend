@@ -42,6 +42,38 @@
   font-size: 15px;
 }
 
+.sidebar{
+  position: absolute;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: all 1s;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.sidebar ul {
+  padding: 0px 40px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.sidebarOptions {
+  margin-left: 25px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.sidebar ul  li {
+  margin: 20px 0px
+}
+
+.sidebarOptions li{
+ list-style: disc;
+ margin: -20px 0px;
+}
+
 @media (max-width: 450px) {
   .footer_link a {
     font-size: 14px;
