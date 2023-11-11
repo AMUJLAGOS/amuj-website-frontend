@@ -9,6 +9,7 @@ import Cart from "./Cart";
 function Header() {
   const [showSearch, setShowSearch] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
+  const [showCart, setShowCart] = useState(false);
 
   // for search
   const showSearchHandler = () => {
@@ -28,19 +29,34 @@ function Header() {
     setShowSideBar(false);
   };
 
+  // for cart
+  const showCartHandler = () => {
+    setShowCart(true);
+  };
+
+  const hideCartHandler = () => {
+    setShowCart(false);
+  };
+
   const showClass =
-    "fixed w-full z-[150] right-0 bg-[#000000ad] h-[100%] top-0";
+    "w-full z-[150] fixed right-0 bg-[#000000ad] h-[100%] top-0 ";
 
   return (
-    <div className="z-[10] relative h-full">
+    <div className="z-[50] relative h-full ">
       <section className={`${showSearch ? showClass : ""}`}>
         <Search searchFunc={hideSearchHandler} show={showSearch} />
       </section>
-      <NavBar searchFunc={showSearchHandler} sideBarFunc={showSideBarHandler} />
+      <NavBar
+        searchFunc={showSearchHandler}
+        sideBarFunc={showSideBarHandler}
+        cartFunc={showCartHandler}
+      />
       <section className={`${showSideBar ? showClass : ""}`}>
         <SideBar showFunc={hideSideBarHandler} show={showSideBar} />
       </section>
-      {/* <Cart /> */}
+      <section className={`${showCart ? showClass : "h-[800px]"}`}>
+        <Cart hideCart={hideCartHandler} show={showCart} />
+      </section>
     </div>
   );
 }

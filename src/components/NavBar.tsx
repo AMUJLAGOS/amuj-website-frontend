@@ -3,22 +3,26 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiSearchLine } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import styles from "../styles/HeaderFooter.module.css";
 
-function NavBar({ searchFunc, sideBarFunc }: any) {
+function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
   const [showCurrency, setShowCurrency] = useState(false);
+  const [showShop, setShowShop] = useState(false);
 
   const showCurrencyHandler = () => {
     setShowCurrency(!showCurrency);
     // console.log('called too')
   };
-  const hideCurrencyHandler = () => {
-    setShowCurrency(false);
+  const hideShop = () => {
+    setShowShop(!showShop);
   };
+  if (typeof window === "object") {
+    document.addEventListener("click", hideShop);
+  }
 
   return (
     <header className="text-[12px] font-medium bg-gradient-to-b from-black to-[#00000017] text-white">
@@ -64,6 +68,7 @@ function NavBar({ searchFunc, sideBarFunc }: any) {
               src="/cart.svg"
               alt="cart"
               className="h-[25px] tablet:mr-0 mr-3"
+              onClick={() => cartFunc()}
             />
             <p className="px-3 tablet:block hidden">-</p>
             <p className="px-1 tablet:block hidden">NGN</p>
@@ -81,7 +86,59 @@ function NavBar({ searchFunc, sideBarFunc }: any) {
               <Link href={""}>NEW IN</Link>
             </li>
             <li>
-              <Link href={""}>SHOP</Link>
+              <Link href={""} onClick={() => setShowShop(!showShop)}>
+                SHOP
+              </Link>
+              {showShop && (
+                <div
+                  className={`w-[790px] left-[22%] text-[black] p-5 ${styles.shop_link}`}
+                >
+                  <div className="w-[30%] flex justify-between">
+                    <div className="p-3">
+                      <h1>CLOTHING</h1>
+                      <ul>
+                        <li className="">
+                          <Link href={""}> VIEW ALL</Link>
+                        </li>
+                        <li>
+                          <Link href={""}>DRESSES</Link>
+                        </li>
+                        <li>
+                          <Link href={""}>TOPS</Link>
+                        </li>
+                        <li>
+                          <Link href={""}>BOTTOMS</Link>
+                        </li>
+                        <li>
+                          <Link href={""}>JUMPSUITS</Link>
+                        </li>
+                        <li>
+                          <Link href={""}>COORDS</Link>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="p-3">
+                      <h1>CAMPAIGNS</h1>
+                      <ul>
+                        <li>
+                          <Link href={""}>COLLECTION I</Link>
+                        </li>
+                        <li>
+                          <Link href={""}> COLLECTION II</Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="w-[60%]">
+                    <img
+                      src="shop_nav.jpg"
+                      alt=""
+                      className="h-[200px] w-full object-cover"
+                    />
+                  </div>
+                </div>
+              )}
             </li>
             <li>
               <Link href={""}>BRAND</Link>

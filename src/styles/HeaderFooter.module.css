@@ -42,6 +42,8 @@
   font-size: 15px;
 }
 
+/* for side bar  */
+
 .sidebar{
   position: absolute;
   background-color: #fff;
@@ -72,6 +74,36 @@
 .sidebarOptions li{
  list-style: disc;
  margin: -20px 0px;
+}
+
+.shop_link {
+  position: absolute;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shop_link h1 {
+  font-weight: 700;
+}
+
+.shop_link ul {
+  padding: 0px 10px;
+}
+
+.shop_link li {
+  list-style: disc;
+  font-size: 11px;
+  margin: 10px 0px;
+}
+
+.shop_link li a {
+  display: block;
+}
+
+.shop_link li:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 450px) {

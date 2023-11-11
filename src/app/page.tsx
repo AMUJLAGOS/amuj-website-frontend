@@ -17,7 +17,7 @@ import { GoArrowRight } from "react-icons/go";
 export default function Home() {
   const all = ["/collectionII_big.jpg", "/banner1.jpg"];
   return (
-    <main>
+    <main className="box-border overflow-hidden">
       <Header />
       <section className="absolute flex items-center w-full top-0">
         {/* banner 1  */}
