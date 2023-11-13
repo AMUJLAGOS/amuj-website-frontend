@@ -18,11 +18,12 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
     // console.log('called too')
   };
   const hideShop = () => {
-    setShowShop(!showShop);
+    setShowShop(false);
   };
-  if (typeof window === "object") {
-    document.addEventListener("click", hideShop);
-  }
+
+  // if (typeof window === "object") {
+  //   document.addEventListener("click", hideShop);
+  // }
 
   return (
     <header className="text-[12px] font-medium bg-gradient-to-b from-black to-[#00000017] text-white">
@@ -56,11 +57,13 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
           {/* amuj logo  */}
           <div>
             {/* <Image alt='amuj logo' src={'amuj-logo.png'} width={100} height={100}></Image> */}
-            <img
-              src="/amuj-logo.svg"
-              alt="amuj logo"
-              className="phone:h-[50px] tablet:h-[60px] h-[35px]"
-            />
+            <Link href={"/"}>
+              <img
+                src="/amuj-logo.svg"
+                alt="amuj logo"
+                className="phone:h-[50px] tablet:h-[60px] h-[35px]"
+              />
+            </Link>
           </div>
           <div className="flex items-center">
             <p className="px-1 tablet:block hidden">0</p>
@@ -83,7 +86,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
         <section className="xl:w-[1000px] tablet:block w-[85%] m-auto hidden py-4">
           <ul className={`flex justify-between ${styles.nav_list}`}>
             <li>
-              <Link href={""}>NEW IN</Link>
+              <Link href={"/new-in"}>NEW IN</Link>
             </li>
             <li>
               <Link href={""} onClick={() => setShowShop(!showShop)}>
@@ -91,14 +94,14 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
               </Link>
               {showShop && (
                 <div
-                  className={`w-[790px] left-[22%] text-[black] p-5 ${styles.shop_link}`}
+                  className={`w-[100%] left-0 top-[165px] text-[black] p-10 h-[400px] ${styles.shop_link}`}
                 >
-                  <div className="w-[30%] flex justify-between">
+                  <div className="w-[25%] pl-10 flex justify-between">
                     <div className="p-3">
                       <h1>CLOTHING</h1>
                       <ul>
                         <li className="">
-                          <Link href={""}> VIEW ALL</Link>
+                          <Link href={"/shop"}> VIEW ALL</Link>
                         </li>
                         <li>
                           <Link href={""}>DRESSES</Link>
@@ -134,7 +137,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
                     <img
                       src="shop_nav.jpg"
                       alt=""
-                      className="h-[200px] w-full object-cover"
+                      className="h-[320px] w-full object-cover"
                     />
                   </div>
                 </div>

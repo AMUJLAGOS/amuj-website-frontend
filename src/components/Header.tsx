@@ -54,7 +54,7 @@ function Header() {
       <section className={`${showSideBar ? showClass : ""}`}>
         <SideBar showFunc={hideSideBarHandler} show={showSideBar} />
       </section>
-      <section className={`${showCart ? showClass : "h-[800px]"}`}>
+      <section className={`${showCart ? showClass : ""}`}>
         <Cart hideCart={hideCartHandler} show={showCart} />
       </section>
     </div>

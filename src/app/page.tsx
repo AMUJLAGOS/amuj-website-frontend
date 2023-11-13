@@ -66,6 +66,7 @@ export default function Home() {
         </div>
       </section>
       <section className="sm:mt-[640px] mt-[530px]">
+        {/* <section className="sm:mt-[-160px] mt-[-280px]"> */}
         {/* destop  */}
         <div
           className={`w-full relative ${style.collectionii} sm:block hidden`}
@@ -125,7 +126,7 @@ export default function Home() {
         </div>
       </section>
       {/* <Spacer height={10} /> */}
-      <section>
+      <section className="mt-[-16px]">
         <div className="md:flex block">
           <ProductCard />
           <ProductCard />
