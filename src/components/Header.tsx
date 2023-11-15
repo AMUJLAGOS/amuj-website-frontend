@@ -6,7 +6,7 @@ import Search from "./Search";
 import SideBar from "./SideBar";
 import Cart from "./Cart";
 
-function Header() {
+function Header({ home }: any) {
   const [showSearch, setShowSearch] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -51,15 +51,18 @@ function Header() {
           searchFunc={showSearchHandler}
           sideBarFunc={showSideBarHandler}
           cartFunc={showCartHandler}
+          home={home}
         />
       </section>
 
       <section className={`${showSideBar ? showClass : ""}`}>
         <SideBar showFunc={hideSideBarHandler} show={showSideBar} />
       </section>
-      {/* <section className={`${showCart ? showClass : ""} transitioncss`}>
+      <section className={`${showCart ? showClass : ""} transitioncss`}>
         <Cart hideCart={hideCartHandler} show={showCart} />
-      </section> */}
+      </section>
+
+      {/* <Cart hideCart={hideCartHandler} show={showCart} /> */}
     </div>
   );
 }

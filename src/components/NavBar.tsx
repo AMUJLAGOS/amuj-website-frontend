@@ -9,7 +9,7 @@ import { RiSearchLine } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import styles from "../styles/HeaderFooter.module.css";
 
-function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
+function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
   const [showCurrency, setShowCurrency] = useState(false);
   const [showShop, setShowShop] = useState(false);
 
@@ -25,8 +25,19 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
   //   document.addEventListener("click", hideShop);
   // }
 
+  if (typeof window !== "undefined") {
+    const scrollPosition = window.scrollY;
+    console.log(scrollPosition);
+  }
+
   return (
-    <header className="w-full text-[12px] font-medium bg-gradient-to-b from-black to-[#00000017] text-white">
+    <header
+      className={`w-full text-[12px] font-medium ${
+        home
+          ? "bg-gradient-to-b from-black to-[#00000000] text-white"
+          : "bg-[white] text-black border-b border-[#908b8b26]"
+      }  `}
+    >
       <nav>
         <section className="flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4">
           <div onClick={() => sideBarFunc()} className="tablet:hidden block">
@@ -59,7 +70,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
             {/* <Image alt='amuj logo' src={'amuj-logo.png'} width={100} height={100}></Image> */}
             <Link href={"/"}>
               <img
-                src="/amuj-logo.svg"
+                src={`${home ? "/amuj-logo.svg" : "amuj-logo-b.svg"} `}
                 alt="amuj logo"
                 className="phone:h-[50px] tablet:h-[60px] h-[35px]"
               />

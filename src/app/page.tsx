@@ -13,12 +13,21 @@ import { Slide } from "react-slideshow-image";
 import SocialImage from "@/components/SocialImage";
 import Footer from "@/components/Footer";
 import { GoArrowRight } from "react-icons/go";
+import Cart from "@/components/Cart";
+import { useState } from "react";
 
 export default function Home() {
   const all = ["/collectionII_big.jpg", "/banner1.jpg"];
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.scrollY;
+      console.log("Scroll position:", scrollPosition);
+    });
+  }
   return (
     <main className="box-border overflow-hidden">
-      <Header />
+      <Header home={"Yes"} />
       <section className="flex absolute items-center w-full top-0">
         {/* banner 1  */}
         <div

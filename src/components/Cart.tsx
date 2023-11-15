@@ -9,7 +9,7 @@ function Cart({ hideCart, show }: any) {
   return (
     <div
       // className="bg-white absolute top-0 left-[2000px]"
-      className={`absolute z-[500] h-full w-[600px] bg-white top-0 ${
+      className={`fixed z-[5000] h-full w-[600px] bg-white top-0 ${
         show ? "right-0" : "right-[-600px]"
       }  flex items-center flex-col transitioncss`}
     >

@@ -45,7 +45,7 @@
 /* for side bar  */
 
 .sidebar{
-  position: absolute;
+  position: fixed;
   background-color: #fff;
   display: flex;
   flex-direction: column;
