@@ -26,7 +26,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
   // }
 
   return (
-    <header className="text-[12px] font-medium bg-gradient-to-b from-black to-[#00000017] text-white">
+    <header className="w-full text-[12px] font-medium bg-gradient-to-b from-black to-[#00000017] text-white">
       <nav>
         <section className="flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4">
           <div onClick={() => sideBarFunc()} className="tablet:hidden block">
@@ -96,7 +96,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
                 <div
                   className={`w-[100%] left-0 top-[165px] text-[black] p-10 h-[400px] ${styles.shop_link}`}
                 >
-                  <div className="w-[25%] pl-10 flex justify-between">
+                  <div className="w-[30%] pl-10 flex justify-between">
                     <div className="p-3">
                       <h1>CLOTHING</h1>
                       <ul>
@@ -144,16 +144,16 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc }: any) {
               )}
             </li>
             <li>
-              <Link href={""}>BRAND</Link>
+              <Link href={"/brand"}>BRAND</Link>
             </li>
             <li>
-              <Link href={""}>CAMPAIGN</Link>
+              <Link href={"/campaign"}>CAMPAIGN</Link>
             </li>
             <li>
               <Link href={""}>COMMUNITY</Link>
             </li>
             <li>
-              <Link href={""}>CUSTOMER CARE</Link>
+              <Link href={"/customer-care"}>CUSTOMER CARE</Link>
             </li>
           </ul>
         </section>

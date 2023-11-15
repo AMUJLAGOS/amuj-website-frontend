@@ -23,6 +23,10 @@
   }
 }
 
+* {
+  letter-spacing: 3px;
+}
+
 body {
   color: #000000;
   background: #ffffff;
@@ -79,4 +83,19 @@ body {
 
 .transitioncss {
   transition: all 1s;
+}
+
+.flexspace {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.flexspace 
+  > * {
+  flex: 0 0 calc(25% - 1em);
+  margin: 1em 0 0 0;
+}
+.flexspace  > :not(:nth-child(4n+4)) {
+  margin-right: 1.333333em;
 }

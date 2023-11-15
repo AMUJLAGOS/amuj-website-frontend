@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className="box-border overflow-hidden">
       <Header />
-      <section className="absolute flex items-center w-full top-0">
+      <section className="flex absolute items-center w-full top-0">
         {/* banner 1  */}
         <div
           className={`${style.banner} relative items-center justify-center sm:flex hidden`}
@@ -66,6 +66,7 @@ export default function Home() {
         </div>
       </section>
       <section className="sm:mt-[640px] mt-[530px]">
+        {/* <section className=""> */}
         {/* <section className="sm:mt-[-160px] mt-[-280px]"> */}
         {/* destop  */}
         <div

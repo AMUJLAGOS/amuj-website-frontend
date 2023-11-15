@@ -39,24 +39,27 @@ function Header() {
   };
 
   const showClass =
-    "w-full z-[150] fixed right-0 bg-[#000000ad] h-[100%] top-0 ";
+    "w-full  z-[150] fixed right-0 bg-[#000000ad] h-full top-0 ";
 
   return (
-    <div className="z-[50] relative h-full ">
+    <div className="z-[150] relative h-full transitioncss">
       <section className={`${showSearch ? showClass : ""}`}>
         <Search searchFunc={hideSearchHandler} show={showSearch} />
       </section>
-      <NavBar
-        searchFunc={showSearchHandler}
-        sideBarFunc={showSideBarHandler}
-        cartFunc={showCartHandler}
-      />
+      <section>
+        <NavBar
+          searchFunc={showSearchHandler}
+          sideBarFunc={showSideBarHandler}
+          cartFunc={showCartHandler}
+        />
+      </section>
+
       <section className={`${showSideBar ? showClass : ""}`}>
         <SideBar showFunc={hideSideBarHandler} show={showSideBar} />
       </section>
-      <section className={`${showCart ? showClass : ""}`}>
+      {/* <section className={`${showCart ? showClass : ""} transitioncss`}>
         <Cart hideCart={hideCartHandler} show={showCart} />
-      </section>
+      </section> */}
     </div>
   );
 }

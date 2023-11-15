@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 
-function ProductCard() {
+function ProductCard({ price }: any) {
   return (
     <div className=" md:w-[360px] w-full mt-4">
       <div className="flex items-center flex-col">
@@ -23,6 +23,7 @@ function ProductCard() {
         <p className="text-[10px] font-medium tracking-[2px] text-center">
           CUSTOM PRINT CORSET RUCHED MINI DRESS
         </p>
+        <p className="text-[#908B8B] font-bold">{price}</p>
       </div>
     </div>
   );
