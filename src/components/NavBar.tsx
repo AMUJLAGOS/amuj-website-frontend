@@ -12,50 +12,91 @@ import styles from "../styles/HeaderFooter.module.css";
 function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
   const [showCurrency, setShowCurrency] = useState(false);
   const [showShop, setShowShop] = useState(false);
+  const [scrollShow, setScroll]: any = useState(false);
 
-  const showCurrencyHandler = () => {
-    setShowCurrency(!showCurrency);
-    // console.log('called too')
-  };
-  const hideShop = () => {
-    setShowShop(false);
-  };
+  const refShop: any = useRef();
+  const refCurrency: any = useRef();
 
-  // if (typeof window === "object") {
-  //   document.addEventListener("click", hideShop);
-  // }
+  useEffect(() => {
+    const hideShop = (e: any) => {
+      if (!refShop.current.contains(e.target)) {
+        setShowShop(false);
+      }
+    };
+    if (typeof window === "object") {
+      document.addEventListener("mousedown", hideShop);
+    }
+    return () => {
+      document.removeEventListener("mousedown", hideShop);
+    };
+  });
+
+  useEffect(() => {
+    const hideCurrency = (e: any) => {
+      if (!refCurrency.current.contains(e.target)) {
+        setShowCurrency(false);
+      }
+    };
+    if (typeof window === "object") {
+      document.addEventListener("mousedown", hideCurrency);
+    }
+    return () => {
+      document.removeEventListener("mousedown", hideCurrency);
+    };
+  });
+
+  const toggleVisible = () => {
+    if (typeof window !== "undefined") {
+      const scrolled = document.documentElement.scrollTop;
+      if (scrolled > 180) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    }
+  };
+  // toggleVisible()
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   if (typeof window !== "undefined") {
-    const scrollPosition = window.scrollY;
-    console.log(scrollPosition);
+    window.addEventListener("scroll", toggleVisible);
   }
 
   return (
     <header
-      className={`w-full text-[12px] font-medium ${
+      className={`w-full text-[12px] ${scrollShow ? "fixed" : ""} font-medium ${
         home
           ? "bg-gradient-to-b from-black to-[#00000000] text-white"
           : "bg-[white] text-black border-b border-[#908b8b26]"
       }  `}
     >
       <nav>
-        <section className="flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4">
+        <section
+          className={`${
+            scrollShow ? "hidden" : ""
+          } flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4`}
+        >
           <div onClick={() => sideBarFunc()} className="tablet:hidden block">
             <VscMenu size={35} />
           </div>
           {/* the dropdown */}
           <div
             className="cursor-pointer tablet:block hidden"
-            onClick={() => showCurrencyHandler()}
+            onClick={() => setShowCurrency(!showCurrency)}
           >
-            <div className="flex items-center relative px-1">
+            <div ref={refCurrency} className="flex items-center relative px-1">
               <p>NGN ( ₦ )</p>
               <IoIosArrowDown size={"18"} />
             </div>
 
             {showCurrency && (
               <div
-                className={`bg-[#fff] absolute flex flex-col items-center text-[black] font-medium mt-3 shadow-lg ${styles.currency_drowpdown}`}
+                className={`bg-[#fff] z-50 absolute flex flex-col items-center text-[black] font-medium mt-3 shadow-lg ${styles.currency_drowpdown}`}
               >
                 <li>NGN ₦</li>
                 <li>USD $</li>
@@ -97,10 +138,19 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
         <section className="xl:w-[1000px] tablet:block w-[85%] m-auto hidden py-4">
           <ul className={`flex justify-between ${styles.nav_list}`}>
             <li>
-              <Link href={"/new-in"}>NEW IN</Link>
+              <Link
+                href={"/new-in"}
+                className={`${home ? "before:bg-white" : "before:bg-black"}`}
+              >
+                NEW IN
+              </Link>
             </li>
-            <li>
-              <Link href={""} onClick={() => setShowShop(!showShop)}>
+            <li ref={refShop}>
+              <Link
+                href={""}
+                onClick={() => setShowShop(!showShop)}
+                className={`${home ? "before:bg-white" : "before:bg-black"}`}
+              >
                 SHOP
               </Link>
               {showShop && (
@@ -155,16 +205,36 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
               )}
             </li>
             <li>
-              <Link href={"/brand"}>BRAND</Link>
+              <Link
+                href={"/brand"}
+                className={`${home ? "before:bg-white" : "before:bg-black"}`}
+              >
+                BRAND
+              </Link>
             </li>
             <li>
-              <Link href={"/campaign"}>CAMPAIGN</Link>
+              <Link
+                href={"/campaign"}
+                className={`${home ? "before:bg-white" : "before:bg-black"}`}
+              >
+                CAMPAIGN
+              </Link>
             </li>
             <li>
-              <Link href={""}>COMMUNITY</Link>
+              <Link
+                href={""}
+                className={`${home ? "before:bg-white" : "before:bg-black"}`}
+              >
+                COMMUNITY
+              </Link>
             </li>
             <li>
-              <Link href={"/customer-care"}>CUSTOMER CARE</Link>
+              <Link
+                href={"/customer-care"}
+                className={`${home ? "before:bg-white" : "before:bg-black"}`}
+              >
+                CUSTOMER CARE
+              </Link>
             </li>
           </ul>
         </section>

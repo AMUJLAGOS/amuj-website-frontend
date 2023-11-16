@@ -19,12 +19,12 @@ import { useState } from "react";
 export default function Home() {
   const all = ["/collectionII_big.jpg", "/banner1.jpg"];
 
-  if (typeof window !== "undefined") {
-    window.addEventListener("scroll", () => {
-      const scrollPosition = window.scrollY;
-      console.log("Scroll position:", scrollPosition);
-    });
-  }
+  // if (typeof window !== "undefined") {
+  //   window.addEventListener("scroll", () => {
+  //     const scrollPosition = window.scrollY;
+  //     console.log("Scroll position:", scrollPosition);
+  //   });
+  // }
   return (
     <main className="box-border overflow-hidden">
       <Header home={"Yes"} />
