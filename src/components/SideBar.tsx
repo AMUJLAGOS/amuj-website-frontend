@@ -26,7 +26,7 @@ function SideBar({ showFunc, show }: any) {
       <br />
       <ul>
         <li>
-          <Link href={""}>NEW IN</Link>
+          <Link href={"/new-in"}>NEW IN</Link>
         </li>
         <li>
           <div
@@ -39,7 +39,7 @@ function SideBar({ showFunc, show }: any) {
           {showShopOpts && (
             <div className={`${styles.sidebarOptions}`}>
               <li>
-                <Link href={""}>VIEW ALL</Link>
+                <Link href={"/shop"}>VIEW ALL</Link>
               </li>
               <li>
                 <Link href={""}>DRESSES</Link>
@@ -90,7 +90,7 @@ function SideBar({ showFunc, show }: any) {
           {showBrandOpts && (
             <div className={`${styles.sidebarOptions}`}>
               <li>
-                <Link href={""}>ABOUT US</Link>
+                <Link href={"/brand"}>ABOUT US</Link>
               </li>
               <li>
                 <Link href={""}>COMMUNITY</Link>
@@ -122,15 +122,15 @@ function SideBar({ showFunc, show }: any) {
           )}
         </li>
         <li className="flex items-center justify-between">
-          <Link href={""}>CUSTOMER CARE</Link>
+          <Link href={"/customer-care"}>CUSTOMER CARE</Link>
           {/* <AiOutlinePlus /> */}
         </li>
         <li className="flex items-center justify-between">
-          <Link href={""}>SIZE GUDE</Link>
+          <Link href={"/size-chart"}>SIZE GUIDE</Link>
           {/* <AiOutlinePlus /> */}
         </li>
         <li className="flex items-center justify-between">
-          <Link href={""}>CUSTOM ORDER</Link>
+          <Link href={"/custom-orders"}>CUSTOM ORDER</Link>
           {/* <AiOutlinePlus /> */}
         </li>
       </ul>

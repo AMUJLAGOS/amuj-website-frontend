@@ -18,7 +18,7 @@ function Brand() {
         <div className="w-[65%] text-sm py-5 px-16 ">
           <h1 className="test-md font-extrabold">MEET JUMAI</h1>
           <br />
-          <h1 className="tracking-[1px]">
+          <h1 className="tracking-[0.5px]">
             Jumai launched AMUJ in July 2022. Her goal was simple: Establish a
             continuous-experimentation fashion company that leads in innovative
             designs, quality and value, but has sexiness, confidence and the
@@ -28,7 +28,7 @@ function Brand() {
             by a broad global audience.
           </h1>
           <br />
-          <h1 className="tracking-[1px]">
+          <h1 className="tracking-[0.5px]">
             Having shuttled between Nigeria and Ghana during her early education
             days and taken sewing lessons for years, Jumai travelled to Canada
             for her foundation, and then to Brunel University in London to study
@@ -39,7 +39,7 @@ function Brand() {
             to her deep love for design and production.
           </h1>
           <br />
-          <h1 className="tracking-[1px]">
+          <h1 className="tracking-[0.5px]">
             In her pursuit of furthering her fashion education, she decided to
             pursue a Master's in International Fashion Design Management at the
             University of Huddersfield, a city known as the home of most textile
@@ -67,7 +67,7 @@ function Brand() {
           <div className="text-sm">
             <h1 className="font-extrabold">LITTLE ABOUT AMUJ</h1>
             <br />
-            <p className="tracking-[1px] w-[65%]">
+            <p className="tracking-[0.5px] w-[65%]">
               Established in 2022, AMUJ creates purposefully-crafted pieces that
               make women feel confident, sexy, and love their bodies more. It
               goes beyond clothing to inspire self-assuredness, esteem, and
@@ -77,7 +77,7 @@ function Brand() {
               identities and unique experiences.
             </p>
             <br />
-            <p className="tracking-[1px] w-[65%]">
+            <p className="tracking-[0.5px] w-[65%]">
               AMUJ's role in society is to curate a fashion narrative that not
               only celebrates women, but sparks a transformative journey where
               women discover the power of self-expression through
@@ -89,7 +89,7 @@ function Brand() {
           <div className="text-sm">
             <h1 className="font-extrabold">OUR TEAM</h1>
             <br />
-            <p className="tracking-[1px] w-[65%]">
+            <p className="tracking-[0.5px] w-[65%]">
               Members of our team are sourced from all over the country to find
               the best individuals who align with the mission and vision of the
               brand. We come together, each expressing creative freedom,
@@ -102,7 +102,7 @@ function Brand() {
           </div>
         </div>
         <div className="mt-10 ">
-          <h1 className="font-bold tracking-[1px] text-xl">
+          <h1 className="font-bold tracking-[0.5px] text-xl">
             BTS: How its made
           </h1>
           <iframe

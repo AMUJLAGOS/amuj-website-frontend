@@ -24,7 +24,7 @@
 }
 
 * {
-  letter-spacing: 3px;
+  /* letter-spacing: 3px; */
 }
 
 body {
@@ -36,6 +36,7 @@ body {
   outline: none;
   background: none;
 }
+
 
 .product {
   position: relative;
