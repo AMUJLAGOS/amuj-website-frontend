@@ -6,7 +6,7 @@ import React from "react";
 
 function CustomOrders() {
   return (
-    <main>
+    <main className="box-border overflow-hidden">
       <Header />
       <section className="text-center w-[650px] m-auto mt-12">
         <h1 className="text-lg font-bold">CUSTOM ORDERS</h1>

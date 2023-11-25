@@ -11,7 +11,7 @@
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "@types/react-animations": "^1.0.2",
-    "next": "13.5.4",
+    "next": "^14.0.4-canary.12",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",

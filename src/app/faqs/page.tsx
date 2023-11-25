@@ -12,7 +12,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 function Faqs() {
   const [currentOpen, setCurrentOpen]: any = useState(null);
   return (
-    <main>
+    <main className="box-border overflow-hidden">
       <Header />
       <section className=" w-[700px] m-auto mt-12">
         <h1 className="text-lg font-bold text-center">FAQs</h1>

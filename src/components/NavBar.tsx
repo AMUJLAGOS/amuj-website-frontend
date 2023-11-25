@@ -5,7 +5,7 @@
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { RiSearchLine } from "react-icons/ri";
+import { RiSearch2Line } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import styles from "../styles/HeaderFooter.module.css";
 
@@ -130,7 +130,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
 
             <p className="px-[6px] tablet:block hidden">₦0.00</p>
             <div onClick={() => searchFunc()}>
-              <RiSearchLine size={"25"} />
+              <RiSearch2Line size={"25"} />
             </div>
           </div>
         </section>

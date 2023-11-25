@@ -57,14 +57,14 @@ function Footer() {
 
             <div className="flex justify-between">
               <div className={`${styles.footer_link}`}>
-                <Link href={""}>New In</Link>
-                <Link href={""}>Custom</Link>
-                <Link href={""}>Size Chart</Link>
+                <Link href={"/new-in"}>New In</Link>
+                <Link href={"/custom-orders"}>Custom</Link>
+                <Link href={"/size-chart"}>Size Chart</Link>
               </div>
               <div className={`${styles.footer_link}`}>
-                <Link href={""}>About Us</Link>
+                <Link href={"/brand"}>About Us</Link>
                 <Link href={""}>Community</Link>
-                <Link href={""}>FAQs</Link>
+                <Link href={"/faqs"}>FAQs</Link>
               </div>
             </div>
           </div>

@@ -22,7 +22,7 @@ function NewIn() {
             </div>
           </div>
         </div>
-        <div className="flexspace">
+        <div className="flex flex-wrap">
           <ProductCard price={"₦62,500.00"} />
           <ProductCard price={"₦62,500.00"} />
           <ProductCard price={"₦62,500.00"} />

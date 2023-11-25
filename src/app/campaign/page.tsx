@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 
 function Campaign() {
   return (
-    <main>
+    <main className="box-border overflow-hidden">
       <Header />
       <section className="flex flex-col items-center">
         <img src="/campaign1.png" alt="" />

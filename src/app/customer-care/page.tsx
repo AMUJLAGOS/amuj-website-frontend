@@ -7,7 +7,7 @@ import React from "react";
 
 function CustomerCare() {
   return (
-    <main>
+    <main className="box-border overflow-hidden">
       <Header />
       <section className="flex items-center">
         <img src="/customercare.png" alt="" />
