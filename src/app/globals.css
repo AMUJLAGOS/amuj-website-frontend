@@ -72,7 +72,15 @@ body {
 .product:hover > .second_image {
   display: block;
 }
-
+@media (max-width: 1023px) {
+  .product:hover > .first_image {
+    display: block;
+  }
+  
+  .product:hover > .second_image {
+    display: none;
+  }
+}
 .insta {
   display: none;
   transition: all 1s;

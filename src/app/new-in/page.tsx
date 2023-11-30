@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
+import ShopCard from "@/components/ShopCard";
 import Spacer from "@/components/Spacer";
 import React from "react";
 
@@ -22,13 +23,12 @@ function NewIn() {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap">
-          <ProductCard price={"₦62,500.00"} />
-          <ProductCard price={"₦62,500.00"} />
-          <ProductCard price={"₦62,500.00"} />
-          <ProductCard price={"₦62,500.00"} />
-          <ProductCard price={"₦62,500.00"} />
-          <ProductCard price={"₦62,500.00"} />
+        <div className="flexspace">
+          <ShopCard price={"₦62,500.00"} />
+          <ShopCard price={"₦62,500.00"} />
+          <ShopCard price={"₦62,500.00"} />
+          <ShopCard price={"₦62,500.00"} />
+          <ShopCard price={"₦62,500.00"} />
         </div>
       </section>
       <Spacer height={100} />

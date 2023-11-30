@@ -18,7 +18,7 @@ function ShopCard({ price }: any) {
               />
             </div>
 
-            <div className="second_image tablet:h-[540px] sm:h-[300px] h-[200px] w-[45%] md:w-[25%] object-cover">
+            <div className="second_image lg:block hidden tablet:h-[540px] sm:h-[300px] h-[200px] w-[45%] md:w-[25%] object-cover">
               <Image
                 src={"/second_image.jpg"}
                 alt={"product-image"}
