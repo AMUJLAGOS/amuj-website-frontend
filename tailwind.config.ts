@@ -14,7 +14,6 @@ const config: Config = {
       'md': '768px',
       'sm': '640px',
       'phone': '450px'
-
     },
 
     extend: {

@@ -8,8 +8,8 @@ function CustomOrders() {
   return (
     <main className="box-border overflow-hidden">
       <Header />
-      <section className="text-center w-[650px] m-auto mt-12">
-        <h1 className="text-lg font-bold">CUSTOM ORDERS</h1>
+      <section className="text-center md:w-[650px] w-[90%] m-auto mt-12">
+        <h1 className="sm:text-base text-sm font-bold">CUSTOM ORDERS</h1>
         <p className="mt-9 text-sm">
           Most styles can be reproduced with minor adjustments made to existing
           size ranges including bust, waist, hips, and length measurements.

@@ -12,16 +12,16 @@ function SizeChart() {
     <main className="box-border overflow-hidden">
       <Header />
       <section className="text-center w-[650px] m-auto mt-12">
-        <h1 className="text-lg font-bold">SIZE CHART</h1>
-        {/* <div className="relative">
-          <Image
+        <h1 className="sm:text-base text-sm font-bold">SIZE CHART</h1>
+        <div className="relative">
+          {/* <Image
             src={"/size_chart.png"}
             alt={"size chart"}
             layout="fill"
-            // objectFit=""
-          ></Image>
-        </div> */}
-        <img src="size_chart.png" alt="size chart" className="mt-10" />
+            objectFit="cover"
+          ></Image> */}
+        </div>
+        <img src="size_chart.png" alt="size chart" className="mt-10 md:" />
       </section>
       <Spacer height={100} />
       <Footer />

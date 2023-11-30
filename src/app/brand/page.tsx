@@ -16,9 +16,11 @@ function Brand() {
         {/* <div className="w-[30%]">
           <img src="/amuj.png" alt="" className="h-[400px] object-cover" />
         </div> */}
-        <div className="w-[840px] m-auto">
+        <div className="tablet:w-[840px] w-[90%] m-auto">
           <div className="text-sm">
-            <h1 className="test-md font-extrabold">MEET JUMAI</h1>
+            <h1 className="test-md font-bold tablet:text-left text-center">
+              MEET JUMAI
+            </h1>
             <br />
             <h1 className="tracking-[0.5px]">
               Jumai launched AMUJ in July 2022. Her goal was simple: Establish a
@@ -64,9 +66,9 @@ function Brand() {
           />
         </div>
 
-        <div className="w-[840px] m-auto mt-10">
+        <div className="tablet:w-[840px] w-[90%] m-auto mt-10">
           <div className="text-sm">
-            <h1 className="font-extrabold">AMUJ</h1>
+            <h1 className="font-bold tablet:text-left text-center">AMUJ</h1>
             <br />
             <p className="tracking-[0.5px]">
               Established in 2022, AMUJ creates purposefully-crafted pieces that
@@ -97,10 +99,12 @@ function Brand() {
           />
         </div>
 
-        <div className="w-[840px] m-auto mt-10">
+        <div className="tablet:w-[840px] w-[90%] m-auto mt-10">
           <div className="mt-16">
             <div className="text-sm">
-              <h1 className="font-extrabold">CREATIVE HUB</h1>
+              <h1 className="font-bold tablet:text-left text-center">
+                CREATIVE HUB
+              </h1>
               <br />
               <p className="tracking-[0.5px]">
                 Members of our team are sourced from all over the country to
@@ -117,17 +121,17 @@ function Brand() {
           </div>
         </div>
 
-        <div className="w-[840px] m-auto mt-10">
+        <div className=" tablet:w-[840px] w-[90%] m-auto mt-10">
           <div className="">
-            <h1 className="font-bold tracking-[0.5px] text-xl">
+            <h1 className="font-bold tracking-[0.5px] tablet:text-left text-center">
               BTS: How its made
             </h1>
             <iframe
-              width="560"
+              // width="560"
               height="400"
               src="https://www.youtube.com/embed/wdkPJtpTFhQ?si=Js-Gb6MrAuOs4wBa"
               title="YouTube video player"
-              className="mt-5"
+              className="mt-5 w-full tablet:w-[560px]"
             ></iframe>
           </div>
         </div>

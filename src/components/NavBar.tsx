@@ -8,6 +8,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { RiSearch2Line } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import styles from "../styles/HeaderFooter.module.css";
+import { BsHandbag } from "react-icons/bs";
 
 function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
   const [showCurrency, setShowCurrency] = useState(false);
@@ -82,7 +83,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
           } flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4`}
         >
           <div onClick={() => sideBarFunc()} className="tablet:hidden block">
-            <VscMenu size={35} />
+            <VscMenu size={25} />
           </div>
           {/* the dropdown */}
           <div
@@ -119,10 +120,15 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
           </div>
           <div className="flex items-center">
             <p className="px-1 tablet:block hidden">0</p>
-            <img
+            {/* <img
               src="/cart.svg"
               alt="cart"
               className="h-[25px] tablet:mr-0 mr-3"
+              onClick={() => cartFunc()}
+            /> */}
+            <BsHandbag
+              size={20}
+              className="tablet:mr-0 mr-3 font-bold"
               onClick={() => cartFunc()}
             />
             <p className="px-3 tablet:block hidden">-</p>

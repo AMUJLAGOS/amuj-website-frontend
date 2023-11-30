@@ -14,8 +14,8 @@ function Faqs() {
   return (
     <main className="box-border overflow-hidden">
       <Header />
-      <section className=" w-[700px] m-auto mt-12">
-        <h1 className="text-lg font-bold text-center">FAQs</h1>
+      <section className=" md:w-[700px] w-[90%] m-auto mt-12">
+        <h1 className="md:text-lg text-sm font-bold text-center">FAQs</h1>
         {/* first */}
         <FaqsContainer
           id={1}

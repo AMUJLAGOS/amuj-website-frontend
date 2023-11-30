@@ -48,8 +48,8 @@ function ProductDetails() {
     <main className="box-border overflow-hidden">
       <Header />
 
-      <section className="mt-10 flex w-[1200px] m-auto">
-        <div className="w-[450px]">
+      <section className="phone:mt-10 tablet:flex block lg:justify-normal justify-between lg:w-[1020px] tablet:w-[90%] phone:w-[400px] w-full m-auto">
+        <div className="lg:w-[400px] tablet:w-[300px] w-full">
           <Slide
             indicators={indicators}
             onChange={(oldIndex, newIndex) => {
@@ -59,7 +59,7 @@ function ProductDetails() {
             duration={2000}
             {...properties}
           >
-            <div className="h-[550px] w-[450px] relative">
+            <div className="lg:h-[550px] h-[400px] w-full relative">
               <Image
                 src={"/product.png"}
                 alt={""}
@@ -67,7 +67,7 @@ function ProductDetails() {
                 objectFit="cover"
               ></Image>
             </div>
-            <div className="h-[550px] w-[450px] relative">
+            <div className="lg:h-[550px] h-[400px] w-full relative">
               <Image
                 src={"/bigslider.jpg"}
                 alt={""}
@@ -75,7 +75,7 @@ function ProductDetails() {
                 objectFit="cover"
               ></Image>
             </div>
-            <div className="h-[550px] w-[450px] relative">
+            <div className="lg:h-[550px] h-[400px] w-full relative">
               <Image
                 src={"/video.jpg"}
                 alt={""}
@@ -86,22 +86,20 @@ function ProductDetails() {
           </Slide>
         </div>
 
-        <div className="ml-20 w-[70%]">
-          <div className="flex justify-between pb-4 border-b border-[#908b8bbe] w-[90%]">
+        <div className="tablet:ml-10 tablet:w-[60%] phone:w-full w-[90%] m-auto">
+          <div className="flex justify-between pb-4 border-b border-[#908b8bbe] tablet:w-[90%] w-full">
             <div className="w-[30%]">
-              <h1 className="text-2xl tracking-[2px] font-bold">ALYA</h1>
-              <p className="font-medium leading-[17px] mt-2 w-[50px]">
-                ggggsgsgsgsgsgsgsghjdjdjdjdjdjdjdjdjdjdjdjdjd
-              </p>
+              <h1 className="text-xl tracking-[2px] font-bold">ALYA</h1>
+              <p className="font-medium leading-[17px] mt-2">ggggsgsgsgsgsgs</p>
             </div>
             <div className="flex flex-col items-end w-[30%]">
-              <h1 className="text-2xl font-medium">₦62,500.00</h1>
+              <h1 className="text-xl font-medium">₦62,500.00</h1>
               <Link href={""} className="border-b border-black text-sm mt-2">
                 Size Chart
               </Link>
             </div>
           </div>
-          <div className="w-[90%] mt-4">
+          <div className=" tablet:w-[90%] w-full mt-4">
             <p className="text-sm">
               Jumai launched AMUJ in July 2022. Her goal was simple: Establish a
               continuous-experimentation fashion company that leads in
@@ -113,7 +111,7 @@ function ProductDetails() {
 
           <div className="mt-4">
             <p className="text-sm">Select a size</p>
-            <div className="relative w-[60%]">
+            <div className="relative tablet:w-[60%] w-full">
               <select className="block appearance-none w-full outline-none !bg-white border border-gray-300 px-4 py-2 pr-8 rounded leading-tight focus:outline-none">
                 <option className="!bg-white text-black" value="option1">
                   Option 1
@@ -134,14 +132,14 @@ function ProductDetails() {
           <div className="mt-5">
             <p className="text-sm">Quantity</p>
             <div className="flex items-center mt-2">
-              <button className="border p-3 border-[#908B8B] text-[#908B8B] h-[45px]">
+              <button className="border flex justify-center items-center border-[#908B8B] text-[#908B8B] phone:h-[45px] phone:w-[40px] h-[35px] w-[30px]">
                 <AiOutlineMinus />
               </button>
-              <button className="border p-5 border-[#908B8B] ml-1 mr-1 flex items-center h-[45px]">
+              <button className="border flex justify-center items-center border-[#908B8B] ml-1 mr-1 phone:w-[55px] phone:h-[45px] h-[35px] w-[45px]">
                 1
               </button>
-              <button className="border p-3 border-[#908B8B] text-[#908B8B] h-[45px]">
-                <AiOutlineMinus />
+              <button className="border  flex justify-center items-center border-[#908B8B] text-[#908B8B] phone:h-[45px] phone:w-[40px] h-[35px] w-[30px]">
+                <AiOutlinePlus />
               </button>
               <p className="ml-14 font-semibold text-sm">PRICE: ₦62,500.00</p>
             </div>
@@ -151,7 +149,7 @@ function ProductDetails() {
               </span>{" "}
               calculated at checkout
             </p>
-            <button className="bg-black text-white text-xs py-3 px-12 mt-5">
+            <button className="bg-black text-white text-xs tablet:w-auto w-full py-3 px-12 mt-5">
               ADD TO CART
             </button>
           </div>
