@@ -15,7 +15,7 @@ function Cart({ hideCart, show }: any) {
     >
       <div
         onClick={() => hideCart()}
-        className="absolute phone:left-16 sm:text-[23px] text-[18px] right-4 mt-5 phone:mt-10 flex items-center border-[1.8px] border-black  p-1 rounded-[50%]"
+        className="absolute phone:left-16 sm:text-[23px] text-[18px] right-4 mt-5 phone:mt-10 flex items-center border-[1.8px] border-black w-[40px] h-[40px] justify-center rounded-[50%]"
       >
         <RxCross2 />
       </div>

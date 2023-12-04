@@ -9,6 +9,7 @@ import { RiSearch2Line } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import styles from "../styles/HeaderFooter.module.css";
 import { BsHandbag } from "react-icons/bs";
+import Image from "next/image";
 
 function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
   const [showCurrency, setShowCurrency] = useState(false);
@@ -111,8 +112,17 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
           <div>
             {/* <Image alt='amuj logo' src={'amuj-logo.png'} width={100} height={100}></Image> */}
             <Link href={"/"}>
+              {/* <div className="relative phone:h-[40px] tablet:h-[50px] h-[35px] w-[35px]">
+                <Image
+                  src={`${home ? "/amuj-logo.svg" : "/amuj-logo-b.svg"} `}
+                  alt="amuj logo"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div> */}
+
               <img
-                src={`${home ? "/amuj-logo.svg" : "amuj-logo-b.svg"} `}
+                src={`${home ? "/amuj-logo.svg" : "/amuj-logo-b.svg"} `}
                 alt="amuj logo"
                 className="phone:h-[40px] tablet:h-[50px] h-[35px]"
               />

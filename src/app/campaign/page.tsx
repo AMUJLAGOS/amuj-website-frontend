@@ -12,7 +12,7 @@ function Campaign() {
     <main className="box-border overflow-hidden">
       <Header />
       <section className="flex flex-col items-center">
-        <div className="relative h-[450px] sm:w-full w-[90%]">
+        <div className="relative h-[550px] sm:w-full w-[90%]">
           <Image
             src={"/campaign1.png"}
             alt={""}
@@ -32,7 +32,7 @@ function Campaign() {
         </div>
       </section>
       <section className="flex flex-col items-center mt-14">
-        <div className="relative h-[450px] sm:w-full w-[90%]">
+        <div className="relative h-[550px] sm:w-full w-[90%]">
           <Image
             src={"/campaign2.png"}
             alt={""}

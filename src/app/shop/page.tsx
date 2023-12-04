@@ -13,7 +13,7 @@ function Shop() {
       <p className="mt-2 font-normal text[13px] text-center">
         Shop from all our collections
       </p>
-      <section className="w-[95%] m-auto">
+      <section className="3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] w-[95%] m-auto">
         <div>
           <h1 className="font-bold p-4 cursor-pointer">FILTER BY -</h1>
           <div className="border-t border-[#908b8b50]">
@@ -24,7 +24,7 @@ function Shop() {
             </div>
           </div>
         </div>
-        <div className="flexspace">
+        <div className="flexspace 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] m-auto">
           <ShopCard price={"₦62,500.00"} />
           <ShopCard price={"₦62,500.00"} />
           <ShopCard price={"₦62,500.00"} />

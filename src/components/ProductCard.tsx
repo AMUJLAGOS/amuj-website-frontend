@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function ProductCard({ price }: any) {
   return (
-    <div className=" md:w-[360px] w-full mt-4">
+    <div className="2xl:w-[25%] md:w-[360px] w-full mt-4">
       <Link href={"/product"}>
         <div className="flex items-center flex-col">
           <div className="product w-full">
@@ -31,12 +31,12 @@ function ProductCard({ price }: any) {
             <img
               src="./product_image.jpg"
               alt=""
-              className="first_image lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover"
+              className="first_image 2xl:w-full lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover"
             />
             <img
               src="./second_image.jpg"
               alt=""
-              className="lg:h-[540px] h-[400px] w-[360px] object-cover second_image"
+              className="2xl:w-full lg:h-[540px] h-[400px] w-[360px] object-cover second_image"
             />
             <Link href={""}>QUICK VIEW</Link>
           </div>

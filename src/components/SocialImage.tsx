@@ -5,7 +5,7 @@ import { PiInstagramLogo } from "react-icons/pi";
 
 function SocialImage() {
   return (
-    <div className="md:w-[25%] w-[130px] mt-2 relative social">
+    <div className="md:w-[25%] w-[130px] relative social">
       <img
         src="/ig_image.jpg"
         alt="social media"

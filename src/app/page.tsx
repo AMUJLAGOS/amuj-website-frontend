@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <main className="box-border overflow-hidden">
       <Header home={"Yes"} />
-      <section className="flex absolute items-center w-full top-0">
+      <section className="flex absolute items-center  m-auto w-full top-0">
         {/* banner 1  */}
         <div
           className={`${style.banner} relative items-center justify-center sm:flex hidden`}
@@ -136,7 +136,7 @@ export default function Home() {
         </div>
       </section>
       {/* <Spacer height={10} /> */}
-      <section className="mt-[-16px]">
+      <section className="3xl:w-[1700px] 2xl:w-[1500] w-full mt-[-16px] m-auto">
         <div className="md:flex block">
           <ProductCard />
           <ProductCard />
@@ -193,7 +193,7 @@ export default function Home() {
             TAG @AMUJOFFICIAL TO BE FEATURED ON OUR INSTAGRAM
           </h1>
           <Spacer height={20} />
-          <div className="flex flex-wrap w-[90%] justify-between m-auto">
+          <div className="flex flex-wrap 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] w-[90%] justify-between m-auto">
             <SocialImage />
             <SocialImage />
             <SocialImage />
