@@ -45,7 +45,14 @@ body {
   overflow: hidden;
 }
 
-.product a {
+.conn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.conn button {
   position: absolute;
   bottom: -70px;
   /* margin-bottom: 200; */
@@ -57,7 +64,7 @@ body {
   transition: all ease-in-out 0.5s;
 }
 
-.product:hover >  a {
+.conn:hover > button {
   bottom: 30px;
 }
 
@@ -98,34 +105,80 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  gap: 10px;
 }
 
 .flexspace 
   > * {
-  flex: 0 0 calc(25.7% - 1em);
-  margin: 1em 0 0 0;
+    width: calc(25% - 10px); 
+    box-sizing: border-box;
 }
-.flexspace  > :not(:nth-child(4n+4)) {
-  margin-right: 0.53em;
-  /* margin-right: 1.333333em; */
+
+.shopFlex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
+
+.shopFlex
+> * {
+  width: calc(25% - 10px);
+  box-sizing: border-box;
+}
+
 
 @media (max-width: 640px) {
-  .flexspace {
+  /* .shopFlex {
     justify-content: space-between;
-  }
-  .flexspace 
+  } */
+  .shopFlex 
   > * {
-    flex: 0 0 calc(50% - 1em);
+    width: calc(50% - 10px);
   }
 }
 
-@media (min-width: 1280px) {
-  .flexspace {
-    justify-content: space-between;
-  }
-  .flexspace 
-  > * {
-    flex: 0 0 calc(25% - 1em);
-  }
+.shop_conn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
 }
+
+.shop {
+  display: flex;
+  justify-content: center;
+ /* flex-direction: column; */
+}
+
+.shop .shop_image2{
+  display: none;
+} 
+
+.shop:hover > .shop_image1 {
+  display: none;
+}
+
+.shop:hover > .shop_image2 {
+  display: block;
+}
+
+
+
+.shop_conn button {
+  position: absolute;
+  bottom: -70px;
+  margin-bottom: 200;
+  background-color: #ffffff;
+  width: 70%;
+  text-align: center;
+  padding: 15px 0px;
+  font-size: 20px;
+  transition: all ease-in-out 0.5s;
+  z-index: 100;
+}
+
+.shop_conn:hover > button {
+  bottom: 30px;
+} 

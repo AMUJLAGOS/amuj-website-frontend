@@ -3,13 +3,58 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 
-function ProductCard({ price }: any) {
+function ProductCard({
+  naira_price,
+  euro_price,
+  pounds_price,
+  dollar_price,
+  slug,
+  name,
+  description,
+  image,
+  hImage,
+  showProduct,
+  pData,
+  sizes,
+  images,
+  des_full,
+  requires_length,
+}: any) {
+  //
+  //
+  const setProductDataHandler = (
+    name: any,
+    naira_price: any,
+    euro_price: any,
+    pounds_price: any,
+    dollar_price: any,
+    sizes: any,
+    images: any,
+    description: any,
+    slug: any,
+    requires_length: any
+  ) => {
+    pData({
+      name: name,
+      naira_price,
+      euro_price,
+      pounds_price,
+      dollar_price,
+      sizes: sizes,
+      images: images,
+      description: description,
+      slug: slug,
+      requires_length,
+    });
+    showProduct();
+  };
   return (
-    <div className="2xl:w-[25%] md:w-[360px] w-full mt-4">
-      <Link href={"/product"}>
-        <div className="flex items-center flex-col">
-          <div className="product w-full">
-            {/* <div className="first_image lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover">
+    <div className="2xl:w-[25%] w-full mt-4">
+      <section className="flex items-center flex-col">
+        <div className="conn">
+          <Link href={`/shop/product/${slug}`}>
+            <div className="product w-full">
+              {/* <div className="first_image lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover">
               <Image
                 src={"/product_image.jpg"}
                 alt={"product-image"}
@@ -28,25 +73,46 @@ function ProductCard({ price }: any) {
               />
             </div> */}
 
-            <img
-              src="./product_image.jpg"
-              alt=""
-              className="first_image 2xl:w-full lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover"
-            />
-            <img
-              src="./second_image.jpg"
-              alt=""
-              className="2xl:w-full lg:h-[540px] h-[400px] w-[360px] object-cover second_image"
-            />
-            <Link href={""}>QUICK VIEW</Link>
-          </div>
-          <p className="mt-3 text-[16px] font-bold tracking-[5px]">ALYA</p>
-          <p className="text-[10px] font-medium tracking-[2px] text-center">
-            CUSTOM PRINT CORSET RUCHED MINI DRESS
-          </p>
-          <p className="text-[#908B8B] font-bold">{price}</p>
+              <img
+                src={`http://127.0.0.1:8000${image}`}
+                alt=""
+                className="first_image 2xl:w-full lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover"
+              />
+              <img
+                src={`http://127.0.0.1:8000${hImage}`}
+                alt=""
+                className="2xl:w-full lg:h-[540px] h-[400px] w-[360px] object-cover second_image"
+              />
+            </div>
+          </Link>
+          <button
+            onClick={() =>
+              setProductDataHandler(
+                name,
+                naira_price,
+                euro_price,
+                pounds_price,
+                dollar_price,
+                sizes,
+                images,
+                des_full,
+                slug,
+                requires_length
+              )
+            }
+            className="md:block hidden"
+          >
+            QUICK VIEW
+          </button>
         </div>
-      </Link>
+        <p className="mt-3 text-[16px] font-bold tracking-[0px] uppercase">
+          {name}
+        </p>
+        <p className="text-[10px] font-medium tracking-[2px] text-center uppercase">
+          {description} {requires_length}
+        </p>
+        {/* <p className="text-[#908B8B] font-bold">{price}</p> */}
+      </section>
     </div>
   );
 }

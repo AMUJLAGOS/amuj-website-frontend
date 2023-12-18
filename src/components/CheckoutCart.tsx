@@ -1,26 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
 //
-"use client";
-import { numberWithCommas, updateQuantityByName } from "@/utils/functionHelper";
-import React, { useEffect, useState } from "react";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { RxCross2 } from "react-icons/rx";
-import { useCart } from "./CartContext";
-import { imageServer } from "@/utils/urlhandler";
-import { useCurrency } from "./CurrencyContext";
 
-function CartCard({ name, size, length, quantity, amount, slug, image }: any) {
-  // const [cAmount, setAmount] = useState(amount);
-  const [cQuantity, setcQuantity] = useState(quantity);
-  const { cart, setCart } = useCart();
+import React, { useState } from "react";
+import { useCurrency } from "./CurrencyContext";
+import { numberWithCommas, updateQuantityByName } from "@/utils/functionHelper";
+import { useCart } from "./CartContext";
+import { RxCross2 } from "react-icons/rx";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+
+function CheckoutCart({ slug, amount }: any) {
   const { currency } = useCurrency();
+  const [cQuantity, setcQuantity] = useState(2);
+
+  const { cart, setCart } = useCart();
 
   const updateCart = (quantity: any) => {
     const update = updateQuantityByName(cart, slug, quantity);
     localStorage.setItem("amujCart", JSON.stringify(update));
     setCart(update);
   };
-
   const minus = () => {
     if (cQuantity > 0) {
       const updatedQuantity = cQuantity - 1;
@@ -44,31 +42,32 @@ function CartCard({ name, size, length, quantity, amount, slug, image }: any) {
   };
 
   return (
-    <div className="bg-white mt-2 mb-2 w-[95%] phone:w-[85%] h-[150px] shadow-[0px_0px_10px_rgba(0,0,0,0.2)] flex items-center rounded-sm p-5">
-      <div className="w-1/4 h-full">
-        <img
-          src={`${imageServer}${image}`}
-          alt={`${slug}`}
-          className="h-[100px] w-[100px] object-cover"
-          loading="lazy"
-        />
-      </div>
-      <div className="w-[80%] p-5">
-        <div className="flex justify-between">
-          <h1 className="font-extrabold text-sm uppercase">{name}</h1>
-          <button
-            onClick={() => remove()}
-            className="flex items-center text-sm text-[#908B8B]"
-          >
-            <RxCross2 className="mr-1" /> Remove
-          </button>
+    <main className="mt-8">
+      <div className="flex w-[600px]">
+        <div className="">
+          <img
+            src={`/ig_image.jpg`}
+            alt={``}
+            className="h-[150px] w-[150px] object-cover"
+            loading="lazy"
+          />
         </div>
-        <div className="items-end justify-between font-medium text-sm mt-5">
-          <div className="phone:flex flex text-sm">
-            <p>Size: {size}</p>
+        <div className="w-4/5 ml-14">
+          <div className="flex justify-between ">
+            <h1 className="font-extrabold text-sm uppercase">Alya</h1>
+            <button
+              onClick={() => remove()}
+              className="flex items-center text-sm text-[#908B8B]"
+            >
+              <RxCross2 className="mr-1" /> Remove
+            </button>
+          </div>
+          <div className="phone:flex flex text-sm mt-3">
+            <p>Size: 8</p>
             <p className="ml-5">Length: Tall</p>
           </div>
-          <div className="flex justify-between items-center w-[100%] phone:w-[60%] mt-2">
+          <div className="border-b border-[#0000003f] my-7"></div>
+          <div className="flex justify-between items-center mt-2">
             <div className="flex items-center text-sm">
               <button
                 onClick={() => minus()}
@@ -95,8 +94,9 @@ function CartCard({ name, size, length, quantity, amount, slug, image }: any) {
           </div>
         </div>
       </div>
-    </div>
+      <div className="bg-[#d9d9d92e] h-5 w-[600px] mt-4"></div>
+    </main>
   );
 }
 
-export default CartCard;
+export default CheckoutCart;

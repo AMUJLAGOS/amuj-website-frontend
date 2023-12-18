@@ -1,43 +1,133 @@
-import React from "react";
+/* eslint-disable @next/next/no-img-element */
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useCurrency } from "./CurrencyContext";
+import { numberWithCommas } from "@/utils/functionHelper";
+import ProductDetailCard from "./ProductDetailCard";
 
-function ShopCard({ price }: any) {
+function ShopCard({
+  naira_price,
+  euro_price,
+  pounds_price,
+  dollar_price,
+  name,
+  slug,
+  description,
+  image,
+  hImage,
+  key,
+  showProduct,
+  pData,
+  sizes,
+  des_full,
+  images,
+  requires_length,
+}: any) {
+  //
+  const { currency } = useCurrency();
+  //
+  const setProductDataHandler = (
+    name: any,
+    naira_price: any,
+    euro_price: any,
+    pounds_price: any,
+    dollar_price: any,
+    sizes: any,
+    images: any,
+    description: any,
+    slug: any,
+    requires_length: any
+  ) => {
+    pData({
+      name: name,
+      naira_price,
+      euro_price,
+      pounds_price,
+      dollar_price,
+      sizes: sizes,
+      images: images,
+      description: description,
+      slug: slug,
+      requires_length,
+    });
+    showProduct(true);
+  };
+
   return (
-    <div className=" md:w-[360px] w-full mt-4">
-      <Link href={"/product"}>
-        <div className="flex items-center flex-col">
-          <div className="product w-full">
-            <div className="first_image tablet:h-[540px] sm:h-[300px] h-[200px] w-[45%] md:w-[25%] object-cover">
-              <Image
-                src={"/product_image.jpg"}
-                alt={"product-image"}
-                objectFit="cover"
-                layout="fill"
-                // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    <div className="mt-4" key={key}>
+      <div className="flex items-center flex-col">
+        <div className="shop_conn w-full">
+          <Link href={`/shop/product/${slug}`}>
+            <div className="shop w-full">
+              {/* <div className="relative shop_image1 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover">
+                <Image
+                  src={`http://127.0.0.1:8000${hImage}`}
+                  alt={"product-image"}
+                  objectFit="cover"
+                  layout="fill"
+                  className="shop_image1"
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              <div className="relative shop_image2 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover">
+                <Image
+                  src={`http://127.0.0.1:8000${image}`}
+                  alt={"product-image"}
+                  objectFit="cover"
+                  layout="fill"
+                  className="shop_image2"
+                />
+              </div> */}
+              <img
+                src={`http://127.0.0.1:8000${hImage}`}
+                alt=""
+                className="shop_image1 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover"
+              />
+              <img
+                src={`http://127.0.0.1:8000${image}`}
+                alt=""
+                className="shop_image2 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover"
               />
             </div>
-
-            <div className="second_image lg:block hidden tablet:h-[540px] sm:h-[300px] h-[200px] w-[45%] md:w-[25%] object-cover">
-              <Image
-                src={"/second_image.jpg"}
-                alt={"product-image"}
-                objectFit="cover"
-                layout="fill"
-              />
-            </div>
-
-            <Link href={""} className="lg:block hidden">
-              QUICK VIEW
-            </Link>
-          </div>
-          <p className="mt-3 text-[15px] font-bold tracking-[1px]">ALYA</p>
-          <p className="text-[10px] font-medium tracking-[0px] text-center">
-            CUSTOM PRINT CORSET RUCHED MINI DRESS
-          </p>
-          <p className="text-[#908B8B] text-sm font-bold">{price}</p>
+          </Link>
+          <button
+            onClick={() =>
+              setProductDataHandler(
+                name,
+                naira_price,
+                euro_price,
+                pounds_price,
+                dollar_price,
+                sizes,
+                images,
+                des_full,
+                slug,
+                requires_length
+              )
+            }
+            className="md:block hidden"
+          >
+            QUICK VIEW
+          </button>
         </div>
-      </Link>
+        <p className="mt-3 text-[15px] font-bold tracking-[1px] uppercase">
+          {name}
+        </p>
+        <p className="text-[10px] font-medium tracking-[0px] text-center uppercase">
+          {description}
+        </p>
+        <p className="text-[#908B8B] text-sm font-bold">
+          {currency?.symbol}
+          {currency?.name == "naira"
+            ? numberWithCommas(naira_price)
+            : currency?.name == "dollar"
+            ? numberWithCommas(dollar_price)
+            : currency?.name == "euro"
+            ? numberWithCommas(euro_price)
+            : numberWithCommas(pounds_price)}
+        </p>
+      </div>
     </div>
   );
 }

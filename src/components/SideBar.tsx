@@ -5,12 +5,25 @@ import React, { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import styles from "../styles/HeaderFooter.module.css";
 import { RxCross2 } from "react-icons/rx";
+import { Currency } from "@/utils/dataType";
+import { useCurrency } from "./CurrencyContext";
 
 function SideBar({ showFunc, show }: any) {
   const [showShopOpts, setShowShopOpts] = useState(false);
   const [showCampaignOpts, setShowCampaignOpts] = useState(false);
   const [showBrandOpts, setShowBrandOpts] = useState(false);
   const [showCurrencyOpts, setCurrencyOpts] = useState(false);
+  const { currency, setCurrency } = useCurrency();
+
+  const changeCurrency = (name: any, code: any, symbol: any) => {
+    const newCurrency: Currency = {
+      name,
+      code,
+      symbol,
+    };
+    localStorage.setItem("amujCurrency", JSON.stringify(newCurrency));
+    setCurrency(newCurrency);
+  };
   return (
     <div
       className={` h-full overflow-scroll w-[300px] top-0 ${
@@ -42,19 +55,19 @@ function SideBar({ showFunc, show }: any) {
                 <Link href={"/shop"}>VIEW ALL</Link>
               </li>
               <li>
-                <Link href={""}>DRESSES</Link>
+                <Link href={"/shop/category/dresses"}>DRESSES</Link>
               </li>
               <li>
-                <Link href={""}>TOPS</Link>
+                <Link href={"/shop/category/tops"}>TOPS</Link>
               </li>
               <li>
-                <Link href={""}>BOTTOMS</Link>
+                <Link href={"/shop/category/bottoms"}>BOTTOMS</Link>
               </li>
               <li>
-                <Link href={""}>JUMPSUITS</Link>
+                <Link href={"/shop/category/jumpsuits"}>JUMPSUITS</Link>
               </li>
               <li>
-                <Link href={""}>COORDS</Link>
+                <Link href={"/shop/category/coords"}>COORDS</Link>
               </li>
             </div>
           )}
@@ -64,17 +77,19 @@ function SideBar({ showFunc, show }: any) {
             className="flex items-center justify-between"
             onClick={() => setShowCampaignOpts(!showCampaignOpts)}
           >
-            <Link href={""}>CAMPAIGNS</Link>
+            <Link href={"/campaign"}>CAMPAIGNS</Link>
             {!showCampaignOpts ? <AiOutlinePlus /> : <AiOutlineMinus />}
           </div>
 
           {showCampaignOpts && (
             <div className={`${styles.sidebarOptions}`}>
               <li>
-                <Link href={""}>COLLECTION I</Link>
+                <Link href={"/shop/campaigns/collection-i"}>COLLECTION I</Link>
               </li>
               <li>
-                <Link href={""}>COLLECTION II</Link>
+                <Link href={"/shop/campaigns/collection-ii"}>
+                  COLLECTION II
+                </Link>
               </li>
             </div>
           )}
@@ -114,10 +129,14 @@ function SideBar({ showFunc, show }: any) {
           </div>
           {showCurrencyOpts && (
             <div className={`${styles.sidebarOptions}`}>
-              <li>NGN ₦</li>
-              <li>USD $</li>
-              <li>GDP £</li>
-              <li>EUR €</li>
+              <li onClick={() => changeCurrency("naira", "NGN", "₦")}>NGN ₦</li>
+              <li onClick={() => changeCurrency("dollar", "USD", "$")}>
+                USD $
+              </li>
+              <li onClick={() => changeCurrency("pounds", "GDP", "£")}>
+                GDP £
+              </li>
+              <li onClick={() => changeCurrency("euro", "EUR", "€")}>EUR €</li>
             </div>
           )}
         </li>

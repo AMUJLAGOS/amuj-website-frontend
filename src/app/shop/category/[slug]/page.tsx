@@ -11,16 +11,17 @@ import Spacer from "@/components/Spacer";
 import { arraysEqual, sortByProperty } from "@/utils/functionHelper";
 import { allRoutes } from "@/utils/urlEnums";
 import { GetRequest } from "@/utils/urlhandler";
+import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-function NewIn() {
+function Category() {
+  const { slug } = useParams() as { slug: string };
   const [newIn, setNewIn]: any = useState();
   const [newInProducts, setNewInProducts]: any = useState();
   const [filterCategory, setFilterCategory] = useState("");
   const [filter, setFilter] = useState(["category", "color"]);
   const [filterByCategory, setByCategory] = useState<any>([]);
   const [filterByColor, setByColor] = useState<any>([]);
-  const [filterByOrder, setByOrder] = useState<any>([]);
   const [filterBy, setFilterBy] = useState<any>([]);
   const [showFilter, setShowFilter] = useState(false);
   // const { currency } = useCurrency();
@@ -35,15 +36,14 @@ function NewIn() {
     slug: "",
   });
 
-  const getNewIn = async () => {
-    const response = await GetRequest(allRoutes.COLLECTION2);
+  const getCategory = async () => {
+    const response = await GetRequest(`${allRoutes.CATEGORY}/${slug}`);
     setNewIn(response.data);
-    setNewInProducts(response.data.products);
-    console.log(response.data);
+    setNewInProducts(response.data);
   };
 
   useEffect(() => {
-    getNewIn();
+    getCategory();
   }, []);
 
   useEffect(() => {
@@ -76,22 +76,7 @@ function NewIn() {
     } else {
       setFiltered(newInProducts);
     }
-
-    // if (filterBy.length === 0) {
-    //   setFiltered(newInProducts);
-    // } else {
-    //   // if () {
-
-    //   // }
-    //   const filteredArray = newInProducts.filter((obj: any) =>
-    //     filterByCategory.includes(obj.category)
-    //   );
-
-    //   if (!arraysEqual(filtered, filteredArray)) {
-    //     console.log("not at all");
-    //     setFiltered(filteredArray);
-    //   }
-    // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     filterByCategory,
     newInProducts,
@@ -100,10 +85,6 @@ function NewIn() {
     filterByColor,
     // filterCategory,
   ]);
-
-  // Utility function to compare arrays
-
-  //
   return (
     <main className="box-border overflow-hidden">
       <Header />
@@ -114,7 +95,10 @@ function NewIn() {
         />
       )}
       <h1 className="mt-14 font-extrabold text[20px] text-center">
-        LATEST ARRIVALS
+        {slug.toLocaleUpperCase()}
+      </h1>
+      <h1 className="text[20px] text-center">
+        Shop from all our favorite {slug}
       </h1>
       <section className="w-[97%] 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] m-auto">
         <div>
@@ -298,4 +282,4 @@ function NewIn() {
   );
 }
 
-export default NewIn;
+export default Category;

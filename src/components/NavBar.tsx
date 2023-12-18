@@ -3,21 +3,28 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiSearch2Line } from "react-icons/ri";
 import { VscMenu } from "react-icons/vsc";
 import styles from "../styles/HeaderFooter.module.css";
 import { BsHandbag } from "react-icons/bs";
-import Image from "next/image";
+import { useCart } from "./CartContext";
+import { numberWithCommas } from "@/utils/functionHelper";
+import { useCurrency } from "./CurrencyContext";
+import { Currency } from "@/utils/dataType";
 
 function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
   const [showCurrency, setShowCurrency] = useState(false);
   const [showShop, setShowShop] = useState(false);
   const [scrollShow, setScroll]: any = useState(false);
-
+  // const [cart, setCart]: any = useState();
+  const { cart, setCart } = useCart();
+  const [cartLength, setCartLength] = useState(0);
+  const [cartAmount, setCartAmount] = useState(0);
   const refShop: any = useRef();
   const refCurrency: any = useRef();
+  const { currency, setCurrency } = useCurrency();
 
   useEffect(() => {
     const hideShop = (e: any) => {
@@ -47,10 +54,50 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
     };
   });
 
+  // currency
+
+  // cart
+
+  useEffect(() => {
+    const getCart: any = localStorage.getItem("amujCart");
+    const parsedCart = JSON.parse(getCart);
+    // setCart(JSON.parse(getCart));
+    if (JSON.stringify(parsedCart) !== JSON.stringify(cart)) {
+      setCart(parsedCart);
+    }
+
+    const allItems = cart?.reduce((sum: any, obj: any) => {
+      return sum + obj.quantity;
+    }, 0);
+    setCartLength(allItems);
+    const allAmount = cart?.reduce((sum: any, obj: any) => {
+      return sum + obj[`${currency?.name}_price`] * obj.quantity;
+    }, 0);
+    setCartAmount(allAmount);
+  }, [cart, currency, setCart]);
+
+  useEffect(() => {
+    const getCurrency: any = localStorage.getItem("amujCurrency");
+    const parsedCurrency = JSON.parse(getCurrency);
+    if (JSON.stringify(parsedCurrency) != JSON.stringify(currency)) {
+      setCurrency(JSON.parse(getCurrency));
+    }
+  });
+
+  const changeCurrency = (name: any, code: any, symbol: any) => {
+    const newCurrency: Currency = {
+      name,
+      code,
+      symbol,
+    };
+    localStorage.setItem("amujCurrency", JSON.stringify(newCurrency));
+    setCurrency(newCurrency);
+  };
+
   const toggleVisible = () => {
     if (typeof window !== "undefined") {
       const scrolled = document.documentElement.scrollTop;
-      if (scrolled > 180) {
+      if (scrolled > 250) {
         setScroll(true);
       } else {
         setScroll(false);
@@ -75,12 +122,12 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
         home
           ? "bg-gradient-to-b from-black to-[#00000000] text-white"
           : "bg-[white] text-black border-b border-[#908b8b26]"
-      }  `}
+      } `}
     >
-      <nav>
+      <nav className="">
         <section
           className={`${
-            scrollShow ? "hidden" : ""
+            scrollShow ? "tablet:hidden block" : ""
           } flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4`}
         >
           <div onClick={() => sideBarFunc()} className="tablet:hidden block">
@@ -88,11 +135,14 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
           </div>
           {/* the dropdown */}
           <div
+            ref={refCurrency}
             className="cursor-pointer tablet:block hidden"
             onClick={() => setShowCurrency(!showCurrency)}
           >
-            <div ref={refCurrency} className="flex items-center relative px-1">
-              <p>NGN ( ₦ )</p>
+            <div className="flex items-center relative px-1">
+              <p>
+                {currency?.code} ({currency?.symbol})
+              </p>
               <IoIosArrowDown size={"18"} />
             </div>
 
@@ -100,27 +150,25 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
               <div
                 className={`bg-[#fff] z-50 absolute flex flex-col items-center text-[black] font-medium mt-3 shadow-lg ${styles.currency_drowpdown}`}
               >
-                <li>NGN ₦</li>
-                <li>USD $</li>
-                <li>GDP £</li>
-                <li>EUR €</li>
+                <li onClick={() => changeCurrency("naira", "NGN", "₦")}>
+                  NGN ₦
+                </li>
+                <li onClick={() => changeCurrency("dollar", "USD", "$")}>
+                  USD $
+                </li>
+                <li onClick={() => changeCurrency("pounds", "GDP", "£")}>
+                  GDP £
+                </li>
+                <li onClick={() => changeCurrency("euro", "EUR", "€")}>
+                  EUR €
+                </li>
               </div>
             )}
           </div>
 
           {/* amuj logo  */}
           <div>
-            {/* <Image alt='amuj logo' src={'amuj-logo.png'} width={100} height={100}></Image> */}
             <Link href={"/"}>
-              {/* <div className="relative phone:h-[40px] tablet:h-[50px] h-[35px] w-[35px]">
-                <Image
-                  src={`${home ? "/amuj-logo.svg" : "/amuj-logo-b.svg"} `}
-                  alt="amuj logo"
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div> */}
-
               <img
                 src={`${home ? "/amuj-logo.svg" : "/amuj-logo-b.svg"} `}
                 alt="amuj logo"
@@ -129,7 +177,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
             </Link>
           </div>
           <div className="flex items-center">
-            <p className="px-1 tablet:block hidden">0</p>
+            <p className="px-1 tablet:block hidden">{cartLength}</p>
             {/* <img
               src="/cart.svg"
               alt="cart"
@@ -142,9 +190,12 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
               onClick={() => cartFunc()}
             />
             <p className="px-3 tablet:block hidden">-</p>
-            <p className="px-1 tablet:block hidden">NGN</p>
+            <p className="px-1 tablet:block hidden">{currency?.code}</p>
 
-            <p className="px-[6px] tablet:block hidden">₦0.00</p>
+            <p className="px-[6px] tablet:block hidden">
+              {currency?.symbol}
+              {numberWithCommas(cartAmount)}
+            </p>
             <div onClick={() => searchFunc()}>
               <RiSearch2Line size={"25"} />
             </div>
@@ -181,19 +232,21 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
                           <Link href={"/shop"}> VIEW ALL</Link>
                         </li>
                         <li>
-                          <Link href={""}>DRESSES</Link>
+                          <Link href={"/shop/category/dresses"}>DRESSES</Link>
                         </li>
                         <li>
-                          <Link href={""}>TOPS</Link>
+                          <Link href={"/shop/category/tops"}>TOPS</Link>
                         </li>
                         <li>
-                          <Link href={""}>BOTTOMS</Link>
+                          <Link href={"/shop/category/bottoms"}>BOTTOMS</Link>
                         </li>
                         <li>
-                          <Link href={""}>JUMPSUITS</Link>
+                          <Link href={"/shop/category/jumpsuits"}>
+                            JUMPSUITS
+                          </Link>
                         </li>
                         <li>
-                          <Link href={""}>COORDS</Link>
+                          <Link href={"/shop/category/coords"}>COORDS</Link>
                         </li>
                       </ul>
                     </div>
@@ -202,17 +255,21 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
                       <h1>CAMPAIGNS</h1>
                       <ul>
                         <li>
-                          <Link href={""}>COLLECTION I</Link>
+                          <Link href={"/shop/campaigns/collection-i"}>
+                            COLLECTION I
+                          </Link>
                         </li>
                         <li>
-                          <Link href={""}> COLLECTION II</Link>
+                          <Link href={"/shop/campaigns/collection-ii"}>
+                            COLLECTION II
+                          </Link>
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div className="w-[60%]">
                     <img
-                      src="shop_nav.jpg"
+                      src="/shop_nav.jpg"
                       alt=""
                       className="h-[320px] w-full object-cover"
                     />

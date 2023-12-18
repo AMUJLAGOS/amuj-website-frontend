@@ -1,6 +1,8 @@
+import CartContext from "@/components/CartContext";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
+import CurrencyContext from "@/components/CurrencyContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
@@ -21,7 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${lato.className}`}>{children}</body>
+      <body className={`${lato.className}`}>
+        <CartContext>
+          <CurrencyContext> {children}</CurrencyContext>
+        </CartContext>
+      </body>
     </html>
   );
 }

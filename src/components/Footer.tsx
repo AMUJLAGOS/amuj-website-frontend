@@ -1,14 +1,48 @@
-import React from "react";
+//
+"use client";
+import React, { useState } from "react";
 import { GrLinkNext } from "react-icons/gr";
 import { PiInstagramLogo } from "react-icons/pi";
 import { GrTwitter } from "react-icons/gr";
 import { FaFacebookF } from "react-icons/fa";
 import styles from "../styles/HeaderFooter.module.css";
 import Link from "next/link";
+import { PostRequest } from "@/utils/urlhandler";
+import { allRoutes } from "@/utils/urlEnums";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Spinner from "./Spinner";
+// import validator from "validator";
 
 function Footer() {
+  const [email, setEmail] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+  const data = {
+    email,
+  };
+  const emailHandler = async () => {
+    if (email != "") {
+      setLoading(true);
+      const response = await PostRequest(allRoutes.SUBSCRIBE, data);
+      if (response.status == 201) {
+        setEmail("");
+        toast.success("Thank you for subscribing", { position: "top-center" });
+        setLoading(false);
+      } else if (response.status == 400) {
+        toast.error("Subscriber already exist!", { position: "top-center" });
+        setLoading(false);
+      } else {
+        toast.error("Something went wrong!", { position: "top-center" });
+        setLoading(false);
+      }
+    } else {
+      toast.error("Enter a valid email", { position: "top-center" });
+    }
+  };
+
   return (
     <main>
+      <ToastContainer />
       <div className="xl:w-[1200px] w-[95%] m-auto tablet:flex block justify-between">
         <section className="tablet:w-[45%] w-[90%]">
           <h1 className="phone:text-[16px] text-[14px] font-black">
@@ -23,10 +57,19 @@ function Footer() {
               type="text"
               placeholder="Email Address"
               className="input w-[600px] py-3"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="border border-black p-2 rounded-full">
-              <GrLinkNext size={"17"} className="" />
-            </button>
+            {!loading ? (
+              <button
+                onClick={() => emailHandler()}
+                className="border border-black p-2 rounded-full"
+              >
+                <GrLinkNext size={"17"} className="" />
+              </button>
+            ) : (
+              <Spinner />
+            )}
           </div>
           <div className="mt-8 hidden tablet:flex justify-between">
             <div className="flex justify-between w-[130px]">

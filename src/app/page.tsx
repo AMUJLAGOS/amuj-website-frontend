@@ -14,20 +14,65 @@ import SocialImage from "@/components/SocialImage";
 import Footer from "@/components/Footer";
 import { GoArrowRight } from "react-icons/go";
 import Cart from "@/components/Cart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ProductDetailCard from "@/components/ProductDetailCard";
+import { GetRequest } from "@/utils/urlhandler";
+import { allRoutes } from "@/utils/urlEnums";
+import { Currency } from "@/utils/dataType";
+import { useCurrency } from "@/components/CurrencyContext";
 
 export default function Home() {
   const all = ["/collectionII_big.jpg", "/banner1.jpg"];
+  const [newArrival, setNewArrival]: any = useState([]);
+  const [showProduct, setShowProduct] = useState(false);
+  const [productDetails, setProductDetails] = useState({
+    name: "",
+    price: "",
+    sizes: [],
+    images: [],
+    description: "",
+    slug: "",
+  });
+  //
+  //
+  const { currency, setCurrency } = useCurrency();
+  const getNewArrival = async () => {
+    const response = await GetRequest(allRoutes.COLLECTION2);
+    setNewArrival(response.data.products);
+    console.log(response.data.products);
+  };
+  const showDetails = () => {
+    setShowProduct(true);
+    console.log(productDetails);
+  };
+  useEffect(() => {
+    getNewArrival();
+    const getCart = localStorage.getItem("amujCart");
+    if (!getCart) {
+      localStorage.setItem("amujCart", JSON.stringify([]));
+    }
+    const getCurrency = localStorage.getItem("amujCurrency");
+    if (!getCurrency) {
+      const newCurrency: Currency = {
+        name: "naira",
+        code: "NGN",
+        symbol: "₦",
+      };
+      localStorage.setItem("amujCurrency", JSON.stringify(newCurrency));
+    }
+  }, []);
 
-  // if (typeof window !== "undefined") {
-  //   window.addEventListener("scroll", () => {
-  //     const scrollPosition = window.scrollY;
-  //     console.log("Scroll position:", scrollPosition);
-  //   });
-  // }
   return (
     <main className="box-border overflow-hidden">
       <Header home={"Yes"} />
+      {showProduct && (
+        <ProductDetailCard
+          productData={productDetails}
+          hideProduct={setShowProduct}
+        />
+      )}
+      {/* <ProductDetailCard hideProduct={setShowProduct} /> */}
       <section className="flex absolute items-center  m-auto w-full top-0">
         {/* banner 1  */}
         <div
@@ -38,7 +83,10 @@ export default function Home() {
             className={`absolute text-white flex flex-col items-center ${style.bannerText}`}
           >
             <h1 className=" text-4xl">COLLECTION I</h1>
-            <Link href={""} className="text-lg underline">
+            <Link
+              href={"/shop/campaigns/collection-i"}
+              className="text-lg underline"
+            >
               Shop now
             </Link>
           </div>
@@ -52,7 +100,10 @@ export default function Home() {
             className={`absolute text-white flex flex-col items-center ${style.bannerText}`}
           >
             <h1 className=" text-4xl">COLLECTION II</h1>
-            <Link href={""} className="text-lg underline">
+            <Link
+              href={"/shop/campaigns/collection-ii"}
+              className="text-lg underline"
+            >
               Shop now
             </Link>
           </div>
@@ -138,15 +189,51 @@ export default function Home() {
       {/* <Spacer height={10} /> */}
       <section className="3xl:w-[1700px] 2xl:w-[1500] w-full mt-[-16px] m-auto">
         <div className="md:flex block">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          {/* <ProductCard /> */}
+          {newArrival.slice(0, 4).map((all: any, index: any) => (
+            <div key={index}>
+              <ProductCard
+                name={all.name}
+                image={all.images[0]}
+                hImage={all.images[1]}
+                description={all.mini_description}
+                slug={all.slug}
+                showProduct={showDetails}
+                sizes={all.sizes}
+                images={all.images}
+                naira_price={all.naira_price}
+                euro_price={all.euro_price}
+                pounds_price={all.pounds_price}
+                dollar_price={all.dollar_price}
+                pData={setProductDetails}
+                des_full={all.description}
+                requires_length={all.requires_length}
+              />
+            </div>
+          ))}
         </div>
-        {/* <Spacer height={80} /> */}
-        <div className="md:flex block lg:mt-[80px] mt-[0px]">
-          <ProductCard />
-          <ProductCard />
+        <div className="md:flex block lg:mt-[20px] mt-[0px]">
+          {newArrival.slice(3, 5).map((all: any, index: any) => (
+            <div key={index}>
+              <ProductCard
+                name={all.name}
+                image={all.images[0]}
+                hImage={all.images[1]}
+                description={all.mini_description}
+                slug={all.slug}
+                showProduct={showDetails}
+                sizes={all.sizes}
+                images={all.images}
+                naira_price={all.naira_price}
+                euro_price={all.euro_price}
+                pounds_price={all.pounds_price}
+                dollar_price={all.dollar_price}
+                pData={setProductDetails}
+                des_full={all.description}
+                requires_length={all.requires_length}
+              />
+            </div>
+          ))}
           <div className="w-[50%] md:block hidden mt-4">
             <img
               src="/video.jpg"
@@ -157,7 +244,7 @@ export default function Home() {
         </div>
       </section>
       {/* <Spacer height={80} /> */}
-      <section className="lg:mt-[80px] mt-4">
+      <section className="lg:mt-[40px] mt-4">
         <div className="w-full relative">
           {/* <p>dd</p> */}
           <Slide arrows={false} indicators={true} duration={2000}>
