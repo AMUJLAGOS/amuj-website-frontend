@@ -9,7 +9,7 @@
 //   return isNaN(number) ? "N/A" : number.toLocaleString();
 // };
 
-export const numberWithCommas = (number: number | undefined): string => {
+export const numberWithCommas = (number: any | undefined): string => {
   if (number === undefined) {
     return "N/A";
   }

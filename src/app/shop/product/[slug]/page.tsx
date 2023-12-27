@@ -68,7 +68,7 @@ function ProductDetails() {
       setImages(response.data?.images);
     } catch (error) {
       // Handle error appropriately
-      console.error("Error fetching product:", error);
+      // console.error("Error fetching product:", error);
     }
   }, [slug]);
   useEffect(() => {
@@ -156,8 +156,8 @@ function ProductDetails() {
                   layout="fill"
                   objectFit="cover"
                   quality={20}
-                  priority={true}
-                  loading="eager"
+                  // priority={true}
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -178,7 +178,9 @@ function ProductDetails() {
               <h1 className="text-xl font-medium">
                 {currency?.symbol}
                 {numberWithCommas(
-                  productData ? productData[`${currency?.name}_price`] : 0
+                  productData
+                    ? parseFloat(productData[`${currency?.name}_price`])
+                    : 0
                 )}
               </h1>
               <Link href={""} className="border-b border-black text-sm mt-2">

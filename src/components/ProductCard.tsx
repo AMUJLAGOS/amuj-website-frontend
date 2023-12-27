@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
+import { imageServer } from "@/utils/urlhandler";
 
 function ProductCard({
   naira_price,
@@ -16,9 +17,11 @@ function ProductCard({
   showProduct,
   pData,
   sizes,
+  lengths,
   images,
   des_full,
   requires_length,
+  custom,
 }: any) {
   //
   //
@@ -32,7 +35,9 @@ function ProductCard({
     images: any,
     description: any,
     slug: any,
-    requires_length: any
+    requires_length: any,
+    custom: any,
+    lengths: any
   ) => {
     pData({
       name: name,
@@ -45,6 +50,8 @@ function ProductCard({
       description: description,
       slug: slug,
       requires_length,
+      custom,
+      lengths,
     });
     showProduct();
   };
@@ -74,12 +81,12 @@ function ProductCard({
             </div> */}
 
               <img
-                src={`http://127.0.0.1:8000${image}`}
+                src={`${imageServer}${image}`}
                 alt=""
                 className="first_image 2xl:w-full lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover"
               />
               <img
-                src={`http://127.0.0.1:8000${hImage}`}
+                src={`${imageServer}${hImage}`}
                 alt=""
                 className="2xl:w-full lg:h-[540px] h-[400px] w-[360px] object-cover second_image"
               />
@@ -97,7 +104,9 @@ function ProductCard({
                 images,
                 des_full,
                 slug,
-                requires_length
+                requires_length,
+                custom,
+                lengths
               )
             }
             className="md:block hidden"

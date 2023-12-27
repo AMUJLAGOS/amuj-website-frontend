@@ -13,13 +13,10 @@ import { Slide } from "react-slideshow-image";
 import SocialImage from "@/components/SocialImage";
 import Footer from "@/components/Footer";
 import { GoArrowRight } from "react-icons/go";
-import Cart from "@/components/Cart";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import ProductDetailCard from "@/components/ProductDetailCard";
 import { GetRequest } from "@/utils/urlhandler";
 import { allRoutes } from "@/utils/urlEnums";
-import { Currency } from "@/utils/dataType";
 import { useCurrency } from "@/components/CurrencyContext";
 
 export default function Home() {
@@ -36,7 +33,7 @@ export default function Home() {
   });
   //
   //
-  const { currency, setCurrency } = useCurrency();
+
   const getNewArrival = async () => {
     const response = await GetRequest(allRoutes.COLLECTION2);
     setNewArrival(response.data.products);
@@ -48,19 +45,6 @@ export default function Home() {
   };
   useEffect(() => {
     getNewArrival();
-    const getCart = localStorage.getItem("amujCart");
-    if (!getCart) {
-      localStorage.setItem("amujCart", JSON.stringify([]));
-    }
-    const getCurrency = localStorage.getItem("amujCurrency");
-    if (!getCurrency) {
-      const newCurrency: Currency = {
-        name: "naira",
-        code: "NGN",
-        symbol: "₦",
-      };
-      localStorage.setItem("amujCurrency", JSON.stringify(newCurrency));
-    }
   }, []);
 
   return (
@@ -73,10 +57,10 @@ export default function Home() {
         />
       )}
       {/* <ProductDetailCard hideProduct={setShowProduct} /> */}
-      <section className="flex absolute items-center  m-auto w-full top-0">
+      <section className="flex items-center m-auto w-full top-0">
         {/* banner 1  */}
         <div
-          className={`${style.banner} relative items-center justify-center sm:flex hidden`}
+          className={`${style.banner} items-center justify-center sm:flex hidden`}
         >
           <img src="/banner1.jpg" alt="collection i image" />
           <div
@@ -93,7 +77,7 @@ export default function Home() {
         </div>
         {/* banner 2  */}
         <div
-          className={`${style.banner} relative sm:flex hidden items-center justify-center`}
+          className={`${style.banner} sm:flex hidden items-center justify-center`}
         >
           <img src="/banner2.jpg" alt="collection ii image" />
           <div
@@ -110,7 +94,7 @@ export default function Home() {
         </div>
 
         {/* mobile  */}
-        <div className="sm:hidden block h-[600px] w-full">
+        <div className="sm:hidden relative block h-[600px] w-full">
           <img
             src="/second_image.jpg"
             alt=""
@@ -125,7 +109,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="sm:mt-[640px] mt-[530px]">
+      <section className="">
         {/* <section className=""> */}
         {/* <section className="sm:mt-[-160px] mt-[-280px]"> */}
         {/* destop  */}
@@ -147,7 +131,7 @@ export default function Home() {
           </div>
         </div>
         {/* mobile  */}
-        <div className="sm:hidden flex flex-col justify-center items-center">
+        <div className="sm:hidden mt-4 flex flex-col justify-center items-center">
           <div className="flex items-center">
             <h1 className="mr-3">CAMPAIGNS</h1>
             <GoArrowRight />
@@ -200,6 +184,7 @@ export default function Home() {
                 slug={all.slug}
                 showProduct={showDetails}
                 sizes={all.sizes}
+                lengths={all.lengths}
                 images={all.images}
                 naira_price={all.naira_price}
                 euro_price={all.euro_price}
@@ -208,6 +193,7 @@ export default function Home() {
                 pData={setProductDetails}
                 des_full={all.description}
                 requires_length={all.requires_length}
+                custom={all.custom}
               />
             </div>
           ))}
@@ -223,6 +209,7 @@ export default function Home() {
                 slug={all.slug}
                 showProduct={showDetails}
                 sizes={all.sizes}
+                lengths={all.lengths}
                 images={all.images}
                 naira_price={all.naira_price}
                 euro_price={all.euro_price}
@@ -231,6 +218,7 @@ export default function Home() {
                 pData={setProductDetails}
                 des_full={all.description}
                 requires_length={all.requires_length}
+                custom={all.custom}
               />
             </div>
           ))}
@@ -288,10 +276,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Spacer height={100} />
       <Footer />
-      <Spacer height={100} />
       {/* <Slide
         arrows={false}
         indicators={true}

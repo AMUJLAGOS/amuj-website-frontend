@@ -184,9 +184,7 @@ function Faqs() {
           </h1>
         </FaqsContainer>
       </section>
-      <Spacer height={140} />
       <Footer />
-      <Spacer height={100} />
     </main>
   );
 }

@@ -268,6 +268,7 @@ function Category() {
                 des_full={obj.description}
                 pData={setProductDetails}
                 requires_length={obj.requires_length}
+                custom={obj.custom}
               />
             ))}
           </div>
@@ -275,9 +276,7 @@ function Category() {
           <div className="flex items-center justify-center">No item found</div>
         )}
       </section>
-      <Spacer height={100} />
       <Footer />
-      <Spacer height={100} />
     </main>
   );
 }

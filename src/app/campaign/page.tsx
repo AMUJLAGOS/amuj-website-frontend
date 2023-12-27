@@ -51,9 +51,7 @@ function Campaign() {
           </Link>
         </div>
       </section>
-      <Spacer height={100} />
       <Footer />
-      <Spacer height={100} />
     </main>
   );
 }

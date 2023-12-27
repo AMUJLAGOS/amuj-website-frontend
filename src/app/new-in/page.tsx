@@ -39,7 +39,6 @@ function NewIn() {
     const response = await GetRequest(allRoutes.COLLECTION2);
     setNewIn(response.data);
     setNewInProducts(response.data.products);
-    console.log(response.data);
   };
 
   useEffect(() => {
@@ -47,7 +46,6 @@ function NewIn() {
   }, []);
 
   useEffect(() => {
-    console.log(newIn);
     if (filterByCategory.length !== 0 && filterCategory === "category") {
       const filteredCategory = newInProducts.filter((obj: any) =>
         filterByCategory.includes(obj.category)
@@ -60,8 +58,6 @@ function NewIn() {
       const filteredColor = filtered.filter((obj: any) =>
         filterByColor.includes(obj.color)
       );
-
-      console.log(filteredColor);
 
       if (!arraysEqual(filtered, filteredColor)) {
         setFiltered(filteredColor);
@@ -76,22 +72,6 @@ function NewIn() {
     } else {
       setFiltered(newInProducts);
     }
-
-    // if (filterBy.length === 0) {
-    //   setFiltered(newInProducts);
-    // } else {
-    //   // if () {
-
-    //   // }
-    //   const filteredArray = newInProducts.filter((obj: any) =>
-    //     filterByCategory.includes(obj.category)
-    //   );
-
-    //   if (!arraysEqual(filtered, filteredArray)) {
-    //     console.log("not at all");
-    //     setFiltered(filteredArray);
-    //   }
-    // }
   }, [
     filterByCategory,
     newInProducts,
@@ -284,6 +264,7 @@ function NewIn() {
                 des_full={obj.description}
                 pData={setProductDetails}
                 requires_length={obj.requires_length}
+                custom={obj.custom}
               />
             ))}
           </div>
@@ -291,9 +272,7 @@ function NewIn() {
           <div className="flex items-center justify-center">No item found</div>
         )}
       </section>
-      <Spacer height={100} />
       <Footer />
-      <Spacer height={100} />
     </main>
   );
 }

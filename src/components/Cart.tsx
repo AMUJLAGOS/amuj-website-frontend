@@ -77,13 +77,16 @@ function Cart({ hideCart, show }: any) {
           <div className="mt-7 sm:flex-row flex-col flex justify-between w-[80%] text-[15px]">
             <button
               onClick={() => hideCart()}
-              className="border border-black sm:py-1 py-2 px-6"
+              className="border border-black sm:py-1 py-2 sm:px-12"
             >
               CONTINUE SHOPPING
             </button>
-            <button className="sm:mt-0 mt-4 bg-black text-white sm:py-1 py-2 px-14">
+            <Link
+              href={"/cart"}
+              className="sm:mt-0 mt-4 bg-black text-white text-center sm:py-1 py-2 sm:px-14"
+            >
               CHECKOUT
-            </button>
+            </Link>
           </div>
         </>
       )}

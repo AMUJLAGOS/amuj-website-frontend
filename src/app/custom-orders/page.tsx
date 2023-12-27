@@ -29,9 +29,7 @@ function CustomOrders() {
           additional charges may apply.
         </p>
       </section>
-      <Spacer height={140} />
       <Footer />
-      <Spacer height={100} />
     </main>
   );
 }

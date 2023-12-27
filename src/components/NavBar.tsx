@@ -71,7 +71,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
     }, 0);
     setCartLength(allItems);
     const allAmount = cart?.reduce((sum: any, obj: any) => {
-      return sum + obj[`${currency?.name}_price`] * obj.quantity;
+      return sum + parseFloat(obj[`${currency?.name}_price`]) * obj.quantity;
     }, 0);
     setCartAmount(allAmount);
   }, [cart, currency, setCart]);
@@ -97,7 +97,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
   const toggleVisible = () => {
     if (typeof window !== "undefined") {
       const scrolled = document.documentElement.scrollTop;
-      if (scrolled > 250) {
+      if (scrolled > 380) {
         setScroll(true);
       } else {
         setScroll(false);
@@ -118,7 +118,9 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
 
   return (
     <header
-      className={`w-full text-[12px] ${scrollShow ? "fixed" : ""} font-medium ${
+      className={`w-full top-0 text-[12px] ${
+        scrollShow ? "fixed" : home ? "absolute" : ""
+      } font-medium ${
         home
           ? "bg-gradient-to-b from-black to-[#00000000] text-white"
           : "bg-[white] text-black border-b border-[#908b8b26]"
@@ -156,8 +158,8 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
                 <li onClick={() => changeCurrency("dollar", "USD", "$")}>
                   USD $
                 </li>
-                <li onClick={() => changeCurrency("pounds", "GDP", "£")}>
-                  GDP £
+                <li onClick={() => changeCurrency("pounds", "GBP", "£")}>
+                  GBP £
                 </li>
                 <li onClick={() => changeCurrency("euro", "EUR", "€")}>
                   EUR €

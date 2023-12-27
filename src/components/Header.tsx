@@ -1,15 +1,32 @@
 //
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import Search from "./Search";
 import SideBar from "./SideBar";
 import Cart from "./Cart";
+import { Currency } from "@/utils/dataType";
 
 function Header({ home }: any) {
   const [showSearch, setShowSearch] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
   const [showCart, setShowCart] = useState(false);
+
+  useEffect(() => {
+    const getCart = localStorage.getItem("amujCart");
+    if (!getCart) {
+      localStorage.setItem("amujCart", JSON.stringify([]));
+    }
+    const getCurrency = localStorage.getItem("amujCurrency");
+    if (!getCurrency) {
+      const newCurrency: Currency = {
+        name: "naira",
+        code: "NGN",
+        symbol: "₦",
+      };
+      localStorage.setItem("amujCurrency", JSON.stringify(newCurrency));
+    }
+  }, []);
 
   // for search
   const showSearchHandler = () => {

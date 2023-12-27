@@ -1,8 +1,13 @@
 //
 import axios from "axios";
+import "dotenv/config";
 
-const server = "http://127.0.0.1:8000/api/";
-export const imageServer = "http://127.0.0.1:8000";
+const host = process.env.NEXT_PUBLIC_HOST;
+const server = process.env.NEXT_PUBLIC_API_SERVER;
+export const imageServer =
+  process.env.NEXT_PUBLIC_HOST === "local"
+    ? process.env.NEXT_PUBLIC_IMAGE_URL
+    : "";
 
 export const GetRequest = async (url: any) => {
   const response = await axios.get(`${server}${url}`);

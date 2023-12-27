@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useCurrency } from "./CurrencyContext";
 import { numberWithCommas } from "@/utils/functionHelper";
-import ProductDetailCard from "./ProductDetailCard";
+import { imageServer } from "@/utils/urlhandler";
 
 function ShopCard({
   naira_price,
@@ -16,13 +15,13 @@ function ShopCard({
   description,
   image,
   hImage,
-  key,
   showProduct,
   pData,
   sizes,
   des_full,
   images,
   requires_length,
+  custom,
 }: any) {
   //
   const { currency } = useCurrency();
@@ -37,7 +36,8 @@ function ShopCard({
     images: any,
     description: any,
     slug: any,
-    requires_length: any
+    requires_length: any,
+    custom: any
   ) => {
     pData({
       name: name,
@@ -50,43 +50,25 @@ function ShopCard({
       description: description,
       slug: slug,
       requires_length,
+      custom,
     });
     showProduct(true);
   };
 
   return (
-    <div className="mt-4" key={key}>
+    <div className="mt-4">
       <div className="flex items-center flex-col">
         <div className="shop_conn w-full">
           <Link href={`/shop/product/${slug}`}>
             <div className="shop w-full">
-              {/* <div className="relative shop_image1 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover">
-                <Image
-                  src={`http://127.0.0.1:8000${hImage}`}
-                  alt={"product-image"}
-                  objectFit="cover"
-                  layout="fill"
-                  className="shop_image1"
-                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <div className="relative shop_image2 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover">
-                <Image
-                  src={`http://127.0.0.1:8000${image}`}
-                  alt={"product-image"}
-                  objectFit="cover"
-                  layout="fill"
-                  className="shop_image2"
-                />
-              </div> */}
               <img
-                src={`http://127.0.0.1:8000${hImage}`}
-                alt=""
+                src={`${imageServer}${hImage}`}
+                alt={name}
                 className="shop_image1 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover"
               />
               <img
-                src={`http://127.0.0.1:8000${image}`}
-                alt=""
+                src={`${imageServer}${image}`}
+                alt={name}
                 className="shop_image2 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover"
               />
             </div>
@@ -103,7 +85,8 @@ function ShopCard({
                 images,
                 des_full,
                 slug,
-                requires_length
+                requires_length,
+                custom
               )
             }
             className="md:block hidden"
@@ -120,12 +103,12 @@ function ShopCard({
         <p className="text-[#908B8B] text-sm font-bold">
           {currency?.symbol}
           {currency?.name == "naira"
-            ? numberWithCommas(naira_price)
+            ? numberWithCommas(parseFloat(naira_price))
             : currency?.name == "dollar"
-            ? numberWithCommas(dollar_price)
+            ? numberWithCommas(parseFloat(dollar_price))
             : currency?.name == "euro"
-            ? numberWithCommas(euro_price)
-            : numberWithCommas(pounds_price)}
+            ? numberWithCommas(parseFloat(euro_price))
+            : numberWithCommas(parseFloat(pounds_price))}
         </p>
       </div>
     </div>

@@ -41,7 +41,7 @@ function Footer() {
   };
 
   return (
-    <main>
+    <main className="mt-32 mb-14">
       <ToastContainer />
       <div className="xl:w-[1200px] w-[95%] m-auto tablet:flex block justify-between">
         <section className="tablet:w-[45%] w-[90%]">

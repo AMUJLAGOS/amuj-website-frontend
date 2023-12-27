@@ -1,9 +1,7 @@
 "use client";
 import CheckHelper from "@/components/CheckHelper";
-import { useCurrency } from "@/components/CurrencyContext";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import ProductCard from "@/components/ProductCard";
 import ProductDetailCard from "@/components/ProductDetailCard";
 import RadioHelper from "@/components/RadioHelper";
 import ShopCard from "@/components/ShopCard";
@@ -37,7 +35,6 @@ function Shop() {
     const response = await GetRequest(allRoutes.ALL_PRODUCT);
     setNewIn(response.data);
     setNewInProducts(response.data);
-    console.log(response.data);
   };
 
   useEffect(() => {
@@ -45,7 +42,6 @@ function Shop() {
   }, []);
 
   useEffect(() => {
-    console.log(newIn);
     if (filterByCategory.length !== 0 && filterCategory === "category") {
       const filteredCategory = newInProducts.filter((obj: any) =>
         filterByCategory.includes(obj.category)
@@ -58,8 +54,6 @@ function Shop() {
       const filteredColor = filtered.filter((obj: any) =>
         filterByColor.includes(obj.color)
       );
-
-      console.log(filteredColor);
 
       if (!arraysEqual(filtered, filteredColor)) {
         setFiltered(filteredColor);
@@ -262,21 +256,15 @@ function Shop() {
                 des_full={obj.description}
                 pData={setProductDetails}
                 requires_length={obj.requires_length}
+                custom={obj.custom}
               />
             ))}
-            {/* <ShopCard price={"₦62,500.00"} />
-        <ShopCard price={"₦62,500.00"} />
-        <ShopCard price={"₦62,500.00"} />
-        <ShopCard price={"₦62,500.00"} />
-        <ShopCard price={"₦62,500.00"} /> */}
           </div>
         ) : (
           <div className="flex items-center justify-center">No item found</div>
         )}
       </section>
-      <Spacer height={100} />
       <Footer />
-      <Spacer height={100} />
     </main>
   );
 }

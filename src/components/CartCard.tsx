@@ -15,6 +15,12 @@ function CartCard({ name, size, length, quantity, amount, slug, image }: any) {
   const { cart, setCart } = useCart();
   const { currency } = useCurrency();
 
+  useEffect(() => {
+    if (quantity != cQuantity) {
+      setcQuantity(quantity);
+    }
+  }, [quantity, cQuantity]);
+
   const updateCart = (quantity: any) => {
     const update = updateQuantityByName(cart, slug, quantity);
     localStorage.setItem("amujCart", JSON.stringify(update));
@@ -66,7 +72,7 @@ function CartCard({ name, size, length, quantity, amount, slug, image }: any) {
         <div className="items-end justify-between font-medium text-sm mt-5">
           <div className="phone:flex flex text-sm">
             <p>Size: {size}</p>
-            <p className="ml-5">Length: Tall</p>
+            <p className="ml-5">Length: {length}</p>
           </div>
           <div className="flex justify-between items-center w-[100%] phone:w-[60%] mt-2">
             <div className="flex items-center text-sm">

@@ -17,12 +17,15 @@ import { useCart } from "./CartContext";
 import { useCurrency } from "./CurrencyContext";
 import { AddCart } from "@/utils/dataType";
 import "react-slideshow-image/dist/styles.css";
+import "react-toastify/dist/ReactToastify.css";
+import { imageServer } from "@/utils/urlhandler";
 
 function ProductDetailCard({ productData, hideProduct }: any) {
   const [current, setCurrent] = useState(0);
   const { cart, setCart } = useCart();
   const [quantity, setQuantity] = useState(0);
   const [size, setSize]: any = useState("");
+  const [length, setLength]: any = useState("");
   const { currency, setCurrency } = useCurrency();
   const properties = {
     prevArrow: (
@@ -51,7 +54,7 @@ function ProductDetailCard({ productData, hideProduct }: any) {
     image: productData?.images[0],
     slug: `${productData?.name}${size}`,
     size: size,
-    length: "",
+    length: productData?.requires_length ? length : "-",
     naira_price: productData?.naira_price,
     dollar_price: productData?.dollar_price,
     euro_price: productData?.euro_price,
@@ -124,7 +127,7 @@ function ProductDetailCard({ productData, hideProduct }: any) {
                 className="lg:h-[550px] h-[400px] w-full relative"
               >
                 <Image
-                  src={`http://127.0.0.1:8000${image}`}
+                  src={`${imageServer}${image}`}
                   alt={"ffff"}
                   layout="fill"
                   objectFit="cover"
@@ -159,7 +162,7 @@ function ProductDetailCard({ productData, hideProduct }: any) {
             </div>
           </div>
 
-          {!productData?.requires_length && (
+          {!productData?.custom && (
             <div className="mt-4">
               <p className="text-sm">Select a size</p>
               <div className="relative tablet:w-[80%] w-full">
@@ -239,11 +242,33 @@ function ProductDetailCard({ productData, hideProduct }: any) {
             </div>
           )}
 
+          {productData?.requires_length && (
+            <div className="mt-4">
+              <p className="text-sm">Length</p>
+              <div className="relative tablet:w-[80%] w-full">
+                <select
+                  onChange={(e) => setLength(e.target.value)}
+                  className="block appearance-none w-full outline-none !bg-white border border-gray-300 px-4 py-2 pr-8 rounded leading-tight focus:outline-none"
+                >
+                  <option className="!bg-white text-[#908B8B]" value="">
+                    Select a length
+                  </option>
+                  <option className="!bg-white text-[#908B8B]" value="Tall">
+                    Tall
+                  </option>
+                  <option className="!bg-white text-[#908B8B]" value="Short">
+                    Short
+                  </option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <IoIosArrowDown />
+                </div>
+              </div>
+            </div>
+          )}
           <div className="mt-5">
-            {!productData?.requires_length && (
-              <p className="text-sm">Quantity</p>
-            )}
-            {!productData?.requires_length && (
+            {!productData?.custom && <p className="text-sm">Quantity</p>}
+            {!productData?.custom && (
               <div className="flex items-center mt-2">
                 <button
                   onClick={() => minus()}
@@ -274,9 +299,13 @@ function ProductDetailCard({ productData, hideProduct }: any) {
                 More Details
               </Link>
             </div>
-            {!productData?.requires_length ? (
+            {!productData?.custom ? (
               <button
-                disabled={quantity == 0 || size == ""}
+                disabled={
+                  quantity == 0 ||
+                  size == "" ||
+                  (productData?.requires_length ? length == "" : false)
+                }
                 onClick={() => addCart()}
                 className="bg-black disabled:bg-[#000000b3] disabled:cursor-not-allowed text-white text-xs tablet:w-auto w-full py-3 px-12 mt-5"
               >
