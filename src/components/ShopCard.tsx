@@ -94,10 +94,10 @@ function ShopCard({
             QUICK VIEW
           </button>
         </div>
-        <p className="mt-3 text-[15px] font-bold tracking-[1px] uppercase">
+        <p className="mt-3 text-[13px] font-bold tracking-[1px] uppercase">
           {name}
         </p>
-        <p className="text-[10px] font-medium tracking-[0px] text-center uppercase">
+        <p className="text-[10px] font-medium tracking-[1px] text-center uppercase">
           {description}
         </p>
         <p className="text-[#908B8B] text-sm font-bold">

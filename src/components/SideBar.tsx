@@ -43,7 +43,7 @@ function SideBar({ showFunc, show }: any) {
         </li>
         <li>
           <div
-            className="flex items-center justify-between "
+            className="flex mt-5 items-center justify-between "
             onClick={() => setShowShopOpts(!showShopOpts)}
           >
             <Link href={""}>SHOP</Link>
@@ -77,19 +77,20 @@ function SideBar({ showFunc, show }: any) {
             className="flex items-center justify-between"
             onClick={() => setShowCampaignOpts(!showCampaignOpts)}
           >
-            <Link href={"/campaign"}>CAMPAIGNS</Link>
+            {/* <Link href={"/campaign"}>CAMPAIGNS</Link> */}
+            <Link href={""}>CAMPAIGNS</Link>
             {!showCampaignOpts ? <AiOutlinePlus /> : <AiOutlineMinus />}
           </div>
 
           {showCampaignOpts && (
             <div className={`${styles.sidebarOptions}`}>
               <li>
-                <Link href={"/shop/campaigns/collection-i"}>COLLECTION I</Link>
-              </li>
-              <li>
                 <Link href={"/shop/campaigns/collection-ii"}>
                   COLLECTION II
                 </Link>
+              </li>
+              <li>
+                <Link href={"/shop/campaigns/collection-i"}>COLLECTION I</Link>
               </li>
             </div>
           )}
@@ -121,7 +122,7 @@ function SideBar({ showFunc, show }: any) {
       <ul>
         <li>
           <div
-            className="flex items-center justify-between"
+            className="flex items-center justify-between font-normal"
             onClick={() => setCurrencyOpts(!showCurrencyOpts)}
           >
             <Link href={""}>CURRENCY</Link>
@@ -129,27 +130,51 @@ function SideBar({ showFunc, show }: any) {
           </div>
           {showCurrencyOpts && (
             <div className={`${styles.sidebarOptions}`}>
-              <li onClick={() => changeCurrency("naira", "NGN", "₦")}>NGN ₦</li>
-              <li onClick={() => changeCurrency("dollar", "USD", "$")}>
+              <li
+                onClick={() => {
+                  changeCurrency("naira", "NGN", "₦");
+                  showFunc();
+                }}
+              >
+                NGN ₦
+              </li>
+              <li
+                onClick={() => {
+                  changeCurrency("dollar", "USD", "$");
+                  showFunc();
+                }}
+              >
                 USD $
               </li>
-              <li onClick={() => changeCurrency("pounds", "GDP", "£")}>
+              <li
+                onClick={() => {
+                  changeCurrency("pounds", "GDP", "£");
+                  showFunc();
+                }}
+              >
                 GDP £
               </li>
-              <li onClick={() => changeCurrency("euro", "EUR", "€")}>EUR €</li>
+              <li
+                onClick={() => {
+                  changeCurrency("euro", "EUR", "€");
+                  showFunc();
+                }}
+              >
+                EUR €
+              </li>
             </div>
           )}
         </li>
-        <li className="flex items-center justify-between">
+        <li className="flex items-center justify-between font-normal">
           <Link href={"/customer-care"}>CUSTOMER CARE</Link>
           {/* <AiOutlinePlus /> */}
         </li>
-        <li className="flex items-center justify-between">
+        <li className="flex items-center justify-between font-normal">
           <Link href={"/size-chart"}>SIZE GUIDE</Link>
           {/* <AiOutlinePlus /> */}
         </li>
-        <li className="flex items-center justify-between">
-          <Link href={"/custom-orders"}>CUSTOM ORDER</Link>
+        <li className="flex items-center justify-between font-normal">
+          <Link href={"/custom-orders"}>CUSTOM</Link>
           {/* <AiOutlinePlus /> */}
         </li>
       </ul>

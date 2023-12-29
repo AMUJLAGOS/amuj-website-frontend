@@ -133,7 +133,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
           } flex justify-between items-center w-[90%] xl:w-[1200px] m-auto py-4`}
         >
           <div onClick={() => sideBarFunc()} className="tablet:hidden block">
-            <VscMenu size={25} />
+            <VscMenu size={23} />
           </div>
           {/* the dropdown */}
           <div
@@ -174,7 +174,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
               <img
                 src={`${home ? "/amuj-logo.svg" : "/amuj-logo-b.svg"} `}
                 alt="amuj logo"
-                className="phone:h-[40px] tablet:h-[50px] h-[35px]"
+                className="phone:h-[40px] tablet:h-[50px] h-[27px]"
               />
             </Link>
           </div>

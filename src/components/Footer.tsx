@@ -43,16 +43,16 @@ function Footer() {
   return (
     <main className="mt-32 mb-14">
       <ToastContainer />
-      <div className="xl:w-[1200px] w-[95%] m-auto tablet:flex block justify-between">
+      <div className="xl:w-[1200px] phone:w-[95%] w-[90%] m-auto tablet:flex block justify-between">
         <section className="tablet:w-[45%] w-[90%]">
           <h1 className="phone:text-[16px] text-[14px] font-black">
             SUBSCRIBE TO OUR NEWSLETTER
           </h1>
-          <p className="text-[#676464] font-[300] phone:text-[17px] text-[14px] mt-3 tracking-[1px]">
+          <p className="text-[#676464] phone:text-[17px] text-[14px] mt-3 tracking-[1px]">
             Be the first to hear about our exclusive releases and offers
           </p>
           {/* subcribe  */}
-          <div className="flex items-center border-b border-black mt-10">
+          <div className="flex items-center border-b border-black mt-8">
             <input
               type="text"
               placeholder="Email Address"
@@ -63,7 +63,7 @@ function Footer() {
             {!loading ? (
               <button
                 onClick={() => emailHandler()}
-                className="border border-black p-2 rounded-full"
+                className="border border-black phone:p-2 p-1 rounded-full"
               >
                 <GrLinkNext size={"17"} className="" />
               </button>
@@ -95,7 +95,7 @@ function Footer() {
           <div className="phone:w-[50%]">
             <div className="flex items-center">
               <h1 className="phone:text-[17px] text-[14px] font-bold">BRAND</h1>
-              <div className="w-[90%] h-[1px] bg-[#67646421] ml-2"></div>
+              {/* <div className="w-[90%] h-[1px] bg-[#67646421] ml-2"></div> */}
             </div>
 
             <div className="flex justify-between">
@@ -112,7 +112,7 @@ function Footer() {
             </div>
           </div>
           {/* policy  */}
-          <div className="w-[35%] phone:mt-0 mt-6">
+          <div className="w-[40%] phone:mt-0 mt-6">
             <h1 className="phone:text-[17px] text-[14px] font-bold">
               POLICIES
             </h1>
@@ -125,7 +125,7 @@ function Footer() {
           </div>
         </section>
         <div className="mt-8 flex justify-between tablet:hidden w-[90%]">
-          <div className="flex justify-between phone:w-[130px]">
+          <div className="flex justify-between phone:w-[180px] w-[35%]">
             <button className="border border-black p-1 rounded-full phone:text-[20px]">
               <GrTwitter />
             </button>
@@ -139,10 +139,14 @@ function Footer() {
           <div className="flex items-center">
             <span>&copy;</span>
             <h1 className="font-black phone:text-[16px] text-[12px] ml-2 tracking-[2px]">
-              2023 Amuj Official
+              2023 AMUJ Official
             </h1>
           </div>
         </div>
+      </div>
+
+      <div className="text-xs text-center mt-3 font-bold">
+        Copyright. All Rights Reserved
       </div>
     </main>
   );

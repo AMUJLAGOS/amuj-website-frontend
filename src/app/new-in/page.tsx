@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import CheckHelper from "@/components/CheckHelper";
 import { useCurrency } from "@/components/CurrencyContext";

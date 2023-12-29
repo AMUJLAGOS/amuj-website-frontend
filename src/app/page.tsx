@@ -94,7 +94,7 @@ export default function Home() {
         </div>
 
         {/* mobile  */}
-        <div className="sm:hidden relative block h-[600px] w-full">
+        <div className="sm:hidden relative block h-[98vh] w-full">
           <img
             src="/second_image.jpg"
             alt=""
@@ -144,8 +144,8 @@ export default function Home() {
               className="h-[380px] w-full object-cover"
             />
             <div className="absolute flex flex-col items-center">
-              <h1 className="text-[23px] text-white">COLLECTION I</h1>
-              <button className="bg-[#ffffffb4] text-[15px] py-1 px-4 mt-2">
+              <h1 className="text-[20px] text-white">COLLECTION I</h1>
+              <button className="bg-[#ffffffb4] text-[12px] py-1 px-4 mt-2">
                 SHOP NOW
               </button>
             </div>
@@ -159,51 +159,54 @@ export default function Home() {
               className="h-[380px] w-full object-cover"
             />
             <div className="absolute flex flex-col items-center">
-              <h1 className="text-[23px] text-white">COLLECTION II</h1>
-              <button className="bg-[#ffffffb4] text-[15px] py-1 px-4 mt-2">
+              <h1 className="text-[20px] text-white">COLLECTION II</h1>
+              <button className="bg-[#ffffffb4] text-[12px] py-1 px-4 mt-2">
                 SHOP NOW
               </button>
             </div>
           </div>
           <div>
-            <h1 className="tracking-[1px] py-4">COLLECTION II</h1>
+            <h1 className="tracking-[1px] py-10">COLLECTION II</h1>
           </div>
         </div>
       </section>
       {/* <Spacer height={10} /> */}
-      <section className="3xl:w-[1700px] 2xl:w-[1500] w-full mt-[-16px] m-auto">
-        <div className="md:flex block">
+      <section className="3xl:w-[1700px] 2xl:w-[1500] w-full mt-[-32px] m-auto">
+        <div className="md:flex block w-full">
           {/* <ProductCard /> */}
-          {newArrival.slice(0, 4).map((all: any, index: any) => (
-            <div key={index}>
-              <ProductCard
-                name={all.name}
-                image={all.images[0]}
-                hImage={all.images[1]}
-                description={all.mini_description}
-                slug={all.slug}
-                showProduct={showDetails}
-                sizes={all.sizes}
-                lengths={all.lengths}
-                images={all.images}
-                naira_price={all.naira_price}
-                euro_price={all.euro_price}
-                pounds_price={all.pounds_price}
-                dollar_price={all.dollar_price}
-                pData={setProductDetails}
-                des_full={all.description}
-                requires_length={all.requires_length}
-                custom={all.custom}
-              />
-            </div>
-          ))}
+          {newArrival
+            .filter((fil: any) => fil.name.toLowerCase() != "ara")
+            ?.slice(0, 4)
+            .map((all: any, index: any) => (
+              <div key={index}>
+                <ProductCard
+                  name={all.name}
+                  image={all.campaignImages[0]}
+                  hImage={all.images[1]}
+                  description={all.mini_description}
+                  slug={all.slug}
+                  showProduct={showDetails}
+                  sizes={all.sizes}
+                  lengths={all.lengths}
+                  images={all.images}
+                  naira_price={all.naira_price}
+                  euro_price={all.euro_price}
+                  pounds_price={all.pounds_price}
+                  dollar_price={all.dollar_price}
+                  pData={setProductDetails}
+                  des_full={all.description}
+                  requires_length={all.requires_length}
+                  custom={all.custom}
+                />
+              </div>
+            ))}
         </div>
         <div className="md:flex block lg:mt-[20px] mt-[0px]">
-          {newArrival.slice(3, 5).map((all: any, index: any) => (
+          {newArrival.slice(4, 6).map((all: any, index: any) => (
             <div key={index}>
               <ProductCard
                 name={all.name}
-                image={all.images[0]}
+                image={all.campaignImages[0]}
                 hImage={all.images[1]}
                 description={all.mini_description}
                 slug={all.slug}
@@ -222,7 +225,7 @@ export default function Home() {
               />
             </div>
           ))}
-          <div className="w-[50%] md:block hidden mt-4">
+          <div className="w-[50%] md:block hidden mt-8">
             <img
               src="/video.jpg"
               alt=""
@@ -232,7 +235,7 @@ export default function Home() {
         </div>
       </section>
       {/* <Spacer height={80} /> */}
-      <section className="lg:mt-[40px] mt-4">
+      <section className="lg:mt-[40px] mt-8">
         <div className="w-full relative">
           {/* <p>dd</p> */}
           <Slide arrows={false} indicators={true} duration={2000}>

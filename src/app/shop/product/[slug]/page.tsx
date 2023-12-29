@@ -38,7 +38,7 @@ function ProductDetails() {
 
   // for slider
   const indicators = (index: any) => (
-    <div className="mt-[-50px] !z-[1000]">
+    <div className="mt-[-50px]">
       <div
         className={`w-7 h-[2px] ${
           index == current ? "bg-[#D9D9D9]" : "bg-[#b1aaaa6c]"
@@ -136,33 +136,35 @@ function ProductDetails() {
       <Header />
 
       <section className="phone:mt-10 tablet:flex block lg:justify-normal justify-between lg:w-[1020px] tablet:w-[90%] phone:w-[400px] w-full m-auto">
-        <div className="lg:w-[400px] tablet:w-[300px] w-full">
-          <Slide
-            indicators={indicators}
-            onChange={(oldIndex, newIndex) => {
-              setCurrent(newIndex);
-            }}
-            duration={1000}
-            {...properties}
-          >
-            {productData?.images.map((image: any, index: any) => (
-              <div
-                key={index}
-                className="lg:h-[550px] h-[400px] w-full relative"
-              >
-                <Image
-                  src={`${imageServer}${image}`}
-                  alt={"ffff"}
-                  layout="fill"
-                  objectFit="cover"
-                  quality={20}
-                  // priority={true}
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </Slide>
-        </div>
+        {productData && (
+          <div className="lg:w-[400px] z-[10000] tablet:w-[300px] w-full">
+            <Slide
+              // indicators={indicators}
+              onChange={(oldIndex, newIndex) => {
+                setCurrent(newIndex);
+              }}
+              duration={1000}
+              {...properties}
+            >
+              {images?.map((image: any, index: any) => (
+                <div
+                  key={index}
+                  className="lg:h-[550px] h-[400px] w-full relative"
+                >
+                  <Image
+                    src={`${imageServer}${image}`}
+                    alt={productData?.name}
+                    layout="fill"
+                    objectFit="cover"
+                    quality={20}
+                    // priority={true}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </Slide>
+          </div>
+        )}
 
         <div className="tablet:ml-10 tablet:w-[60%] phone:w-full w-[90%] m-auto">
           <div className="flex justify-between pb-4 border-b border-[#908b8bbe] tablet:w-[90%] w-full">

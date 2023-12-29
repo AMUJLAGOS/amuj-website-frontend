@@ -56,11 +56,11 @@ function ProductCard({
     showProduct();
   };
   return (
-    <div className="2xl:w-[25%] w-full mt-4">
+    <div className="2xl:w-[25%] w-full mt-8">
       <section className="flex items-center flex-col">
-        <div className="conn">
-          <Link href={`/shop/product/${slug}`}>
-            <div className="product w-full">
+        <div className="conn w-full">
+          <Link href={`/shop/product/${slug}`} className="w-full">
+            <div className="product">
               {/* <div className="first_image lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover">
               <Image
                 src={"/product_image.jpg"}
@@ -82,14 +82,14 @@ function ProductCard({
 
               <img
                 src={`${imageServer}${image}`}
-                alt=""
-                className="first_image 2xl:w-full lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover"
+                alt={name}
+                className="first_image 2xl:w-full lg:h-[540px] h-[400px] phone:w-[360px] w-full object-cover"
               />
-              <img
+              {/* <img
                 src={`${imageServer}${hImage}`}
-                alt=""
-                className="2xl:w-full lg:h-[540px] h-[400px] w-[360px] object-cover second_image"
-              />
+                alt={name}
+                className="2xl:w-full lg:h-[540px] h-[400px] phone:w-[360px] w-full object-cover second_image"
+              /> */}
             </div>
           </Link>
           <button
