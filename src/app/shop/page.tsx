@@ -86,13 +86,15 @@ function Shop() {
           productData={productDetails}
         />
       )}
-      <h1 className="mt-14 font-extrabold text[20px] text-center">SHOP ALL</h1>
-      <h1 className="text[20px] text-center">Shop from all our collections</h1>
-      <section className="w-[97%] 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] m-auto">
+      <h1 className="mt-14 font-extrabold text-center">SHOP ALL</h1>
+      <h1 className="text-[10px] tracking-[1px] uppercase text-center mt-2">
+        Shop all collections
+      </h1>
+      <section className="w-[97%] mt-3 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] m-auto">
         <div>
           <h1
             onClick={() => setShowFilter(!showFilter)}
-            className="font-bold p-4 cursor-pointer"
+            className="text-[12px] p-4 cursor-pointer"
           >
             FILTER BY {showFilter ? "-" : "+"}
           </h1>
@@ -238,27 +240,30 @@ function Shop() {
         </div>
         {filtered?.length !== 0 ? (
           <div className="shopFlex">
-            {filtered?.map((obj: any, index: any) => (
-              <ShopCard
-                key={index}
-                name={obj.name}
-                slug={obj.slug}
-                description={obj.mini_description}
-                naira_price={obj.naira_price}
-                euro_price={obj.euro_price}
-                pounds_price={obj.pounds_price}
-                dollar_price={obj.dollar_price}
-                image={obj.images[1]}
-                hImage={obj.images[0]}
-                showProduct={setShowProduct}
-                images={obj.images}
-                sizes={obj.sizes}
-                des_full={obj.description}
-                pData={setProductDetails}
-                requires_length={obj.requires_length}
-                custom={obj.custom}
-              />
-            ))}
+            {filtered
+              ?.slice()
+              .reverse()
+              .map((obj: any, index: any) => (
+                <ShopCard
+                  key={index}
+                  name={obj.name}
+                  slug={obj.slug}
+                  description={obj.mini_description}
+                  naira_price={obj.naira_price}
+                  euro_price={obj.euro_price}
+                  pounds_price={obj.pounds_price}
+                  dollar_price={obj.dollar_price}
+                  image={obj.images[1]}
+                  hImage={obj.images[0]}
+                  showProduct={setShowProduct}
+                  images={obj.images}
+                  sizes={obj.sizes}
+                  des_full={obj.description}
+                  pData={setProductDetails}
+                  requires_length={obj.requires_length}
+                  custom={obj.custom}
+                />
+              ))}
           </div>
         ) : (
           <div className="flex items-center justify-center">No item found</div>

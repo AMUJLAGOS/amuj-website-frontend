@@ -97,7 +97,7 @@ function ShopCard({
         <p className="mt-3 phone:text-[13px] text-[11px] font-bold tracking-[1px] uppercase">
           {name}
         </p>
-        <p className=" phone:text-[10px] text-[8px] w-[140px] mt-1 font-light tracking-[1px] text-center uppercase">
+        <p className=" phone:text-[10px] text-[8px] phone:w-auto w-[140px] mt-1 font-light tracking-[1px] text-center uppercase">
           {description}
         </p>
         <p className="phone:text-sm text-xs mt-1">

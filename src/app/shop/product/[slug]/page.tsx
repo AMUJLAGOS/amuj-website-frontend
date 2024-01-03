@@ -143,7 +143,7 @@ function ProductDetails() {
               onChange={(oldIndex, newIndex) => {
                 setCurrent(newIndex);
               }}
-              duration={1000}
+              duration={10000}
               {...properties}
             >
               {images?.map((image: any, index: any) => (
@@ -172,12 +172,12 @@ function ProductDetails() {
               <h1 className="text-lg tracking-[2px] font-bold uppercase">
                 {productData?.name}
               </h1>
-              <p className="text-sm font-medium leading-[17px] mt-2">
+              <p className="text-[10px] font-light uppercase mt-2">
                 {productData?.mini_description}
               </p>
             </div>
             <div className="flex flex-col items-end w-[30%]">
-              <h1 className="text-lg font-medium">
+              <h1 className="text-normal font-medium ">
                 {currency?.symbol}
                 {numberWithCommas(
                   productData
@@ -185,27 +185,30 @@ function ProductDetails() {
                     : 0
                 )}
               </h1>
-              <Link href={""} className="border-b border-black text-sm mt-2">
+              <Link
+                href={""}
+                className="border-b border-black text-[10px] font-light mt-2"
+              >
                 Size Chart
               </Link>
             </div>
           </div>
           <div className=" tablet:w-[90%] w-full mt-4">
             <p
-              className="text-sm"
+              className="text-xs leading-[20px]"
               dangerouslySetInnerHTML={{ __html: productData?.description }}
             />
           </div>
 
           <div className="mt-4">
-            <p className="text-sm">Select a size</p>
+            <p className="text-xs">Select a size</p>
             <div className="relative tablet:w-[60%] w-full">
               <select
                 onChange={(e) => setSize(e.target.value)}
                 className="block appearance-none w-full outline-none !bg-white border border-gray-300 px-4 py-2 pr-8 rounded leading-tight focus:outline-none"
               >
-                <option className="!bg-white text-black" value="">
-                  select a Size
+                <option className="!bg-white text-black text-sm" value="">
+                  size
                 </option>
                 <option
                   disabled={!productData?.sizes.includes("4")}
@@ -272,7 +275,7 @@ function ProductDetails() {
           </div>
 
           <div className="mt-5">
-            <p className="text-sm">Quantity</p>
+            <p className="text-xs">Quantity</p>
             <div className="flex items-center mt-2">
               <button
                 onClick={() => minus()}
@@ -280,7 +283,7 @@ function ProductDetails() {
               >
                 <AiOutlineMinus />
               </button>
-              <div className="border flex justify-center items-center border-[#908B8B] ml-1 mr-1 phone:w-[55px] phone:h-[45px] h-[35px] w-[45px]">
+              <div className="border text-sm flex justify-center items-center border-[#908B8B] ml-1 mr-1 phone:w-[55px] phone:h-[45px] h-[35px] w-[45px]">
                 {quantity}
               </div>
               <button
@@ -298,7 +301,7 @@ function ProductDetails() {
                 )}
               </p>
             </div>
-            <p className="mt-5 text-sm">
+            <p className="mt-5 text-xs">
               <span className="border-b border-black">
                 <Link href={""}>Shipping</Link>
               </span>{" "}
@@ -323,7 +326,7 @@ function ProductDetails() {
               </div>
               {showInfo && (
                 <div
-                  className="text-sm mt-3"
+                  className="text-xs leading-[25px] mt-3"
                   dangerouslySetInnerHTML={{ __html: productData?.details }}
                 ></div>
               )}
