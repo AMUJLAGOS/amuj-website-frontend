@@ -174,7 +174,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
               <img
                 src={`${home ? "/amuj-logo.svg" : "/amuj-logo-b.svg"} `}
                 alt="amuj logo"
-                className="phone:h-[40px] tablet:h-[50px] h-[27px]"
+                className="phone:h-[40px] tablet:h-[50px] h-[20px] phone:ml-0 ml-7"
               />
             </Link>
           </div>

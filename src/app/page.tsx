@@ -154,7 +154,7 @@ export default function Home() {
           {/* collection  2  */}
           <div className="relative w-full flex justify-center items-center">
             <img
-              src="/video.jpg"
+              src="/shop_nav.jpg"
               alt="collection i image "
               className="h-[380px] w-full object-cover"
             />
@@ -166,7 +166,7 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <h1 className="tracking-[1px] py-10">COLLECTION II</h1>
+            <h1 className="tracking-[1px] py-10 font-bold">COLLECTION II</h1>
           </div>
         </div>
       </section>
