@@ -149,7 +149,7 @@ function ProductDetails() {
               {images?.map((image: any, index: any) => (
                 <div
                   key={index}
-                  className="lg:h-[550px] h-[450px] w-full relative"
+                  className="lg:h-[550px] h-[500px] w-full relative"
                 >
                   <Image
                     src={`${imageServer}${image}`}
