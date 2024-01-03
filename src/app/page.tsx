@@ -96,7 +96,7 @@ export default function Home() {
         {/* mobile  */}
         <div className="sm:hidden relative block h-[98vh] w-full">
           <img
-            src="/second_image.jpg"
+            src="/banner2.jpg"
             alt=""
             className="w-full h-full object-cover"
           />

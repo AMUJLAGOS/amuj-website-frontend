@@ -45,18 +45,18 @@ function Footer() {
       <ToastContainer />
       <div className="xl:w-[1200px] phone:w-[95%] w-[90%] m-auto tablet:flex block justify-between">
         <section className="tablet:w-[45%] w-[90%]">
-          <h1 className="phone:text-[16px] text-[14px] font-black">
+          <h1 className="phone:text-[16px] tracking-[1px] text-[14px] font-black">
             SUBSCRIBE TO OUR NEWSLETTER
           </h1>
-          <p className="text-[#676464] phone:text-[17px] text-[14px] mt-3 tracking-[1px]">
+          <p className="text-[#676464] phone:text-[17px] text-[12px] mt-3 tracking-[0px]">
             Be the first to hear about our exclusive releases and offers
           </p>
           {/* subcribe  */}
-          <div className="flex items-center border-b border-black mt-8">
+          <div className="flex items-center border-b border-black mt-5">
             <input
               type="text"
               placeholder="Email Address"
-              className="input w-[600px] py-3"
+              className="input email-i w-[600px] py-3"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -85,7 +85,7 @@ function Footer() {
             </div>
             <div className="flex">
               <span>&copy;</span>
-              <h1 className="font-black text-[16px] ml-2 tracking-[2px]">
+              <h1 className="font-black text-[16px] ml-2 tracking-[0px]">
                 2023 Amuj Official
               </h1>
             </div>
@@ -137,16 +137,13 @@ function Footer() {
             </button>
           </div>
           <div className="flex items-center">
-            <span>&copy;</span>
-            <h1 className="font-black phone:text-[16px] text-[12px] ml-2 tracking-[2px]">
-              2023 AMUJ Official
-            </h1>
+            <h1 className="font-black phone:text-[16px] text-[12px] ml-2 tracking-[0px]"></h1>
           </div>
         </div>
       </div>
 
-      <div className="text-xs text-center mt-3 font-bold">
-        Copyright. All Rights Reserved
+      <div className="text-[10px] text-center mt-5">
+        Copyright <span>&copy;</span> 2023 AMUJ Official. All Rights Reserved
       </div>
     </main>
   );

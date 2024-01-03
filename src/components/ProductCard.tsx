@@ -83,7 +83,7 @@ function ProductCard({
               <img
                 src={`${imageServer}${image}`}
                 alt={name}
-                className="first_image 2xl:w-full lg:h-[540px] h-[400px] phone:w-[360px] w-full object-cover"
+                className="first_image 2xl:w-full lg:h-[540px] h-[450px] phone:w-[360px] w-full object-cover"
               />
               {/* <img
                 src={`${imageServer}${hImage}`}

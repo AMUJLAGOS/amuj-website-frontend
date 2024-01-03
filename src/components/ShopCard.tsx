@@ -59,17 +59,17 @@ function ShopCard({
     <div className="mt-4">
       <div className="flex items-center flex-col">
         <div className="shop_conn w-full">
-          <Link href={`/shop/product/${slug}`}>
+          <Link href={`/shop/product/${slug}`} className="w-full">
             <div className="shop w-full">
               <img
                 src={`${imageServer}${hImage}`}
                 alt={name}
-                className="shop_image1 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover"
+                className="shop_image1 tablet:h-[540px] sm:h-[300px] h-[220px] object-cover"
               />
               <img
                 src={`${imageServer}${image}`}
                 alt={name}
-                className="shop_image2 tablet:h-[540px] sm:h-[300px] h-[200px] object-cover"
+                className="shop_image2 tablet:h-[540px] sm:h-[300px] h-[220px] object-cover"
               />
             </div>
           </Link>
@@ -94,13 +94,13 @@ function ShopCard({
             QUICK VIEW
           </button>
         </div>
-        <p className="mt-3 text-[13px] font-bold tracking-[1px] uppercase">
+        <p className="mt-3 phone:text-[13px] text-[11px] font-bold tracking-[1px] uppercase">
           {name}
         </p>
-        <p className="text-[10px] font-medium tracking-[1px] text-center uppercase">
+        <p className=" phone:text-[10px] text-[8px] w-[140px] mt-1 font-light tracking-[1px] text-center uppercase">
           {description}
         </p>
-        <p className="text-[#908B8B] text-sm font-bold">
+        <p className="phone:text-sm text-xs mt-1">
           {currency?.symbol}
           {currency?.name == "naira"
             ? numberWithCommas(parseFloat(naira_price))

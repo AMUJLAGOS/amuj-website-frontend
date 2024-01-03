@@ -38,7 +38,7 @@ function ProductDetails() {
 
   // for slider
   const indicators = (index: any) => (
-    <div className="mt-[-50px]">
+    <div className="mt-[-50px] z-10">
       <div
         className={`w-7 h-[2px] ${
           index == current ? "bg-[#D9D9D9]" : "bg-[#b1aaaa6c]"
@@ -139,7 +139,7 @@ function ProductDetails() {
         {productData && (
           <div className="lg:w-[400px] z-[10000] tablet:w-[300px] w-full">
             <Slide
-              // indicators={indicators}
+              indicators={indicators}
               onChange={(oldIndex, newIndex) => {
                 setCurrent(newIndex);
               }}
@@ -169,15 +169,15 @@ function ProductDetails() {
         <div className="tablet:ml-10 tablet:w-[60%] phone:w-full w-[90%] m-auto">
           <div className="flex justify-between pb-4 border-b border-[#908b8bbe] tablet:w-[90%] w-full">
             <div className="w-[60%]">
-              <h1 className="text-xl tracking-[2px] font-bold uppercase">
+              <h1 className="text-lg tracking-[2px] font-bold uppercase">
                 {productData?.name}
               </h1>
-              <p className="font-medium leading-[17px] mt-2">
+              <p className="text-sm font-medium leading-[17px] mt-2">
                 {productData?.mini_description}
               </p>
             </div>
             <div className="flex flex-col items-end w-[30%]">
-              <h1 className="text-xl font-medium">
+              <h1 className="text-lg font-medium">
                 {currency?.symbol}
                 {numberWithCommas(
                   productData
@@ -337,23 +337,22 @@ function ProductDetails() {
                 <MdNavigateNext />
               </div>
             </div>
-
-            <div
-              className="border-b border-[#908B8B] py-2 cursor-pointer"
-              onClick={() => {}}
-            >
-              <div className="flex items-center justify-between">
-                <h1 className="text-xs">FREQUENTLY ASKED QUESTIONS</h1>
-                <MdNavigateNext />
+            <Link href={"/faqs"}>
+              <div
+                className="border-b border-[#908B8B] py-2 cursor-pointer"
+                onClick={() => {}}
+              >
+                <div className="flex items-center justify-between">
+                  <h1 className="text-xs">FREQUENTLY ASKED QUESTIONS</h1>
+                  <MdNavigateNext />
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
 
-      <Spacer height={140} />
       <Footer />
-      <Spacer height={100} />
     </main>
   );
 }

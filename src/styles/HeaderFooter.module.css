@@ -35,10 +35,11 @@
 }
 
 .footer_link a{
-  letter-spacing: 2px;
+  /* letter-spacing: 2px; */
   display: block;
   margin-top: 10px;
   font-size: 15px;
+  font-weight: 300;
 }
 
 /* for side bar  */
@@ -107,6 +108,6 @@
 
 @media (max-width: 450px) {
   .footer_link a {
-    font-size: 14px;
+    font-size: 12px;
   }
 }

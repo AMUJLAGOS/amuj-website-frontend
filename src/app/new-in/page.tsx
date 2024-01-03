@@ -94,14 +94,14 @@ function NewIn() {
           productData={productDetails}
         />
       )}
-      <h1 className="mt-14 font-extrabold text[20px] text-center">
+      <h1 className="mt-14 font-bold text-[16px] text-center">
         LATEST ARRIVALS
       </h1>
-      <section className="w-[97%] 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] m-auto">
+      <section className="w-[97%] mt-3 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] m-auto">
         <div>
           <h1
             onClick={() => setShowFilter(!showFilter)}
-            className="font-bold p-4 cursor-pointer"
+            className="font-normal  p-4 cursor-pointer text-[12px]"
           >
             FILTER BY {showFilter ? "-" : "+"}
           </h1>

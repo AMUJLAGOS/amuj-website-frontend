@@ -42,6 +42,10 @@ input::placeholder {
   /* opacity: 1;  */
 }
 
+.email-i::placeholder {
+  font-size: 14px;
+}
+
 input::-ms-input-placeholder {
   color: red;
 }
