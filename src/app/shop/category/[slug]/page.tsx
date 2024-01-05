@@ -94,17 +94,17 @@ function Category() {
           productData={productDetails}
         />
       )}
-      <h1 className="mt-14 font-extrabold text[20px] text-center">
+      <h1 className="mt-14 font-extrabold text-center">
         {slug.toLocaleUpperCase()}
       </h1>
-      <h1 className="text[20px] text-center">
-        Shop from all our favorite {slug}
+      <h1 className="text-[10px] tracking-[1px] uppercase text-center mt-2">
+        Shop all {slug}
       </h1>
       <section className="w-[97%] 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] m-auto">
         <div>
           <h1
             onClick={() => setShowFilter(!showFilter)}
-            className="font-bold p-4 cursor-pointer"
+            className="text-[12px] p-4 cursor-pointer"
           >
             FILTER BY {showFilter ? "-" : "+"}
           </h1>

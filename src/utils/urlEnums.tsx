@@ -7,4 +7,5 @@ export const enum allRoutes {
   CATEGORY = "category",
   SUBSCRIBE = "subscribe",
   CONTACT = "contact/create",
+  HOME_PRODUCTS = "products/home",
 }

@@ -59,7 +59,7 @@ function CustomerCare() {
   return (
     <main className="box-border overflow-hidden">
       <Header />
-      <h1 className="text-xl font-bold sm:hidden block text-center mt-8 mb-5">
+      <h1 className="text-lg font-bold sm:hidden block text-center mt-8 mb-5">
         CONTACT US
       </h1>
       <div className="relative sm:hidden block h-[350px] w-[85%] m-auto">
@@ -100,7 +100,7 @@ function CustomerCare() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="type in your name"
+                  placeholder="name"
                   className="border border-[#908B8B] text-sm w-full h-10 p-5 mt-1 input"
                 />
               </div>
@@ -114,7 +114,8 @@ function CustomerCare() {
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="youremail@email.com"
+                  placeholder="email"
+                  // placeholder="youremail@email.com"
                   className="border border-[#908B8B] text-sm w-full h-10 p-5 mt-1 input"
                 />
               </div>
@@ -130,7 +131,7 @@ function CustomerCare() {
                   onChange={(e) =>
                     setNumber(e.target.value.replace(/[^0-9.]/g, ""))
                   }
-                  placeholder="input phone number"
+                  placeholder="phone number"
                   className="border border-[#908B8B] text-sm w-full h-10 p-5 mt-1 input"
                 />
               </div>

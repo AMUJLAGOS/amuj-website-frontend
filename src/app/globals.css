@@ -166,6 +166,10 @@ input::-ms-input-placeholder {
  /* flex-direction: column; */
 }
 
+.shop img{
+  object-fit: cover;
+}
+
 .shop .shop_image2{
   display: none;
 } 

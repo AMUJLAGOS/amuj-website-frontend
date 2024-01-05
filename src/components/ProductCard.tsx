@@ -114,11 +114,11 @@ function ProductCard({
             QUICK VIEW
           </button>
         </div>
-        <p className="mt-3 text-[16px] font-bold tracking-[0px] uppercase">
+        <p className="mt-3 text-[14px] font-bold tracking-[1px] uppercase">
           {name}
         </p>
-        <p className="text-[10px] font-medium tracking-[2px] text-center uppercase">
-          {description} {requires_length}
+        <p className="text-[9px] font-medium tracking-[2px] text-center uppercase mt-1">
+          {description}
         </p>
         {/* <p className="text-[#908B8B] font-bold">{price}</p> */}
       </section>
