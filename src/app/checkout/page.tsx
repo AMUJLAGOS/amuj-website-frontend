@@ -79,6 +79,17 @@ function CheckOut() {
     }
   };
 
+  const itemList = cart?.map((item: any) => {
+    return {
+      name: item.name,
+      slug: item.slug.toLowerCase().replace(/\d+$/, ""),
+      price: item[`${currency?.name}_price`],
+      size: item.size,
+      length: item.length,
+      image: item.image,
+      quantity: item.quantity,
+    };
+  });
   const data = {
     payment_method: currency?.code === "NGN" ? "PayStack" : "Stripe",
     currency: currency?.code,
@@ -93,17 +104,18 @@ function CheckOut() {
     country: country,
     state: state,
     email: email,
-    item: ["aarya"],
+    items: itemList,
     quantity: 2,
-    reference: paymentRef,
     phone_number: phone_number,
+    // reference: paymentRef,
+    reference: "HHHHHH",
     post_code: post_code,
     discount_price: 0,
   };
 
   const handleSubmit = async () => {
     const response = await PostRequest("order", data);
-    // console.log(response);
+    console.log(response);
   };
 
   const [shipData, setShipData]: any = useState();
@@ -180,11 +192,11 @@ function CheckOut() {
   useEffect(() => {
     if (paySuccessful) {
       // console.log("calling this!");
-      // handleSubmit()
+      handleSubmit();
       if (showStripe) {
         setShowStripe(false);
       }
-      localStorage.setItem("amujCart", JSON.stringify([]));
+      // localStorage.setItem("amujCart", JSON.stringify([]));
     }
   }, [paySuccessful]);
 
@@ -199,7 +211,6 @@ function CheckOut() {
           payRef={setPaymentRef}
         />
       )}
-
       <div className="flex justify-center mt-14">
         <Link href={"/"}>
           <img
@@ -210,295 +221,293 @@ function CheckOut() {
         </Link>
       </div>
       {/* <Header /> */}
-
-      {paySuccessful ? (
+      {/* {paySuccessful ? (
         <div className="text-center mt-10">
           <h1 className="text-2xl">Payment successful!</h1>
-          <p>We are proceesing your order, you will recieve an email</p>
+          <p>We are proceessing your order, you will recieve an email</p>
           <Link href={"/"} className="underline">
             Continue shoping
           </Link>
         </div>
-      ) : (
-        <section className="justify-end flex">
-          <section className=" w-full tablet:w-[98%] lg:w-[92%] mt-10 tablet:flex-row flex-col-reverse flex justify-end">
-            <aside className="lg:w-[45%] tablet:w-[47%] w-11/12 lg:m- m-auto tablet:mt-0 mt-12 lg:mr-20 tablet:mr-10">
-              <StepsHelper step={step} />
-              {/* inputs  step1 */}
-              {step === 1 && (
-                <div className="mt-5">
-                  <div>
-                    <div className="mt-4">
-                      <input
-                        type="text"
-                        value={email}
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="border border-[#908B8B] text-sm w-full h-12 px-3 py-5 mt-1 input"
-                      />
-                    </div>
-                    <div className="mt-4 phone:flex block justify-between">
-                      <input
-                        type="text"
-                        value={firstname}
-                        onChange={(e) => setFirstname(e.target.value)}
-                        placeholder="First Name"
-                        className="border border-[#908B8B] text-sm phone:w-[49%] w-full h-12 px-3 py-5 phone:mt-1 mt-4 input phone:flex block"
-                      />
-                      <input
-                        type="text"
-                        value={lastname}
-                        onChange={(e) => setLastname(e.target.value)}
-                        placeholder="Last Name"
-                        className="border border-[#908B8B] text-sm phone:w-[49%] w-full h-12 px-3 py-5 input phone:mt-1 mt-4"
-                      />
-                    </div>
-                    <div className="mt-4">
-                      <input
-                        type="text"
-                        value={phone_number}
-                        onChange={(e) =>
-                          setPhoneNumber(e.target.value.replace(/[^0-9.]/g, ""))
-                        }
-                        placeholder="Phone Number"
-                        className="border border-[#908B8B] text-sm w-full h-12 px-3 py-5 mt-1 input"
-                      />
-                    </div>
-                    <div className="mt-4">
-                      <input
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAdress(e.target.value)}
-                        placeholder="Address"
-                        className="border border-[#908B8B] text-sm w-full h-12 px-3 py-5 mt-1 input"
-                      />
-                    </div>
+      ) : */}
+      (
+      <section className="justify-end flex">
+        <section className=" w-full tablet:w-[98%] lg:w-[92%] mt-10 tablet:flex-row flex-col-reverse flex justify-end">
+          <aside className="lg:w-[45%] tablet:w-[47%] w-11/12 lg:m- m-auto tablet:mt-0 mt-12 lg:mr-20 tablet:mr-10">
+            <StepsHelper step={step} />
+            {/* inputs  step1 */}
+            {step === 1 && (
+              <div className="mt-5">
+                <div>
+                  <div className="mt-4">
+                    <input
+                      type="text"
+                      value={email}
+                      placeholder="Email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="border border-[#908B8B] text-sm w-full h-12 px-3 py-5 mt-1 input"
+                    />
+                  </div>
+                  <div className="mt-4 phone:flex block justify-between">
+                    <input
+                      type="text"
+                      value={firstname}
+                      onChange={(e) => setFirstname(e.target.value)}
+                      placeholder="First Name"
+                      className="border border-[#908B8B] text-sm phone:w-[49%] w-full h-12 px-3 py-5 phone:mt-1 mt-4 input phone:flex block"
+                    />
+                    <input
+                      type="text"
+                      value={lastname}
+                      onChange={(e) => setLastname(e.target.value)}
+                      placeholder="Last Name"
+                      className="border border-[#908B8B] text-sm phone:w-[49%] w-full h-12 px-3 py-5 input phone:mt-1 mt-4"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <input
+                      type="text"
+                      value={phone_number}
+                      onChange={(e) =>
+                        setPhoneNumber(e.target.value.replace(/[^0-9.]/g, ""))
+                      }
+                      placeholder="Phone Number"
+                      className="border border-[#908B8B] text-sm w-full h-12 px-3 py-5 mt-1 input"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <input
+                      type="text"
+                      value={address}
+                      onChange={(e) => setAdress(e.target.value)}
+                      placeholder="Address"
+                      className="border border-[#908B8B] text-sm w-full h-12 px-3 py-5 mt-1 input"
+                    />
+                  </div>
 
-                    <div className="mt-4">
-                      <input
-                        type="text"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        placeholder="City"
-                        className="border border-[#908B8B] text-sm w-full h-12 px-3 py-5 mt-1 input"
-                      />
-                    </div>
-                    <div className="mt-4 phone:flex block justify-between">
+                  <div className="mt-4">
+                    <input
+                      type="text"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                      placeholder="City"
+                      className="border border-[#908B8B] text-sm w-full h-12 px-3 py-5 mt-1 input"
+                    />
+                  </div>
+                  <div className="mt-4 phone:flex block justify-between">
+                    <select
+                      className={`phone:mt-1 select ${
+                        stateOptions
+                          ? "phone:w-[32%] w-full"
+                          : " phone:w-[49%] w-full"
+                      } border-[#908B8B] border h-12 px-3`}
+                      onChange={(e) => setCountry(e.target.value)}
+                      value={country}
+                    >
+                      <option value="" key="" className="text-[#908B8B]">
+                        Select a country
+                      </option>
+                      {options.map((coun: any, index: any) => (
+                        <option key={index} value={coun.value}>
+                          {coun.label}
+                        </option>
+                      ))}
+                    </select>
+                    {/* <br className="phone:hidden block" /> */}
+
+                    {stateOptions && (
                       <select
-                        className={`phone:mt-1 select ${
+                        className={`phone:flex block phone:mt-1 mt-4 select ${
                           stateOptions
                             ? "phone:w-[32%] w-full"
                             : " phone:w-[49%] w-full"
                         } border-[#908B8B] border h-12 px-3`}
-                        onChange={(e) => setCountry(e.target.value)}
-                        value={country}
+                        onChange={(e) => setState(e.target.value)}
+                        value={state}
                       >
                         <option value="" key="" className="text-[#908B8B]">
-                          Select a country
+                          Select a state
                         </option>
-                        {options.map((coun: any, index: any) => (
-                          <option key={index} value={coun.value}>
-                            {coun.label}
+                        {stateOptions.map((state: any, index: any) => (
+                          <option key={index} value={state}>
+                            {state}
                           </option>
                         ))}
                       </select>
-                      {/* <br className="phone:hidden block" /> */}
-
-                      {stateOptions && (
-                        <select
-                          className={`phone:flex block phone:mt-1 mt-4 select ${
-                            stateOptions
-                              ? "phone:w-[32%] w-full"
-                              : " phone:w-[49%] w-full"
-                          } border-[#908B8B] border h-12 px-3`}
-                          onChange={(e) => setState(e.target.value)}
-                          value={state}
-                        >
-                          <option value="" key="" className="text-[#908B8B]">
-                            Select a state
-                          </option>
-                          {stateOptions.map((state: any, index: any) => (
-                            <option key={index} value={state}>
-                              {state}
-                            </option>
-                          ))}
-                        </select>
-                      )}
-                      {/* <br className="phone:hidden block" /> */}
-                      <input
-                        type="text"
-                        value={post_code}
-                        onChange={(e) =>
-                          setPostalCode(e.target.value.replace(/[^0-9.]/g, ""))
-                        }
-                        placeholder="Postal Code"
-                        className={`border border-[#908B8B] text-sm ${
-                          stateOptions
-                            ? "phone:w-[32%] w-full"
-                            : " phone:w-[49%] w-full"
-                        }  h-12 px-3 py-5 phone:mt-1 mt-4 phone:flex block input`}
-                      />
-                    </div>
+                    )}
+                    {/* <br className="phone:hidden block" /> */}
+                    <input
+                      type="text"
+                      value={post_code}
+                      onChange={(e) =>
+                        setPostalCode(e.target.value.replace(/[^0-9.]/g, ""))
+                      }
+                      placeholder="Postal Code"
+                      className={`border border-[#908B8B] text-sm ${
+                        stateOptions
+                          ? "phone:w-[32%] w-full"
+                          : " phone:w-[49%] w-full"
+                      }  h-12 px-3 py-5 phone:mt-1 mt-4 phone:flex block input`}
+                    />
                   </div>
-                  <button
-                    onClick={handleContinue}
-                    className="mt-7 bg-black text-white phone:w-auto w-full sm:py-4 phone:px-28 py-5 text-sm phone:text-base"
-                  >
-                    Continue to shipping
-                  </button>
                 </div>
-              )}
+                <button
+                  onClick={handleContinue}
+                  className="mt-7 bg-black text-white phone:w-auto w-full sm:py-4 phone:px-28 py-5 text-sm phone:text-base"
+                >
+                  Continue to shipping
+                </button>
+              </div>
+            )}
 
-              {/* step 2  */}
-              {step === 2 && (
-                <div className="mt-5">
-                  <div className="border border-black mt-5 px-5">
-                    <div className="flex justify-between py-4 border-b ">
-                      <div className="w-[20%] phone:text-base text-sm">
-                        Email
-                      </div>
-                      <div className="w-[60%] phone:text-base text-sm lowercase">
-                        {email}
-                      </div>
-                      <button
-                        className="phone:text-base text-sm"
-                        onClick={() => {
-                          setStep(1);
-                          setDeliveryTerms(false);
-                        }}
-                      >
-                        Edit
-                      </button>
+            {/* step 2  */}
+            {step === 2 && (
+              <div className="mt-5">
+                <div className="border border-black mt-5 px-5">
+                  <div className="flex justify-between py-4 border-b ">
+                    <div className="w-[20%] phone:text-base text-sm">Email</div>
+                    <div className="w-[60%] phone:text-base text-sm lowercase">
+                      {email}
                     </div>
-                    <div className="flex justify-between py-4">
-                      <div className="w-[20%] phone:text-base text-sm">
-                        Ship to
-                      </div>
-                      <div className="w-[60%] phone:text-base text-sm">
-                        {address} {city}
-                      </div>
-                      <button
-                        className="phone:text-base text-sm"
-                        onClick={() => {
-                          setStep(1);
-                          setDeliveryTerms(false);
-                        }}
-                      >
-                        Edit
-                      </button>
-                    </div>
+                    <button
+                      className="phone:text-base text-sm"
+                      onClick={() => {
+                        setStep(1);
+                        setDeliveryTerms(false);
+                      }}
+                    >
+                      Edit
+                    </button>
                   </div>
-                  <h1 className="phone:text-base text-sm mt-3">
-                    Shipping Method
-                  </h1>
-                  <div className=" phone:flex justify-between mt-4 border border-black p-5 items-start">
-                    <div className="flex items-start w-full justify-between">
-                      <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        checked={deliveryTerms}
-                        onChange={(e) => setDeliveryTerms(!deliveryTerms)}
-                        className="mt-1"
-                      />
-                      <div className="phone:flex justify-between w-full items-start">
-                        <div className="ml-2">
-                          <h1 className="phone:text-base text-sm">
-                            Standard Delivery
-                          </h1>
-
-                          <p className="text-xs mt-1">
-                            Standard delivery operates weekdays Mon – Fri 9 am –
-                            6 pm
-                          </p>
-                        </div>
-                        <h1 className="phone:text-base text-sm ml-2">
-                          {currency?.symbol}
-                          {numberWithCommas(shipData)}
-                        </h1>
-                      </div>
+                  <div className="flex justify-between py-4">
+                    <div className="w-[20%] phone:text-base text-sm">
+                      Ship to
                     </div>
+                    <div className="w-[60%] phone:text-base text-sm">
+                      {address} {city}
+                    </div>
+                    <button
+                      className="phone:text-base text-sm"
+                      onClick={() => {
+                        setStep(1);
+                        setDeliveryTerms(false);
+                      }}
+                    >
+                      Edit
+                    </button>
                   </div>
-
-                  <button
-                    onClick={handleToPayment}
-                    // onClick={handleSubmit}
-                    className="mt-7 bg-black text-white phone:w-auto w-full sm:py-4 phone:px-28 py-5 text-sm phone:text-base"
-                  >
-                    Continue to Payment
-                  </button>
                 </div>
-              )}
-
-              {/* step 3 */}
-              {step === 3 && (
-                <div className="mt-5">
-                  <div className="border border-black mt-5 px-5">
-                    <div className="flex justify-between py-4 border-b ">
-                      <div className="w-[20%] phone:text-base text-sm">
-                        Email
-                      </div>
-                      <div className="w-[60%] phone:text-base text-sm lowercase">
-                        {email}
-                      </div>
-                      <button
-                        onClick={() => {
-                          setStep(1);
-                        }}
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <div className="flex justify-between py-4 border-b">
-                      <div className="w-[20%] phone:text-base text-sm">
-                        Ship to
-                      </div>
-                      <div className="w-[60%] phone:text-base text-sm">
-                        {address} {city}
-                      </div>
-                      <button onClick={() => setStep(1)}>Edit</button>
-                    </div>
-
-                    <div className="flex justify-between py-4 ">
-                      <div className="w-[20%] phone:text-base text-sm">
-                        Shipping
-                      </div>
-                      <div className="w-[60%] phone:text-base text-sm">
-                        Standard Delivery {currency?.symbol}
-                        {numberWithCommas(shipFee)}
-                      </div>
-                      <button
-                        className="phone:text-base text-sm"
-                        onClick={() => setStep(2)}
-                      >
-                        Edit
-                      </button>
-                    </div>
-                  </div>
-                  <h1 className="phone:text-base text-sm mt-8">
-                    Payment Method
-                  </h1>
-
-                  <div className="flex mt-4 border border-black p-5 items-start">
+                <h1 className="phone:text-base text-sm mt-3">
+                  Shipping Method
+                </h1>
+                <div className=" phone:flex justify-between mt-4 border border-black p-5 items-start">
+                  <div className="flex items-start w-full justify-between">
                     <input
                       type="checkbox"
                       name=""
                       id=""
-                      checked={payMethod}
-                      onChange={(e) => setPayMethod(!payMethod)}
+                      checked={deliveryTerms}
+                      onChange={(e) => setDeliveryTerms(!deliveryTerms)}
                       className="mt-1"
                     />
-                    <div className="ml-9">
-                      <h1 className="phone:text-base text-sm">
-                        {currency?.code === "NGN" ? "Paystack" : "Stripe"}
+                    <div className="phone:flex justify-between w-full items-start">
+                      <div className="ml-2">
+                        <h1 className="phone:text-base text-sm">
+                          Standard Delivery
+                        </h1>
+
+                        <p className="text-xs mt-1">
+                          Standard delivery operates weekdays Mon – Fri 9 am – 6
+                          pm
+                        </p>
+                      </div>
+                      <h1 className="phone:text-base text-sm ml-2">
+                        {currency?.symbol}
+                        {numberWithCommas(shipData)}
                       </h1>
-                      <p className="phone:text-base text-sm mt-1">
-                        Nigerian Banks or International Payments
-                      </p>
                     </div>
                   </div>
+                </div>
 
-                  {currency?.code === "NGN" ? (
+                <button
+                  onClick={handleToPayment}
+                  // onClick={handleSubmit}
+                  className="mt-7 bg-black text-white phone:w-auto w-full sm:py-4 phone:px-28 py-5 text-sm phone:text-base"
+                >
+                  Continue to Payment
+                </button>
+              </div>
+            )}
+
+            {/* step 3 */}
+            {step === 3 && (
+              <div className="mt-5">
+                <div className="border border-black mt-5 px-5">
+                  <div className="flex justify-between py-4 border-b ">
+                    <div className="w-[20%] phone:text-base text-sm">Email</div>
+                    <div className="w-[60%] phone:text-base text-sm lowercase">
+                      {email}
+                    </div>
+                    <button
+                      onClick={() => {
+                        setStep(1);
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </div>
+                  <div className="flex justify-between py-4 border-b">
+                    <div className="w-[20%] phone:text-base text-sm">
+                      Ship to
+                    </div>
+                    <div className="w-[60%] phone:text-base text-sm">
+                      {address} {city}
+                    </div>
+                    <button onClick={() => setStep(1)}>Edit</button>
+                  </div>
+
+                  <div className="flex justify-between py-4 ">
+                    <div className="w-[20%] phone:text-base text-sm">
+                      Shipping
+                    </div>
+                    <div className="w-[60%] phone:text-base text-sm">
+                      Standard Delivery {currency?.symbol}
+                      {numberWithCommas(shipFee)}
+                    </div>
+                    <button
+                      className="phone:text-base text-sm"
+                      onClick={() => setStep(2)}
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+                <h1 className="phone:text-base text-sm mt-8">Payment Method</h1>
+
+                <div className="flex mt-4 border border-black p-5 items-start">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    checked={payMethod}
+                    onChange={(e) => setPayMethod(!payMethod)}
+                    className="mt-1"
+                  />
+                  <div className="ml-9">
+                    <h1 className="phone:text-base text-sm">
+                      {currency?.code === "NGN" ? "Paystack" : "Stripe"}
+                    </h1>
+                    <p className="phone:text-base text-sm mt-1">
+                      Nigerian Banks or International Payments
+                    </p>
+                  </div>
+                </div>
+
+                <button onClick={() => setPaySuccessful(!paySuccessful)}>
+                  Pay
+                </button>
+
+                {/* {currency?.code === "NGN" ? (
                     <Paystack
                       amount={allAmount + shipFee}
                       email={email}
@@ -514,82 +523,82 @@ function CheckOut() {
                     >
                       Continue to Payment
                     </button>
-                  )}
-                </div>
-              )}
-            </aside>
+                  )} */}
+              </div>
+            )}
+          </aside>
 
-            {/* other side  */}
-            <aside className="p-5 tablet:w-[50%] w-full bg-[#F7F6F6] h-[100vh]">
-              <div className="lg:w-[90%] w-full">
-                <h1 className="font-semibold">Continue Shopping</h1>
-                <div className="flex items-center mt-3 w-full">
-                  <input
-                    type="text"
-                    placeholder="Discount Code"
-                    className="border border-[#908B8B] text-sm w-[60%] h-10 px-3 py-5 input"
-                  />
-                  <button className="bg-black text-white py-[12px] ml-3 px-10 text-xs">
-                    APPLY
-                  </button>
+          {/* other side  */}
+          <aside className="p-5 tablet:w-[50%] w-full bg-[#F7F6F6] min-h-[30vh]">
+            <div className="lg:w-[90%] w-full">
+              <h1 className="font-semibold">Continue Shopping</h1>
+              <div className="flex items-center mt-3 w-full">
+                <input
+                  type="text"
+                  placeholder="Discount Code"
+                  className="border border-[#908B8B] text-sm w-[60%] h-10 px-3 py-5 input"
+                />
+                <button className="bg-black text-white py-[12px] ml-3 px-10 text-xs">
+                  APPLY
+                </button>
+              </div>
+              <div className="w-full">
+                {cart?.map((obj: any, index) => (
+                  <div key={index}>
+                    <Card
+                      name={obj.name}
+                      size={obj.size}
+                      length={obj.length}
+                      quantity={obj.quantity}
+                      amount={obj[`${currency?.name}_price`]}
+                      image={obj.image}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="tablet:w-[85%] w-full mt-6 border-b border-[#00000037] pb-5">
+                <div className="flex justify-between mt-1">
+                  <h1 className="phone:text-sm text-xs font-semibold">
+                    SUBTOTAL
+                  </h1>
+                  <h1 className="phone:text-sm text-xs font-bold">
+                    {currency?.symbol}
+                    {numberWithCommas(allAmount)}
+                  </h1>
                 </div>
-                <div className="w-full">
-                  {cart?.map((obj: any, index) => (
-                    <div key={index}>
-                      <Card
-                        name={obj.name}
-                        size={obj.size}
-                        length={obj.length}
-                        quantity={obj.quantity}
-                        amount={obj[`${currency?.name}_price`]}
-                        image={obj.image}
-                      />
-                    </div>
-                  ))}
+                <div className="flex justify-between mt-1">
+                  <h1 className="phone:text-sm text-xs font-semibold">
+                    DISCOUNT
+                  </h1>
+                  <h1 className="font-bold phone:text-sm text-xs">
+                    -{currency?.symbol}0.00
+                  </h1>
                 </div>
-                <div className="tablet:w-[85%] w-full mt-6 border-b border-[#00000037] pb-5">
-                  <div className="flex justify-between mt-1">
-                    <h1 className="phone:text-sm text-xs font-semibold">
-                      SUBTOTAL
-                    </h1>
-                    <h1 className="phone:text-sm text-xs font-bold">
-                      {currency?.symbol}
-                      {numberWithCommas(allAmount)}
-                    </h1>
-                  </div>
-                  <div className="flex justify-between mt-1">
-                    <h1 className="phone:text-sm text-xs font-semibold">
-                      DISCOUNT
-                    </h1>
-                    <h1 className="font-bold phone:text-sm text-xs">
-                      -{currency?.symbol}0.00
-                    </h1>
-                  </div>
-                  <div className="flex justify-between mt-1">
-                    <h1 className="phone:text-sm text-xs font-semibold">
-                      SHIPPING{" "}
-                    </h1>
-                    <h1 className="font-bold phone:text-sm text-xs">
-                      {shipFee > 0 && currency?.symbol}
-                      {shipFee > 0 ? numberWithCommas(shipFee) : "-"}
-                    </h1>
-                  </div>
-                </div>
-
-                <div className="tablet:w-[85%] w-full mt-6">
-                  <div className="flex justify-between mt-1">
-                    <h1 className="phone:text-sm text-xs font-bold">TOTAL</h1>
-                    <h1 className="font-extrabold phone:text-sm text-xs">
-                      {currency?.symbol}
-                      {numberWithCommas(allAmount + shipFee)}
-                    </h1>
-                  </div>
+                <div className="flex justify-between mt-1">
+                  <h1 className="phone:text-sm text-xs font-semibold">
+                    SHIPPING{" "}
+                  </h1>
+                  <h1 className="font-bold phone:text-sm text-xs">
+                    {shipFee > 0 && currency?.symbol}
+                    {shipFee > 0 ? numberWithCommas(shipFee) : "-"}
+                  </h1>
                 </div>
               </div>
-            </aside>
-          </section>
+
+              <div className="tablet:w-[85%] w-full mt-6">
+                <div className="flex justify-between mt-1">
+                  <h1 className="phone:text-sm text-xs font-bold">TOTAL</h1>
+                  <h1 className="font-extrabold phone:text-sm text-xs">
+                    {currency?.symbol}
+                    {numberWithCommas(allAmount + shipFee)}
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </aside>
         </section>
-      )}
+      </section>
+      ){/* } */}
     </main>
   );
 }

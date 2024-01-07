@@ -10,6 +10,7 @@ const config: Config = {
     screens: {
       '3xl': '1700px',
       '2xl': '1500px',
+      'laptop': "1400px",
       'xl': '1280px',
       'lg': '1024px',
       'tablet': '850px',

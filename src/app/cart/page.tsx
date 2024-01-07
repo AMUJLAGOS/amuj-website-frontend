@@ -47,7 +47,7 @@ function Cart({ quantity, amount, slug }: any) {
           <p className="text-sm mt-2">
             Taxes and shipping calculated at checkout
           </p>
-          <Link href={"/checkout"} target="_blank">
+          <Link href={"/checkout"}>
             <button className=" mt-4 w-full bg-black text-white sm:py-4  py-5">
               CHECKOUT
             </button>

@@ -18,11 +18,11 @@ function Brand() {
         </div> */}
         <div className="tablet:w-[840px] w-[90%] m-auto">
           <div className="text-sm">
-            <h1 className="test-md font-bold tablet:text-left text-center">
+            <h1 className="test-md text-lg font-bold tablet:text-left text-center">
               MEET JUMAI
             </h1>
             <br />
-            <h1 className="tracking-[0.5px]">
+            <h1 className="tracking-[1px] font-normal text-justify text-xs">
               Jumai launched AMUJ in July 2022. Her goal was simple: Establish a
               continuous-experimentation fashion company that leads in
               innovative designs, quality and value, but has sexiness,
@@ -32,7 +32,7 @@ function Brand() {
               profoundly sentimental and admired by a broad global audience.
             </h1>
             <br />
-            <h1 className="tracking-[0.5px]">
+            <h1 className="tracking-[1px] font-normal text-justify text-xs">
               Having shuttled between Nigeria and Ghana during her early
               education days and taken sewing lessons for years, Jumai travelled
               to Canada for her foundation, and then to Brunel University in
@@ -44,7 +44,7 @@ function Brand() {
               production.
             </h1>
             <br />
-            <h1 className="tracking-[0.5px]">
+            <h1 className="tracking-[1px] font-normal text-justify text-xs">
               In her pursuit of furthering her fashion education, she decided to
               pursue a Master's in International Fashion Design Management at
               the University of Huddersfield, a city known as the home of most

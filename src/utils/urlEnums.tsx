@@ -8,4 +8,5 @@ export const enum allRoutes {
   SUBSCRIBE = "subscribe",
   CONTACT = "contact/create",
   HOME_PRODUCTS = "products/home",
+  IG_IMAGE = "instagram",
 }

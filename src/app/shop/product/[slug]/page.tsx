@@ -128,7 +128,10 @@ function ProductDetails() {
       localStorage.setItem("amujCart", JSON.stringify(updatedCart));
       setCart(updatedCart);
     }
-    toast.success("Added to cart", { position: "top-center" });
+    toast.success("Added to cart", {
+      position: "top-center",
+      hideProgressBar: true,
+    });
   };
 
   return (

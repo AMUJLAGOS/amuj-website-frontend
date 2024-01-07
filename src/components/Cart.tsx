@@ -68,13 +68,13 @@ function Cart({ hideCart, show }: any) {
         <>
           <div className="border-b mt-2 border-black w-[85%]"></div>
           <div className="flex  justify-between w-[85%] items-center mt-5">
-            <h1 className="text-[16px] font-semibold">TOTAL</h1>
-            <h1 className="text-xl font-bold">
+            <h1 className="text-[14px] font-semibold">TOTAL</h1>
+            <h1 className="text-sm font-bold">
               {currency?.symbol}
               {numberWithCommas(allAmount)}
             </h1>
           </div>
-          <div className="mt-7 sm:flex-row flex-col flex justify-between w-[80%] text-[15px]">
+          <div className="mt-5 sm:flex-row flex-col flex justify-between w-[80%] text-[15px]">
             <button
               onClick={() => hideCart()}
               className="border border-black sm:py-1 py-2 sm:px-12"
@@ -83,7 +83,7 @@ function Cart({ hideCart, show }: any) {
             </button>
             <Link
               href={"/cart"}
-              className="sm:mt-0 mt-4 bg-black text-white text-center sm:py-1 py-2 sm:px-14"
+              className="sm:mt-0 mt-3 bg-black text-white text-center sm:py-1 py-2 sm:px-14"
             >
               CHECKOUT
             </Link>

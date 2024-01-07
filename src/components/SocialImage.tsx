@@ -1,15 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
+import { imageServer } from "@/utils/urlhandler";
 import React from "react";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { PiInstagramLogo } from "react-icons/pi";
 
-function SocialImage() {
+function SocialImage({ image }: any) {
   return (
-    <div className="md:w-[25%] w-[130px] relative social">
+    <div className="relative social">
       <img
-        src="/ig_image.jpg"
+        src={`${imageServer}${image}`}
         alt="social media"
-        className=" md:h-[360px] h-[180px] w-[100%] object-cover"
+        className="md:h-[360px] h-[150px] w-[100%] object-cover"
       />
       <div className="absolute w-[100%] h-[100%] bg-[#00000060] flex items-center justify-center insta top-0">
         <PiInstagramLogo className="text-[white]" size={80} />

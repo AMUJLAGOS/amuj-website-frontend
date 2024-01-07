@@ -22,7 +22,7 @@ import { useCurrency } from "@/components/CurrencyContext";
 export default function Home() {
   const all = ["/collectionII_big.jpg", "/banner1.jpg"];
   const [newArrival, setNewArrival]: any = useState([]);
-  const [arrange, setArranged]: any = useState([]);
+  const [ig_image, setIgImage]: any = useState([]);
   const [showProduct, setShowProduct] = useState(false);
   const [productDetails, setProductDetails] = useState({
     name: "",
@@ -37,12 +37,18 @@ export default function Home() {
 
   const getNewArrival = async () => {
     const response = await GetRequest(allRoutes.HOME_PRODUCTS);
-    console.log(response);
+    // console.log(response);
     setNewArrival(response.data);
+  };
+
+  const getIgImage = async () => {
+    const response = await GetRequest(allRoutes.IG_IMAGE);
+    setIgImage(response.data);
   };
 
   useEffect(() => {
     getNewArrival();
+    getIgImage();
   }, []);
 
   const showDetails = () => {
@@ -292,11 +298,14 @@ export default function Home() {
             TAG @AMUJOFFICIAL TO BE FEATURED ON OUR INSTAGRAM
           </h1>
           <Spacer height={20} />
-          <div className="flex flex-wrap 3xl:w-[1700px] 2xl:w-[1500] xl:w-[1280px] w-[90%] justify-between m-auto">
+          <div className="socilMedia 3xl:w-[1700px] 2xl:w-[1500] w-full m-auto">
+            {ig_image?.map((obj: any, index: any) => (
+              <SocialImage key={index} image={obj.image} />
+            ))}
+            {/* <SocialImage />
             <SocialImage />
             <SocialImage />
-            <SocialImage />
-            <SocialImage />
+            <SocialImage /> */}
           </div>
         </div>
       </section>

@@ -32,6 +32,27 @@ body {
   background: #ffffff;
 }
 
+/* for instagram  */
+
+.socilMedia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+
+.socilMedia div {
+  width: calc(25% - 1px);
+}
+
+
+@media (max-width: 450px) { 
+  .socilMedia div {
+    width: calc(33.334% - 1px);
+  }
+}
+
+
+
 .input {
   outline: none;
   background: none;
