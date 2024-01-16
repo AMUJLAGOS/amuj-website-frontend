@@ -85,12 +85,10 @@ function SideBar({ showFunc, show }: any) {
           {showCampaignOpts && (
             <div className={`${styles.sidebarOptions}`}>
               <li>
-                <Link href={"/shop/campaigns/collection-ii"}>
-                  COLLECTION II
-                </Link>
+                <Link href={"/campaign/collection-ii"}>COLLECTION II</Link>
               </li>
               <li>
-                <Link href={"/shop/campaigns/collection-i"}>COLLECTION I</Link>
+                <Link href={"/campaign/collection-i"}>COLLECTION I</Link>
               </li>
             </div>
           )}

@@ -117,7 +117,7 @@ export default function Home() {
         </div>
 
         {/* mobile  */}
-        <div className="sm:hidden relative block h-[98vh] w-full">
+        <div className="sm:hidden relative block h-[90vh] w-full">
           <img
             src="/mobile-banner.jpg"
             alt=""

@@ -3,6 +3,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Lato } from "next/font/google";
 import CurrencyContext from "@/components/CurrencyContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
@@ -24,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lato.className}`}>
+        <ToastContainer />
         <CartContext>
           <CurrencyContext> {children}</CurrencyContext>
         </CartContext>

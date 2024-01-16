@@ -107,8 +107,8 @@ function CheckOut() {
     items: itemList,
     quantity: 2,
     phone_number: phone_number,
-    // reference: paymentRef,
-    reference: "HHHHHH",
+    reference: paymentRef,
+    // reference: "HHHHHH",
     post_code: post_code,
     discount_price: 0,
   };
@@ -503,27 +503,27 @@ function CheckOut() {
                   </div>
                 </div>
 
-                <button onClick={() => setPaySuccessful(!paySuccessful)}>
+                {/* <button onClick={() => setPaySuccessful(!paySuccessful)}>
                   Pay
-                </button>
+                </button> */}
 
-                {/* {currency?.code === "NGN" ? (
-                    <Paystack
-                      amount={allAmount + shipFee}
-                      email={email}
-                      successful={setPaySuccessful}
-                      payRef={setPaymentRef}
-                    />
-                  ) : (
-                    <button
-                      onClick={() => {
-                        setShowStripe(true);
-                      }}
-                      className="mt-7 bg-black text-white sm:py-4 px-28 py-5"
-                    >
-                      Continue to Payment
-                    </button>
-                  )} */}
+                {currency?.code === "NGN" ? (
+                  <Paystack
+                    amount={allAmount + shipFee}
+                    email={email}
+                    successful={setPaySuccessful}
+                    payRef={setPaymentRef}
+                  />
+                ) : (
+                  <button
+                    onClick={() => {
+                      setShowStripe(true);
+                    }}
+                    className="mt-7 bg-black text-white sm:py-4 px-28 py-5"
+                  >
+                    Continue to Payment
+                  </button>
+                )}
               </div>
             )}
           </aside>

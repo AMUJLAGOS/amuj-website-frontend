@@ -11,11 +11,15 @@ import Image from "next/image";
 function Brand() {
   return (
     <main className="box-border overflow-hidden">
-      <Header />
+      <Header home={"home"} />
+      <div className="w-full">
+        <img
+          src="/amuj-hanger.jpg"
+          alt=""
+          className="h-[800px] w-full object-cover"
+        />
+      </div>
       <section className="mt-14 items-center">
-        {/* <div className="w-[30%]">
-          <img src="/amuj.png" alt="" className="h-[400px] object-cover" />
-        </div> */}
         <div className="tablet:w-[840px] w-[90%] m-auto">
           <div className="text-sm">
             <h1 className="test-md text-lg font-bold tablet:text-left text-center">
@@ -55,7 +59,7 @@ function Brand() {
             </h1>
           </div>
         </div>
-        <div className="relative h-[320px] w-full mt-10">
+        {/* <div className="relative h-[320px] w-full mt-10">
           <Image
             src={"/brandfull.png"}
             alt={"brand image"}
@@ -64,12 +68,20 @@ function Brand() {
             objectFit="cover"
             className="object-bottom"
           />
+        </div> */}
+
+        <div className="mt-10">
+          <img
+            src="/amujj.png"
+            alt=""
+            className="w-full h-[300px] object-cover"
+          />
         </div>
 
         <div className="tablet:w-[840px] w-[90%] m-auto mt-10">
           <div className="text-sm">
-            <h1 className="font-bold tablet:text-left text-center">AMUJ</h1>
-            <br />
+            {/* <h1 className="font-bold tablet:text-left text-center">AMUJ</h1> */}
+            {/* <br /> */}
             <p className="tracking-[0.5px]">
               Established in 2022, AMUJ creates purposefully-crafted pieces that
               make women feel confident, sexy, and love their bodies more. It
@@ -88,7 +100,7 @@ function Brand() {
             </p>
           </div>
         </div>
-        <div className="relative h-[320px] w-full mt-10">
+        {/* <div className="relative h-[320px] w-full mt-10">
           <Image
             src={"/brandfull.png"}
             alt={"brand image"}
@@ -97,15 +109,19 @@ function Brand() {
             objectFit="cover"
             className="object-bottom"
           />
+
+        </div> */}
+        <div className="mt-10">
+          <img src="/creativeHub.gif" alt="" className="w-full object-cover" />
         </div>
 
         <div className="tablet:w-[840px] w-[90%] m-auto mt-10">
           <div className="mt-16">
             <div className="text-sm">
-              <h1 className="font-bold tablet:text-left text-center">
+              {/* <h1 className="font-bold tablet:text-left text-center">
                 CREATIVE HUB
-              </h1>
-              <br />
+              </h1> */}
+              {/* <br /> */}
               <p className="tracking-[0.5px]">
                 Members of our team are sourced from all over the country to
                 find the best individuals who align with the mission and vision
