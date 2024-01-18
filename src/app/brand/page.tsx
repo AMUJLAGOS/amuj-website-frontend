@@ -27,25 +27,26 @@ function Brand() {
             </h1>
             <br />
             <h1 className="tracking-[1px] font-normal text-justify text-xs">
-              Jumai launched AMUJ in July 2022. Her goal was simple: Establish a
+              Jumai launched AMUJ in July 2022 as a multi-platform creative and
+              activism endeavour. Her goal was simple: Establish a
               continuous-experimentation fashion company that leads in
               innovative designs, quality and value, but has sexiness,
-              confidence and the celebration of women as its main medium.
-              Jumai’s visionary approach to creativity remains radical and often
-              termed “trouble making to conservative society.” Yet, it is
-              profoundly sentimental and admired by a broad global audience.
+              confidence, and the celebration of women as its main medium.
+              Jumai’s visionary approach to creativity and activism remains
+              radical and often termed “troublemaking to conservative society.”
+              Yet it is profoundly sentimental and admired by a broad global
+              audience.
             </h1>
             <br />
             <h1 className="tracking-[1px] font-normal text-justify text-xs">
               Having shuttled between Nigeria and Ghana during her early
               education days and taken sewing lessons for years, Jumai travelled
               to Canada for her foundation, and then to Brunel University in
-              London to study Accounting. Despite not pursuing a formal fashion
-              education, she did a lot of fashion internships to gain industry
-              experience and her passion for design was evident as she had
-              design sketches plastered all over her dorm room — an exercise she
-              indulged in frequently due to her deep love for design and
-              production.
+              London to study Accounting. During this time, she did a lot of
+              fashion internships to gain industry experience, and her passion
+              for design was evident as she had design sketches plastered all
+              over her dorm room — an exercise she indulged in frequently due to
+              her deep love for design and production.
             </h1>
             <br />
             <h1 className="tracking-[1px] font-normal text-justify text-xs">
@@ -54,8 +55,8 @@ function Brand() {
               the University of Huddersfield, a city known as the home of most
               textile mills in the UK. Since the inception of AMUJ, Jumai has
               been dedicated to translating her wealth of knowledge and
-              expertise into a creative system that inspires women and
-              celebrates their femininity.
+              expertise into a creative system that enables women and celebrates
+              their femininity.
             </h1>
           </div>
         </div>
@@ -82,7 +83,7 @@ function Brand() {
           <div className="text-sm">
             {/* <h1 className="font-bold tablet:text-left text-center">AMUJ</h1> */}
             {/* <br /> */}
-            <p className="tracking-[0.5px]">
+            <p className="tracking-[0.5px] text-xs text-justify">
               Established in 2022, AMUJ creates purposefully-crafted pieces that
               make women feel confident, sexy, and love their bodies more. It
               goes beyond clothing to inspire self-assuredness, esteem, and
@@ -92,7 +93,7 @@ function Brand() {
               identities and unique experiences.
             </p>
             <br />
-            <p className="tracking-[0.5px]">
+            <p className="tracking-[0.5px] text-xs text-justify">
               AMUJ's role in society is to curate a fashion narrative that not
               only celebrates women, but sparks a transformative journey where
               women discover the power of self-expression through
@@ -114,24 +115,24 @@ function Brand() {
         <div className="mt-10">
           <img src="/creativeHub.gif" alt="" className="w-full object-cover" />
         </div>
+        <h1 className="font-bold text-center mt-3">#MadeInLagos</h1>
 
-        <div className="tablet:w-[840px] w-[90%] m-auto mt-10">
-          <div className="mt-16">
+        <div className="tablet:w-[840px] w-[90%] m-auto">
+          <div className="mt-10">
             <div className="text-sm">
               {/* <h1 className="font-bold tablet:text-left text-center">
                 CREATIVE HUB
               </h1> */}
               {/* <br /> */}
-              <p className="tracking-[0.5px]">
-                Members of our team are sourced from all over the country to
-                find the best individuals who align with the mission and vision
-                of the brand. We come together, each expressing creative
-                freedom, purposefulness, and craftsmanship, to craft pieces that
-                make AMUJ both an empowerment catalyst and a cultural curator.
-                With each piece, we pay meticulous attention to the smallest of
-                details, ensuring the best fit, feel, and quality. This intimate
-                fashion affair takes place in our Lekki design studio, in Lagos,
-                Nigeria.
+              <p className="tracking-[0.5px] text-xs text-justify">
+                Our team is sourced from all over the country to find the best
+                individuals who align with the mission and vision of the brand.
+                We come together, each expressing creative freedom,
+                purposefulness, and craftsmanship, to craft pieces that make
+                AMUJ a cultural curator. With each piece, we pay meticulous
+                attention to the smallest of details, ensuring the best fit,
+                feel, and quality. This intimate fashion affair takes place in
+                our Lekki design studio, here in Lagos, Nigeria.
               </p>
             </div>
           </div>

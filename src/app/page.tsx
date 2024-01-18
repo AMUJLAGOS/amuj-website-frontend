@@ -117,7 +117,7 @@ export default function Home() {
         </div>
 
         {/* mobile  */}
-        <div className="sm:hidden relative block h-[90vh] w-full">
+        <div className="sm:hidden relative block h-[80vh] w-full">
           <img
             src="/mobile-banner.jpg"
             alt=""
@@ -156,14 +156,16 @@ export default function Home() {
         {/* mobile  */}
         <div className="sm:hidden block mt-5 ml-4">
           <div className="flex items-center">
-            <h1 className="mr-3  mt-1 text-[10px] text-[#262626]">NEW IN</h1>
+            <h1 className="mr-3 text-[10px] text-[#262626]">
+              <Link href={"/new-in"}>NEW IN</Link>
+            </h1>
             <GoArrowRight color={"#262626"} className="text-sm" />
           </div>
 
-          <div className="flex items-center text-left">
+          {/* <div className="flex items-center text-left">
             <h1 className="mr-3 mt-1 text-[10px] text-[#262626]">CAMPAIGNS</h1>
             <GoArrowRight color={"#262626"} className="text-sm" />
-          </div>
+          </div> */}
         </div>
         {/* collection  1  */}
         <div className="sm:hidden mt-4 flex flex-col justify-center items-center">
