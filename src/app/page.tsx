@@ -20,7 +20,7 @@ import { allRoutes } from "@/utils/urlEnums";
 import { useCurrency } from "@/components/CurrencyContext";
 
 export default function Home() {
-  const all = ["/collectionII_big.jpg", "/banner1.jpg"];
+  // const all = ["/collectionII_big.jpg", "/banner1.jpg"];
   const [newArrival, setNewArrival]: any = useState([]);
   const [ig_image, setIgImage]: any = useState([]);
   const [showProduct, setShowProduct] = useState(false);

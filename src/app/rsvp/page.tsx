@@ -39,7 +39,16 @@ function RSVP() {
   return (
     <main>
       <div className="relative">
-        <img src="/rsvp.png" alt="" className="h-[100vh] w-full object-cover" />
+        <img
+          src="/rsvp.png"
+          alt=""
+          className="h-[100vh] w-full object-cover phone:block hidden"
+        />
+        <img
+          src="/rsvp_mobile.png"
+          alt=""
+          className="h-[100vh] w-full object-cover phone:hidden block"
+        />
         {confirmed ? (
           <Link
             href={"/rsvp/form"}

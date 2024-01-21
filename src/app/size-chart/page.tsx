@@ -11,7 +11,7 @@ function SizeChart() {
   return (
     <main className="box-border overflow-hidden">
       <Header />
-      <section className="text-center w-[650px] m-auto mt-12">
+      <section className="text-center sm:w-[640px] m-auto mt-12">
         <h1 className="sm:text-base text-sm font-bold">SIZE CHART</h1>
         <div className="relative">
           {/* <Image

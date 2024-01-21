@@ -4,6 +4,7 @@ import { PostRequest } from "@/utils/urlhandler";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 function RSVP() {
   const [name, setName] = useState("");
@@ -32,6 +33,20 @@ function RSVP() {
   const submitHandler = async () => {
     const response = await PostRequest("rsvp/form", formData);
     console.log(response);
+    if (response.status === 201) {
+      toast.success("Data recieved, an email will be sent to you", {
+        position: "top-center",
+        hideProgressBar: true,
+      });
+      setName("");
+      setEmail("");
+      setTelephone("");
+      setDiet("");
+      guest_setName("");
+      guest_setEmail("");
+      guest_setTelephone("");
+      guest_setDiet("");
+    }
   };
 
   useEffect(() => {

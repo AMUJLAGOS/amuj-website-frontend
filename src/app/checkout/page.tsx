@@ -22,6 +22,7 @@ import Paystack from "@/components/Paystack";
 import Stripe from "@/components/CheckoutForm";
 import ShowStripe from "@/components/ShowStripe";
 import * as countryData from "country-list-js";
+import { FaCheck } from "react-icons/fa6";
 
 // payment
 
@@ -196,7 +197,7 @@ function CheckOut() {
       if (showStripe) {
         setShowStripe(false);
       }
-      // localStorage.setItem("amujCart", JSON.stringify([]));
+      localStorage.setItem("amujCart", JSON.stringify([]));
     }
   }, [paySuccessful]);
 
@@ -403,14 +404,14 @@ function CheckOut() {
                   </h1>
                   <div className=" phone:flex justify-between mt-4 border border-black p-5 items-start">
                     <div className="flex items-start w-full justify-between">
-                      <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        checked={deliveryTerms}
-                        onChange={(e) => setDeliveryTerms(!deliveryTerms)}
-                        className="mt-1"
-                      />
+                      <div
+                        className={`flex justify-center items-center h-4 w-4 mt-1 rounded-sm border border-black cursor-pointer ${
+                          deliveryTerms && "bg-black"
+                        } `}
+                        onClick={() => setDeliveryTerms(!deliveryTerms)}
+                      >
+                        {deliveryTerms && <FaCheck size={10} color={"#fff"} />}
+                      </div>
                       <div className="phone:flex justify-between w-full items-start">
                         <div className="ml-2">
                           <h1 className="phone:text-base text-sm">
@@ -490,14 +491,15 @@ function CheckOut() {
                   </h1>
 
                   <div className="flex mt-4 border border-black p-5 items-start">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id=""
-                      checked={payMethod}
-                      onChange={(e) => setPayMethod(!payMethod)}
-                      className="mt-1"
-                    />
+                    <div
+                      className={`flex justify-center items-center h-4 w-4 mt-1 rounded-sm border border-black cursor-pointer ${
+                        payMethod && "bg-black"
+                      } `}
+                      onClick={() => setPayMethod(!payMethod)}
+                    >
+                      {payMethod && <FaCheck size={10} color={"#fff"} />}
+                    </div>
+
                     <div className="ml-9">
                       <h1 className="phone:text-base text-sm">
                         {currency?.code === "NGN" ? "Paystack" : "Stripe"}
