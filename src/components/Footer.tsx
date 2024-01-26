@@ -119,7 +119,7 @@ function Footer() {
             <div className="flex justify-between">
               <div className={`${styles.footer_link}`}>
                 <Link href={""}>Privacy Policy</Link>
-                <Link href={""}>Shipping Policy</Link>
+                <Link href={"/shipping"}>Shipping Policy</Link>
               </div>
             </div>
           </div>

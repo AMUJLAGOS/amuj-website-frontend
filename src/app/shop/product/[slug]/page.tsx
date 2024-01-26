@@ -334,15 +334,17 @@ function ProductDetails() {
                 ></div>
               )}
             </div>
-            <div
-              className="border-b border-[#908B8B] py-2 cursor-pointer"
-              onClick={() => {}}
-            >
-              <div className="flex items-center justify-between">
-                <h1 className="text-xs">SHIPPING AND RETURNS</h1>
-                <MdNavigateNext />
+            <Link href={"/shipping"}>
+              <div
+                className="border-b border-[#908B8B] py-2 cursor-pointer"
+                onClick={() => {}}
+              >
+                <div className="flex items-center justify-between">
+                  <h1 className="text-xs">SHIPPING AND RETURNS</h1>
+                  <MdNavigateNext />
+                </div>
               </div>
-            </div>
+            </Link>
             <Link href={"/faqs"}>
               <div
                 className="border-b border-[#908B8B] py-2 cursor-pointer"
