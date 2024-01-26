@@ -64,12 +64,12 @@ function ShopCard({
               <img
                 src={`${imageServer}${hImage}`}
                 alt={name}
-                className="shop_image1 tablet:h-[540px] sm:h-[300px] h-[220px] w-full"
+                className="shop_image1 tablet:h-[540px] sm:h-[320px] h-[280px] w-full"
               />
               <img
                 src={`${imageServer}${image}`}
                 alt={name}
-                className="shop_image2 tablet:h-[540px] sm:h-[300px] h-[220px] w-full"
+                className="shop_image2 tablet:h-[540px] sm:h-[320px] h-[280px] w-full"
               />
             </div>
           </Link>

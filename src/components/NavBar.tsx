@@ -38,7 +38,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
     return () => {
       document.removeEventListener("mousedown", hideShop);
     };
-  });
+  }, []);
 
   useEffect(() => {
     const hideCurrency = (e: any) => {
@@ -52,7 +52,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
     return () => {
       document.removeEventListener("mousedown", hideCurrency);
     };
-  });
+  }, []);
 
   // currency
 
