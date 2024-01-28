@@ -505,7 +505,9 @@ function CheckOut() {
                         {currency?.code === "NGN" ? "Paystack" : "Stripe"}
                       </h1>
                       <p className="phone:text-base text-sm mt-1">
-                        Nigerian Banks or International Payments
+                        {currency?.code === "NGN"
+                          ? "Nigerian Banks or International Payments"
+                          : "International Payments"}
                       </p>
                     </div>
                   </div>
