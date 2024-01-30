@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { GrLinkNext } from "react-icons/gr";
 import { PiInstagramLogo } from "react-icons/pi";
-import { GrTwitter } from "react-icons/gr";
 import { FaFacebookF } from "react-icons/fa";
 import styles from "../styles/HeaderFooter.module.css";
 import Link from "next/link";
@@ -12,6 +11,7 @@ import { allRoutes } from "@/utils/urlEnums";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "./Spinner";
+import { FaXTwitter } from "react-icons/fa6";
 // import validator from "validator";
 
 function Footer() {
@@ -74,7 +74,7 @@ function Footer() {
           <div className="mt-8 hidden tablet:flex justify-between">
             <div className="flex justify-between w-[130px]">
               <button className="border border-black p-1 rounded-full">
-                <GrTwitter size={20} />
+                <FaXTwitter size={20} />
               </button>
               <button className="border border-black p-1 rounded-full">
                 <FaFacebookF size={20} />
@@ -127,7 +127,7 @@ function Footer() {
         <div className="mt-8 flex justify-between tablet:hidden w-[90%]">
           <div className="flex justify-between phone:w-[180px] w-[35%]">
             <button className="border border-black p-1 rounded-full phone:text-[20px]">
-              <GrTwitter />
+              <FaXTwitter />
             </button>
             <button className="border border-black p-1 rounded-full phone:text-[20px]">
               <FaFacebookF />

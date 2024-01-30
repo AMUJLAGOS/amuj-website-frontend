@@ -223,9 +223,13 @@ function CheckOut() {
       </div>
       {/* <Header /> */}
       {paySuccessful ? (
-        <div className="text-center mt-10">
-          <h1 className="text-2xl">Payment successful!</h1>
-          <p>We are proceessing your order, you will recieve an email</p>
+        <div className="text-center mt-10 w-[90%] m-auto">
+          <h1 className="phone:text-2xl text-lg font-semibold">
+            Payment successful!
+          </h1>
+          <p className="phone:text-base text-sm">
+            We are proceessing your order, you will recieve an email
+          </p>
           <Link href={"/"} className="underline">
             Continue shoping
           </Link>
@@ -528,7 +532,7 @@ function CheckOut() {
                       onClick={() => {
                         setShowStripe(true);
                       }}
-                      className="mt-7 bg-black text-white sm:py-4 px-28 py-5"
+                      className="mt-7 bg-black text-white sm:py-4 phone:px-28 phone:w-auto w-full py-5"
                     >
                       Continue to Payment
                     </button>
