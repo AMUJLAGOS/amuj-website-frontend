@@ -48,9 +48,10 @@ function CheckOut() {
   const [post_code, setPostalCode] = useState("");
   const [state, setState] = useState("");
   const [continentS, setContinent] = useState("");
-  const [deliveryTerms, setDeliveryTerms]: any = useState(false);
-  const [payMethod, setPayMethod]: any = useState(false);
-  const [shipFee, setShipFee]: any = useState(0);
+  const [deliveryTerms, setDeliveryTerms] = useState<boolean>(false);
+  const [payMethod, setPayMethod] = useState<boolean>(false);
+  const [shipFee, setShipFee] = useState(0);
+  const [orderDetails, setOrderDetails]: any = useState([]);
 
   const handleContinue = () => {
     if (
@@ -116,7 +117,9 @@ function CheckOut() {
 
   const handleSubmit = async () => {
     const response = await PostRequest("order", data);
-    console.log(response);
+    if (response.status === 201) {
+      setOrderDetails(response.data);
+    }
   };
 
   const [shipData, setShipData]: any = useState();
@@ -224,15 +227,67 @@ function CheckOut() {
       {/* <Header /> */}
       {paySuccessful ? (
         <div className="text-center mt-10 w-[90%] m-auto">
-          <h1 className="phone:text-2xl text-lg font-semibold">
-            Payment successful!
+          <h1 className="phone:text-2xl text-lg font-bold">
+            Payment Successful!
           </h1>
-          <p className="phone:text-base text-sm">
-            We are proceessing your order, you will recieve an email
+          <p className="phone:text-base text-sm text-center">
+            Thank you for your order! Please check your email for the
+            confirmation details.
           </p>
-          <Link href={"/"} className="underline">
-            Continue shoping
-          </Link>
+
+          <div className="sm:w-[600px] w-[95%] m-auto mt-5">
+            <div className="">
+              <h1 className="phone:text-lg text-sm font-semibold">
+                Order Summary
+              </h1>
+              {orderDetails.items?.map((data: any, index: number) => (
+                <div
+                  key={index}
+                  className="flex justify-between mt-5 items-center text-sm"
+                >
+                  <img src={data.image} alt="" className="h-20" />
+                  <h1>
+                    <span className="font-bold">Size</span> -{" "}
+                    <span className="text-xs">{data.size}</span>
+                  </h1>
+                  <h1>
+                    <span className="font-bold">Qty</span> -{" "}
+                    <span className="text-xs">{data.quantity}</span>
+                  </h1>
+                  <span className="text-xs">
+                    {currency?.symbol}
+                    {data.price}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between mt-3 text-sm">
+              <h1>Subtotal:</h1>
+              <h1>
+                {currency?.symbol}
+                {orderDetails.sub_total}
+              </h1>
+            </div>
+            <div className="flex justify-between mt-3 text-sm">
+              <h1>Delivery:</h1>
+              <h1>
+                {currency?.symbol}
+                {orderDetails.shipping_price}
+              </h1>
+            </div>
+            <div className="flex justify-between mt-3 text-sm">
+              <h1>Total:</h1>
+              <h1>
+                {currency?.symbol}
+                {orderDetails.total}
+              </h1>
+            </div>
+          </div>
+          <div className="mt-7">
+            <Link href={"/"} className="underline">
+              Continue shoping
+            </Link>
+          </div>
         </div>
       ) : (
         <section className="justify-end flex">

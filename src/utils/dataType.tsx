@@ -1,6 +1,8 @@
 //
 
-export interface AddCart {
+import { ReactNode } from "react";
+
+export type AddCart = {
   name: string;
   slug: string;
   image: string;
@@ -11,7 +13,7 @@ export interface AddCart {
   pounds_price: number;
   dollar_price: number;
   quantity: number;
-}
+};
 
 export interface Currency {
   name: string;
@@ -19,12 +21,10 @@ export interface Currency {
   symbol: string;
 }
 
-const newCart = {
-  name: "",
-  slug: ``,
-  image: "",
-  size: "",
-  length: "",
-  price: 0,
-  quantity: 0,
+export type FaqContainer = {
+  id: string;
+  currentOpen: string;
+  setCurrentOpen: React.Dispatch<React.SetStateAction<string | null>>;
+  children: ReactNode;
+  title: string;
 };

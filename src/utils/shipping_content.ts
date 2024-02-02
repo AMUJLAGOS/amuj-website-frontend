@@ -8,7 +8,7 @@ export const shipping = [
   {
     "id": 2,
     "title": "International Delivery Info",
-    "answer": "<p>7-15 working days&nbsp;</p>\r\n\r\n<p>Express and Special delivery services are not available for international orders.&nbsp;</p>\r\n\r\n<p>Additional duties and taxes may occur depending on the region you live in. <strong>We are not responsible for additional shipping charges incurred upon delivery and will not accept returns or issue refunds on orders that were not received due to unpaid duties and taxes.</strong></p>"
+    "answer": "<p>7-15 working days&nbsp;</p>\r\n\r\n<p>Express and Special delivery services are not available for international orders.&nbsp;</p>\r\n\r\n<p>Additional duties and taxes may occur depending on the region you live in. &nbsp; <p><strong>We are not responsible for additional shipping charges incurred upon delivery and will not accept returns or issue refunds on orders that were not received due to unpaid duties and taxes.</strong></p></p>"
   },
   {
     "id": 3,

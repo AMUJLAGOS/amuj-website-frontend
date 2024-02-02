@@ -4,25 +4,17 @@
 import FaqsContainer from "@/components/FaqsContainer";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Spacer from "@/components/Spacer";
-import { GetRequest } from "@/utils/urlhandler";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { shipping } from "@/utils/shipping_content";
 
 function Shipping() {
   const [currentOpen, setCurrentOpen]: any = useState(null);
   const [data, setData]: any = useState([]);
-  // const getData = async () => {
-  //   const response = await GetRequest("shipping_policies");
-  //   console.log(response);
-  //   setData(response.data);
-  // };
+
   useEffect(() => {
-    // getData();
     setData(shipping);
   }, []);
+
   return (
     <main className="box-border overflow-hidden">
       <Header />
@@ -41,7 +33,7 @@ function Shipping() {
               title={obj.title}
             >
               <div
-                className="text-xs"
+                className="text-xs leading-[20px]"
                 dangerouslySetInnerHTML={{ __html: obj.answer }}
               ></div>
             </FaqsContainer>

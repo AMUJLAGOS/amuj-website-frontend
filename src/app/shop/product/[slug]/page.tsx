@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { MdNavigateNext } from "react-icons/md";
-import Spacer from "@/components/Spacer";
 import Footer from "@/components/Footer";
 import { IoIosArrowDown } from "react-icons/io";
 import { Slide } from "react-slideshow-image";
@@ -20,10 +19,10 @@ import { useParams } from "next/navigation";
 import { GetRequest, imageServer } from "@/utils/urlhandler";
 import { allRoutes } from "@/utils/urlEnums";
 import { numberWithCommas } from "@/utils/functionHelper";
-import { toast } from "react-toastify";
 import { useCart } from "@/components/CartContext";
 import { useCurrency } from "@/components/CurrencyContext";
 import { AddCart } from "@/utils/dataType";
+import { toast } from "sonner";
 
 function ProductDetails() {
   const { slug } = useParams() as { slug: string };
@@ -130,7 +129,6 @@ function ProductDetails() {
     }
     toast.success("Added to cart", {
       position: "top-center",
-      hideProgressBar: true,
     });
   };
 
@@ -149,7 +147,7 @@ function ProductDetails() {
               duration={10000}
               {...properties}
             >
-              {images?.map((image: any, index: any) => (
+              {images?.map((image: any, index: number) => (
                 <div
                   key={index}
                   className="lg:h-[550px] h-[500px] w-full relative"

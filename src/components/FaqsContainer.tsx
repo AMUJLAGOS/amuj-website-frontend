@@ -1,3 +1,4 @@
+import { FaqContainer } from "@/utils/dataType";
 import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
@@ -7,7 +8,7 @@ function FaqsContainer({
   setCurrentOpen,
   children,
   title,
-}: any) {
+}: FaqContainer) {
   const isVisible = currentOpen === id;
   const toggleVisibility = () => {
     setCurrentOpen(isVisible ? null : id);
@@ -18,7 +19,7 @@ function FaqsContainer({
       onClick={toggleVisibility}
     >
       <div className="flex justify-between cursor-pointer font-semibold">
-        <h1 className="font-medium">{title}</h1>
+        <h1 className="font-bold text-xs uppercase">{title}</h1>
         <button>
           {!isVisible ? (
             <AiOutlinePlus size={17} />
