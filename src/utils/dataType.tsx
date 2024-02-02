@@ -22,7 +22,7 @@ export interface Currency {
 }
 
 export type FaqContainer = {
-  id: string;
+  id: any;
   currentOpen: string;
   setCurrentOpen: React.Dispatch<React.SetStateAction<string | null>>;
   children: ReactNode;
