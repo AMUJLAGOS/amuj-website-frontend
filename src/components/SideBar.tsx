@@ -110,7 +110,7 @@ function SideBar({ showFunc, show }: any) {
                 <Link href={""}>COMMUNITY</Link>
               </li>
               <li>
-                <Link href={""}>POLICIES</Link>
+                <Link href={"/shipping"}>POLICIES</Link>
               </li>
             </div>
           )}

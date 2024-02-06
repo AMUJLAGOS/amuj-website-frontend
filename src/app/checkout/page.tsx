@@ -19,10 +19,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getStates } from "country-state-picker";
 import Paystack from "@/components/Paystack";
-import Stripe from "@/components/CheckoutForm";
 import ShowStripe from "@/components/ShowStripe";
 import * as countryData from "country-list-js";
 import { FaCheck } from "react-icons/fa6";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { MdNavigateNext } from "react-icons/md";
 
 // payment
 
@@ -36,6 +37,7 @@ function CheckOut() {
   const allAmount = cart?.reduce((sum: any, obj: any) => {
     return sum + obj[`${currency?.name}_price`] * obj.quantity;
   }, 0);
+  const [openSummary, setOpenSummary] = useState(false);
 
   // endpoint data
   const [email, setEmail] = useState("");
@@ -120,6 +122,7 @@ function CheckOut() {
     if (response.status === 201) {
       setOrderDetails(response.data);
     }
+    console.log(response);
   };
 
   const [shipData, setShipData]: any = useState();
@@ -226,67 +229,119 @@ function CheckOut() {
       </div>
       {/* <Header /> */}
       {paySuccessful ? (
-        <div className="text-center mt-10 w-[90%] m-auto">
-          <h1 className="phone:text-2xl text-lg font-bold">
-            Payment Successful!
-          </h1>
-          <p className="phone:text-base text-sm text-center">
-            Thank you for your order! Please check your email for the
-            confirmation details.
-          </p>
+        <div className="bg-[#edecec] py-5 mt-4">
+          <div className="text-center w-[90%] m-auto">
+            <h1 className="phone:text-2xl text-lg font-bold">
+              Payment Successful!
+            </h1>
+            <p className="phone:text-base text-sm text-center">
+              Thank you for your order! Please check your email for the
+              confirmation details.
+            </p>
 
-          <div className="sm:w-[600px] w-[95%] m-auto mt-5">
-            <div className="">
-              <h1 className="phone:text-lg text-sm font-semibold">
-                Order Summary
-              </h1>
-              {orderDetails.items?.map((data: any, index: number) => (
-                <div
-                  key={index}
-                  className="flex justify-between mt-5 items-center text-sm"
-                >
-                  <img src={data.image} alt="" className="h-20" />
-                  <h1>
-                    <span className="font-bold">Size</span> -{" "}
-                    <span className="text-xs">{data.size}</span>
-                  </h1>
-                  <h1>
-                    <span className="font-bold">Qty</span> -{" "}
-                    <span className="text-xs">{data.quantity}</span>
-                  </h1>
-                  <span className="text-xs">
-                    {currency?.symbol}
-                    {data.price}
-                  </span>
+            <div className="sm:w-[600px] w-[95%] m-auto mt-5">
+              <div
+                className="shadow-[0px_0px_5px_rgba(0,0,0,0.09)] p-5 text-sm mt-7"
+                onClick={() => setOpenSummary(!openSummary)}
+              >
+                <div className="flex justify-between cursor-pointer font-semibold">
+                  <h1 className="font-bold text-xs uppercase">Order Summary</h1>
+                  <button>
+                    {!openSummary ? (
+                      <AiOutlinePlus size={17} />
+                    ) : (
+                      <AiOutlineMinus size={17} />
+                    )}
+                  </button>
                 </div>
-              ))}
+                {openSummary && (
+                  <div className="mt-5">
+                    <div className="">
+                      {orderDetails.items?.map((data: any, index: number) => (
+                        <div
+                          key={index}
+                          className="flex justify-between mt-5 items-center text-sm"
+                        >
+                          <img src={data.image} alt="" className="h-20" />
+                          <h1>
+                            <span className="font-bold">Size</span> -{" "}
+                            <span className="text-xs">{data.size}</span>
+                          </h1>
+                          <h1>
+                            <span className="font-bold">Qty</span> -{" "}
+                            <span className="text-xs">{data.quantity}</span>
+                          </h1>
+                          <span className="text-xs">
+                            {currency?.symbol}
+                            {data.price}
+                          </span>
+                        </div>
+                      ))}
+                      <div>
+                        <div className="flex justify-between mt-3 text-sm">
+                          <h1>Subtotal:</h1>
+                          <h1>
+                            {currency?.symbol}
+                            {orderDetails.sub_total}
+                          </h1>
+                        </div>
+                        <div className="flex justify-between mt-3 text-sm">
+                          <h1>Delivery:</h1>
+                          <h1>
+                            {currency?.symbol}
+                            {orderDetails.shipping_price}
+                          </h1>
+                        </div>
+                        <div className="flex justify-between mt-3 text-sm">
+                          <h1>Total:</h1>
+                          <h1>
+                            {currency?.symbol}
+                            {orderDetails.total}
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="mt-3">
+                <Link href={"/customer-care"}>
+                  <div
+                    className="border-b border-[#908B8B] py-2 cursor-pointer"
+                    onClick={() => {}}
+                  >
+                    <div className="flex items-center justify-between">
+                      <h1 className="text-xs">NEED ASSISTANCE ?</h1>
+                      <MdNavigateNext />
+                    </div>
+                  </div>
+                </Link>
+              </div>
+              {/* <div className="mt-3">
+                <Link href={"/shipping"}>
+                  <div
+                    className="border-b border-[#908B8B] py-2 cursor-pointer"
+                    onClick={() => {}}
+                  >
+                    <div className="flex items-center justify-between">
+                      <h1 className="text-xs">SHIPPING AND RETURNS</h1>
+                      <MdNavigateNext />
+                    </div>
+                  </div>
+                </Link>
+              </div> */}
             </div>
-            <div className="flex justify-between mt-3 text-sm">
-              <h1>Subtotal:</h1>
-              <h1>
-                {currency?.symbol}
-                {orderDetails.sub_total}
-              </h1>
+
+            <div className="mt-7">
+              <Link href={"/"} className="">
+                Shipping policy
+              </Link>
             </div>
-            <div className="flex justify-between mt-3 text-sm">
-              <h1>Delivery:</h1>
-              <h1>
-                {currency?.symbol}
-                {orderDetails.shipping_price}
-              </h1>
+            <div className="mt-1">
+              <Link href={"/shipping"} className="underline">
+                Continue shoping
+              </Link>
             </div>
-            <div className="flex justify-between mt-3 text-sm">
-              <h1>Total:</h1>
-              <h1>
-                {currency?.symbol}
-                {orderDetails.total}
-              </h1>
-            </div>
-          </div>
-          <div className="mt-7">
-            <Link href={"/"} className="underline">
-              Continue shoping
-            </Link>
           </div>
         </div>
       ) : (
