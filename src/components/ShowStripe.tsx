@@ -11,7 +11,7 @@ function ShowStripe({ close, amount, succesful, payRef }: any) {
   const { currency } = useCurrency();
   const options: any = {
     mode: "payment",
-    amount: amount * 100,
+    amount: Math.round(amount * 100),
 
     currency: currency?.code.toLocaleLowerCase(),
 

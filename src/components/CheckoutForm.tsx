@@ -31,7 +31,7 @@ function CheckoutForm({ amount, succesful, payRef }: any) {
     }
 
     const res = await PostRequest("create-intent", {
-      amount: amount * 100,
+      amount: Math.round(amount * 100),
       currency: currency?.code.toLocaleLowerCase(),
     });
     // console.log(res.data);

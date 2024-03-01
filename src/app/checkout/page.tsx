@@ -175,8 +175,6 @@ function CheckOut() {
     if (JSON.stringify(parsedCart) !== JSON.stringify(cart)) {
       setCart(parsedCart);
     }
-
-    // console.log([cart?.map((obj: any) => obj)]);
   }, [cart, currency, setCart]);
 
   // get currency
@@ -641,6 +639,10 @@ function CheckOut() {
                     <button
                       onClick={() => {
                         setShowStripe(true);
+                        {
+                          console.log(allAmount + shipFee);
+                          console.log(shipData);
+                        }
                       }}
                       className="mt-7 bg-black text-white sm:py-4 phone:px-28 phone:w-auto w-full py-5"
                     >
