@@ -34,7 +34,7 @@ function CheckOut() {
   const [showStripe, setShowStripe] = useState(false);
   const [paySuccessful, setPaySuccessful] = useState(false);
   const [paymentRef, setPaymentRef] = useState("");
-  const allAmount = cart?.reduce((sum: any, obj: any) => {
+  const allAmount: number = cart?.reduce((sum: any, obj: any) => {
     return sum + obj[`${currency?.name}_price`] * obj.quantity;
   }, 0);
   const [openSummary, setOpenSummary] = useState(false);
@@ -126,12 +126,28 @@ function CheckOut() {
   };
 
   const [shipData, setShipData]: any = useState();
+  // for lagos only
+  const [specialshipping, setSpecial]: any = useState();
+  const [expressShipping, setExpress]: any = useState();
+  const [useSpecial, setUseSpecial] = useState(false);
+  const [useExpressD, setUseExpress] = useState(false);
+
   const shipping = async () => {
     if (continentS === "Africa")
       if (country === "NG") {
         if (state === "Lagos State") {
-          const shipRes = await GetRequest("shipping/standard-delivery-lagos");
-          setShipData(parseFloat(shipRes.data[`${currency?.name}_price`]));
+          const shipStandard = await GetRequest(
+            "shipping/standard-delivery-lagos"
+          );
+          const shipExpress = await GetRequest(
+            "shipping/express-delivery-lagos"
+          );
+          const shipSpecial = await GetRequest(
+            "shipping/special-devlivery-lagos"
+          );
+          setShipData(parseFloat(shipStandard.data[`${currency?.name}_price`]));
+          setSpecial(parseFloat(shipSpecial.data[`${currency?.name}_price`]));
+          setExpress(parseFloat(shipExpress.data[`${currency?.name}_price`]));
         } else {
           const shipRes = await GetRequest(
             "shipping/standard-delivery-nigeria"
@@ -163,10 +179,18 @@ function CheckOut() {
   useEffect(() => {
     if (deliveryTerms) {
       setShipFee(shipData);
+    } else if (state === "Lagos State") {
+      if (useExpressD) {
+        setShipFee(expressShipping);
+      } else if (useSpecial) {
+        setShipFee(specialshipping);
+      } else {
+        setShipFee(0);
+      }
     } else {
       setShipFee(0);
     }
-  }, [deliveryTerms]);
+  }, [deliveryTerms, useExpressD, useSpecial]);
 
   // get cart
   useEffect(() => {
@@ -190,13 +214,11 @@ function CheckOut() {
   useEffect(() => {
     const found = countryData.findByIso2(country);
     setContinent(found?.continent);
-    // console.log(found);
     shipping();
   }, [country, state]);
 
   useEffect(() => {
     if (paySuccessful) {
-      // console.log("calling this!");
       handleSubmit();
       if (showStripe) {
         setShowStripe(false);
@@ -520,7 +542,11 @@ function CheckOut() {
                         className={`flex justify-center items-center h-4 w-4 mt-1 rounded-sm border border-black cursor-pointer ${
                           deliveryTerms && "bg-black"
                         } `}
-                        onClick={() => setDeliveryTerms(!deliveryTerms)}
+                        onClick={() => {
+                          setDeliveryTerms(!deliveryTerms);
+                          setUseExpress(false);
+                          setUseSpecial(false);
+                        }}
                       >
                         {deliveryTerms && <FaCheck size={10} color={"#fff"} />}
                       </div>
@@ -542,6 +568,78 @@ function CheckOut() {
                       </div>
                     </div>
                   </div>
+
+                  {state === "Lagos State" && (
+                    <div>
+                      <div className=" phone:flex justify-between mt-4 border border-black p-5 items-start">
+                        <div className="flex items-start w-full justify-between">
+                          <div
+                            className={`flex justify-center items-center h-4 w-4 mt-1 rounded-sm border border-black cursor-pointer ${
+                              useExpressD && "bg-black"
+                            } `}
+                            onClick={() => {
+                              setUseExpress(!useExpressD);
+                              setUseSpecial(false);
+                              setDeliveryTerms(false);
+                            }}
+                          >
+                            {useExpressD && (
+                              <FaCheck size={10} color={"#fff"} />
+                            )}
+                          </div>
+                          <div className="phone:flex justify-between w-full items-start">
+                            <div className="ml-2">
+                              <h1 className="phone:text-base text-sm">
+                                Express Delivery Lagos
+                              </h1>
+
+                              <p className="text-xs mt-1">
+                                Express and Special delivery services are not
+                                available for international orders.
+                              </p>
+                            </div>
+                            <h1 className="phone:text-base text-sm ml-2">
+                              {currency?.symbol}
+                              {numberWithCommas(expressShipping)}
+                            </h1>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className=" phone:flex justify-between mt-4 border border-black p-5 items-start">
+                        <div className="flex items-start w-full justify-between">
+                          <div
+                            className={`flex justify-center items-center h-4 w-4 mt-1 rounded-sm border border-black cursor-pointer ${
+                              useSpecial && "bg-black"
+                            } `}
+                            onClick={() => {
+                              setUseSpecial(!useSpecial);
+                              setUseExpress(false);
+                              setDeliveryTerms(false);
+                            }}
+                          >
+                            {useSpecial && <FaCheck size={10} color={"#fff"} />}
+                          </div>
+                          <div className="phone:flex justify-between w-full items-start">
+                            <div className="ml-2">
+                              <h1 className="phone:text-base text-sm">
+                                Special Delivery (Weekends)
+                              </h1>
+
+                              <p className="text-xs mt-1">
+                                Special weekend delivery orders must be placed
+                                by 12pm on Friday to be received on Saturday
+                              </p>
+                            </div>
+                            <h1 className="phone:text-base text-sm ml-2">
+                              {currency?.symbol}
+                              {numberWithCommas(specialshipping)}
+                            </h1>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   <button
                     onClick={handleToPayment}
