@@ -100,7 +100,7 @@ function CheckOut() {
     sub_total: allAmount,
     shipping_price: shipFee,
     total: allAmount + shipFee,
-    tracking_number: "heheheh",
+    tracking_number: "tracking_number",
     firstname: firstname,
     lastname: lastname,
     address: address,
