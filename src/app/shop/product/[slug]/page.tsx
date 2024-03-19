@@ -29,6 +29,7 @@ function ProductDetails() {
   const [showInfo, setShowInfo] = useState(false);
   const [current, setCurrent] = useState(0);
   const [images, setImages]: any = useState();
+  const [length, setLength]: any = useState("");
   const [productData, setProductData]: any = useState();
   const { currency } = useCurrency();
   const [quantity, setQuantity] = useState(1);
@@ -93,7 +94,7 @@ function ProductDetails() {
     image: productData?.images[0],
     slug: `${productData?.name}${size}`,
     size: size,
-    length: "",
+    length: productData?.requires_length ? length : "-",
     naira_price: productData?.naira_price,
     dollar_price: productData?.dollar_price,
     euro_price: productData?.euro_price,
@@ -107,7 +108,6 @@ function ProductDetails() {
     const check: any = parseCart.find(
       (obj: any) => obj["slug"] === newCart["slug"]
     );
-    console.log(check);
     if (check !== undefined) {
       if (check["size"] === newCart["size"]) {
         const updatedCart = parseCart.map((obj: any) =>
@@ -201,122 +201,168 @@ function ProductDetails() {
             />
           </div>
 
-          <div className="mt-4">
-            <p className="text-xs">Select a size</p>
-            <div className="relative tablet:w-[60%] w-full">
-              <select
-                onChange={(e) => setSize(e.target.value)}
-                className="block appearance-none w-full outline-none !bg-white border border-gray-300 px-4 py-2 pr-8 rounded leading-tight focus:outline-none"
-              >
-                <option className="!bg-white text-black text-sm" value="">
-                  size
-                </option>
-                <option
-                  disabled={!productData?.sizes.includes("4")}
-                  className="!bg-white text-black"
-                  value="4"
+          {!productData?.custom && (
+            <div className="mt-4">
+              <p className="text-sm">Select a size</p>
+              <div className="relative tablet:w-[80%] w-full">
+                <select
+                  onChange={(e) => setSize(e.target.value)}
+                  className="block appearance-none w-full outline-none !bg-white border border-gray-300 px-4 py-2 pr-8 rounded leading-tight focus:outline-none"
                 >
-                  {productData?.sizes.includes("4") ? "4" : "4(out of stock)"}
-                </option>
-                <option
-                  disabled={!productData?.sizes.includes("6")}
-                  className="!bg-white text-black"
-                  value="6"
-                >
-                  {productData?.sizes.includes("6") ? "6" : "6 (out of stock)"}
-                </option>
-                <option
-                  disabled={!productData?.sizes.includes("8")}
-                  className="!bg-white text-black"
-                  value="8"
-                >
-                  {productData?.sizes.includes("8") ? "8" : "8 (out of stock)"}
-                </option>
-                <option
-                  disabled={!productData?.sizes.includes("10")}
-                  className="!bg-white text-black"
-                  value="10"
-                >
-                  {productData?.sizes.includes("10")
-                    ? "10"
-                    : "10 (out of stock)"}
-                </option>
-                <option
-                  disabled={!productData?.sizes.includes("12")}
-                  className="!bg-white text-black"
-                  value="12"
-                >
-                  {productData?.sizes.includes("12")
-                    ? "12"
-                    : "12 (out of stock)"}
-                </option>
-                <option
-                  disabled={!productData?.sizes.includes("14")}
-                  className="!bg-white text-black"
-                  value="14"
-                >
-                  {productData?.sizes.includes("14")
-                    ? "14"
-                    : "14 (out of stock)"}
-                </option>
-                <option
-                  disabled={!productData?.sizes.includes("16")}
-                  className="!bg-white text-black"
-                  value="16"
-                >
-                  {productData?.sizes.includes("16")
-                    ? "16"
-                    : "16 (out of stock)"}
-                </option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <IoIosArrowDown />
+                  <option className="!bg-white text-black text-sm" value="">
+                    size
+                  </option>
+                  <option
+                    disabled={!productData?.sizes.includes("4")}
+                    className="!bg-white text-black"
+                    value="4"
+                  >
+                    {productData?.sizes.includes("4") ? "4" : "4(out of stock)"}
+                  </option>
+                  <option
+                    disabled={!productData?.sizes.includes("6")}
+                    className="!bg-white text-black"
+                    value="6"
+                  >
+                    {productData?.sizes.includes("6")
+                      ? "6"
+                      : "6 (out of stock)"}
+                  </option>
+                  <option
+                    disabled={!productData?.sizes.includes("8")}
+                    className="!bg-white text-black"
+                    value="8"
+                  >
+                    {productData?.sizes.includes("8")
+                      ? "8"
+                      : "8 (out of stock)"}
+                  </option>
+                  <option
+                    disabled={!productData?.sizes.includes("10")}
+                    className="!bg-white text-black"
+                    value="10"
+                  >
+                    {productData?.sizes.includes("10")
+                      ? "10"
+                      : "10 (out of stock)"}
+                  </option>
+                  <option
+                    disabled={!productData?.sizes.includes("12")}
+                    className="!bg-white text-black"
+                    value="12"
+                  >
+                    {productData?.sizes.includes("12")
+                      ? "12"
+                      : "12 (out of stock)"}
+                  </option>
+                  <option
+                    disabled={!productData?.sizes.includes("14")}
+                    className="!bg-white text-black"
+                    value="14"
+                  >
+                    {productData?.sizes.includes("14")
+                      ? "14"
+                      : "14 (out of stock)"}
+                  </option>
+                  <option
+                    disabled={!productData?.sizes.includes("16")}
+                    className="!bg-white text-black"
+                    value="16"
+                  >
+                    {productData?.sizes.includes("16")
+                      ? "16"
+                      : "16 (out of stock)"}
+                  </option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <IoIosArrowDown />
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
-          <div className="mt-5">
-            <p className="text-xs">Quantity</p>
-            <div className="flex items-center mt-2">
-              <button
-                onClick={() => minus()}
-                className="border flex justify-center items-center border-[#908B8B] text-[#908B8B] phone:h-[45px] phone:w-[40px] h-[35px] w-[30px]"
-              >
-                <AiOutlineMinus />
-              </button>
-              <div className="border text-sm flex justify-center items-center border-[#908B8B] ml-1 mr-1 phone:w-[55px] phone:h-[45px] h-[35px] w-[45px]">
-                {quantity}
+          {productData?.requires_length && (
+            <div className="mt-4">
+              <p className="text-sm">Length</p>
+              <div className="relative tablet:w-[80%] w-full">
+                <select
+                  onChange={(e) => setLength(e.target.value)}
+                  className="block appearance-none w-full outline-none !bg-white border border-gray-300 px-4 py-2 pr-8 rounded leading-tight focus:outline-none"
+                >
+                  <option className="!bg-white text-[#908B8B]" value="">
+                    Select a length
+                  </option>
+                  <option className="!bg-white text-[#908B8B]" value="Tall">
+                    Tall
+                  </option>
+                  <option className="!bg-white text-[#908B8B]" value="Short">
+                    Short
+                  </option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <IoIosArrowDown />
+                </div>
               </div>
-              <button
-                onClick={() => add()}
-                className="border  flex justify-center items-center border-[#908B8B] text-[#908B8B] phone:h-[45px] phone:w-[40px] h-[35px] w-[30px]"
-              >
-                <AiOutlinePlus />
-              </button>
-              <p className="ml-14 font-semibold text-sm">
-                {currency?.symbol}
-                {numberWithCommas(
-                  productData
-                    ? productData[`${currency?.name}_price`] * quantity
-                    : 0
-                )}
-              </p>
             </div>
-            <p className="mt-5 text-xs">
-              <span className="border-b border-black">
-                <Link href={""}>Shipping</Link>
-              </span>{" "}
-              calculated at checkout
-            </p>
-            <button
-              onClick={() => addCart()}
-              disabled={quantity == 0 || size == ""}
-              className="bg-black disabled:bg-[#000000b3] disabled:cursor-not-allowed text-white text-xs tablet:w-auto w-full py-3 px-12 mt-5"
-            >
-              ADD TO CART
-            </button>
-          </div>
-          <div className="mt-5">
+          )}
+
+          {!productData?.custom ? (
+            <div className="mt-5">
+              <p className="text-xs">Quantity</p>
+              <div className="flex items-center mt-2">
+                <button
+                  onClick={() => minus()}
+                  className="border flex justify-center items-center border-[#908B8B] text-[#908B8B] phone:h-[45px] phone:w-[40px] h-[35px] w-[30px]"
+                >
+                  <AiOutlineMinus />
+                </button>
+                <div className="border text-sm flex justify-center items-center border-[#908B8B] ml-1 mr-1 phone:w-[55px] phone:h-[45px] h-[35px] w-[45px]">
+                  {quantity}
+                </div>
+                <button
+                  onClick={() => add()}
+                  className="border  flex justify-center items-center border-[#908B8B] text-[#908B8B] phone:h-[45px] phone:w-[40px] h-[35px] w-[30px]"
+                >
+                  <AiOutlinePlus />
+                </button>
+                <p className="ml-14 font-semibold text-sm">
+                  {currency?.symbol}
+                  {numberWithCommas(
+                    productData
+                      ? productData[`${currency?.name}_price`] * quantity
+                      : 0
+                  )}
+                </p>
+              </div>
+              <p className="mt-5 text-xs">
+                <span className="border-b border-black">
+                  <Link href={""}>Shipping</Link>
+                </span>{" "}
+                calculated at checkout
+              </p>
+              <button
+                onClick={() => addCart()}
+                disabled={
+                  quantity == 0 ||
+                  size == "" ||
+                  (productData?.requires_length ? length == "" : false)
+                }
+                className="bg-black disabled:bg-[#000000b3] disabled:cursor-not-allowed text-white text-xs tablet:w-auto w-full py-3 px-12 mt-5"
+              >
+                ADD TO CART
+              </button>
+            </div>
+          ) : (
+            <div className="mt-5">
+              <Link
+                className="bg-black text-white text-xs tablet:w-auto w-full py-3 px-12 mt-5"
+                href={"/custom-orders"}
+              >
+                CUSTOM ORDER
+              </Link>
+            </div>
+          )}
+          <div className="mt-5 tablet:w-[90%] w-full">
             <div
               className="border-b border-t border-[#908B8B] py-2 cursor-pointer"
               onClick={() => setShowInfo(!showInfo)}

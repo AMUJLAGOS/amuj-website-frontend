@@ -75,13 +75,13 @@ function ProductDetailCard({ productData, hideProduct }: any) {
       setQuantity(quantity + 1);
     }
   };
+
   const addCart = () => {
     const getCart: any = localStorage.getItem("amujCart");
     const parseCart: any = JSON.parse(getCart);
     const check: any = parseCart.find(
       (obj: any) => obj["slug"] === newCart["slug"]
     );
-    console.log(check);
     if (check !== undefined) {
       if (check["size"] === newCart["size"]) {
         const updatedCart = parseCart.map((obj: any) =>

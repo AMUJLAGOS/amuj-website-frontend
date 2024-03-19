@@ -264,7 +264,7 @@ export default function Home() {
         </div>
       </section>
       {/* <Spacer height={80} /> */}
-      <section className="lg:mt-[40px] mt-8">
+      <section className="md:hidden lg:mt-[40px] mt-8">
         <div className="w-full relative">
           {/* <p>dd</p> */}
           <Slide arrows={false} indicators={true} duration={2000}>

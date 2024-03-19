@@ -97,7 +97,7 @@ function NavBar({ searchFunc, sideBarFunc, cartFunc, home }: any) {
   const toggleVisible = () => {
     if (typeof window !== "undefined") {
       const scrolled = document.documentElement.scrollTop;
-      if (scrolled > 380) {
+      if (scrolled > 415) {
         setScroll(true);
       } else {
         setScroll(false);
