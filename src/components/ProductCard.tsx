@@ -61,30 +61,32 @@ function ProductCard({
         <div className="conn w-full">
           <Link href={`/shop/product/${slug}`} className="w-full">
             <div className="product">
-              {/* <div className="first_image lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover">
-              <Image
-                src={"/product_image.jpg"}
-                alt={"product-image"}
-                objectFit="cover"
-                layout="fill"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
+              <div className="first_image 2xl:w-full lg:h-[540px] h-[450px] phone:w-[360px] w-full object-cover">
+                <Image
+                  src={`${imageServer}${image}`}
+                  alt={"product-image"}
+                  objectFit="cover"
+                  layout="fill"
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={50}
+                />
+              </div>
 
-            <div className="first_image lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover second_image">
-              <Image
-                src={"/second_image.jpg"}
-                alt={"product-image"}
-                objectFit="cover"
-                layout="fill"
-              />
-            </div> */}
+              {/* <div className="first_image lg:h-[540px] h-[400px] md:w-[360px] w-full object-cover second_image">
+                <Image
+                  src={"/second_image.jpg"}
+                  alt={"product-image"}
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </div> */}
 
-              <img
+              {/* <img
                 src={`${imageServer}${image}`}
                 alt={name}
                 className="first_image 2xl:w-full lg:h-[540px] h-[450px] phone:w-[360px] w-full object-cover"
-              />
+                loading="lazy"
+              /> */}
               {/* <img
                 src={`${imageServer}${hImage}`}
                 alt={name}

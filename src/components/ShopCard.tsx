@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCurrency } from "./CurrencyContext";
 import { numberWithCommas } from "@/utils/functionHelper";
 import { imageServer } from "@/utils/urlhandler";
+import Image from "next/image";
 
 function ShopCard({
   naira_price,
@@ -61,16 +62,38 @@ function ShopCard({
         <div className="shop_conn w-full">
           <Link href={`/shop/product/${slug}`} className="w-full">
             <div className="shop w-full">
-              <img
+              <div className="shop_image1 tablet:h-[540px] sm:h-[320px] h-[280px] w-full relative">
+                <Image
+                  src={`${imageServer}${hImage}`}
+                  alt={name}
+                  objectFit="cover"
+                  fill
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={10}
+                />
+              </div>
+              <div className="shop_image2 tablet:h-[540px] sm:h-[320px] h-[280px] w-full relative">
+                <Image
+                  src={`${imageServer}${image}`}
+                  alt={name}
+                  objectFit="cover"
+                  fill
+                  // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  quality={10}
+                />
+              </div>
+              {/* <img
                 src={`${imageServer}${hImage}`}
                 alt={name}
                 className="shop_image1 tablet:h-[540px] sm:h-[320px] h-[280px] w-full"
-              />
-              <img
+                loading="lazy"
+              /> */}
+              {/* <img
                 src={`${imageServer}${image}`}
                 alt={name}
                 className="shop_image2 tablet:h-[540px] sm:h-[320px] h-[280px] w-full"
-              />
+                loading="lazy"
+              /> */}
             </div>
           </Link>
           <button

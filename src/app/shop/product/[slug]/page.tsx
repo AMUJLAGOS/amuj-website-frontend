@@ -23,6 +23,7 @@ import { useCart } from "@/components/CartContext";
 import { useCurrency } from "@/components/CurrencyContext";
 import { AddCart } from "@/utils/dataType";
 import { toast } from "sonner";
+import Shipping from "./_components/Shipping";
 
 function ProductDetails() {
   const { slug } = useParams() as { slug: string };
@@ -34,6 +35,7 @@ function ProductDetails() {
   const { currency } = useCurrency();
   const [quantity, setQuantity] = useState(1);
   const [size, setSize]: any = useState("");
+  const [showShipping, setShowShipping] = useState(false);
   const { setCart } = useCart();
 
   // for slider
@@ -135,10 +137,13 @@ function ProductDetails() {
   return (
     <main className="box-border overflow-hidden">
       <Header />
-
+      <Shipping
+        show={showShipping}
+        showFunc={() => setShowShipping(!showShipping)}
+      />
       <section className="phone:mt-10 tablet:flex block lg:justify-normal justify-between lg:w-[1020px] tablet:w-[90%] phone:w-[400px] w-full m-auto">
         {productData && (
-          <div className="lg:w-[400px] z-[10000] tablet:w-[300px] w-full">
+          <div className="lg:w-[400px] z-0 tablet:w-[300px] w-full">
             <Slide
               indicators={indicators}
               onChange={(oldIndex, newIndex) => {
@@ -378,17 +383,17 @@ function ProductDetails() {
                 ></div>
               )}
             </div>
-            <Link href={"/shipping"}>
-              <div
-                className="border-b border-[#908B8B] py-2 cursor-pointer"
-                onClick={() => {}}
-              >
-                <div className="flex items-center justify-between">
-                  <h1 className="text-xs">SHIPPING AND RETURNS</h1>
-                  <MdNavigateNext />
-                </div>
+            {/* <Link href={"/shipping"}> */}
+            <div
+              className="border-b border-[#908B8B] py-2 cursor-pointer"
+              onClick={() => setShowShipping(true)}
+            >
+              <div className="flex items-center justify-between">
+                <h1 className="text-xs">SHIPPING AND RETURNS</h1>
+                <MdNavigateNext />
               </div>
-            </Link>
+            </div>
+            {/* </Link> */}
             <Link href={"/faqs"}>
               <div
                 className="border-b border-[#908B8B] py-2 cursor-pointer"

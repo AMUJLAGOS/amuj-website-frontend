@@ -85,7 +85,7 @@ export default function Home() {
         <div
           className={`${style.banner} items-center justify-center sm:flex hidden`}
         >
-          <img src="/banner1.jpg" alt="collection i image" />
+          <img src="/banner1.jpg" alt="collection i image" loading="lazy" />
           <div
             className={`absolute text-white flex flex-col items-center ${style.bannerText}`}
           >
@@ -102,7 +102,7 @@ export default function Home() {
         <div
           className={`${style.banner} sm:flex hidden items-center justify-center`}
         >
-          <img src="/banner2.jpg" alt="collection ii image" />
+          <img src="/banner2.jpg" alt="collection ii image" loading="lazy" />
           <div
             className={`absolute text-white flex flex-col items-center ${style.bannerText}`}
           >
@@ -122,12 +122,14 @@ export default function Home() {
             src="/mobile-banner.jpg"
             alt=""
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           <div className="flex justify-center">
             <img
               src="/amuj-logo.svg"
               alt="amuj logo"
               className="h-[50px] absolute bottom-9"
+              loading="lazy"
             />
           </div>
         </div>
@@ -145,6 +147,7 @@ export default function Home() {
             src="/collectionII_big.jpg"
             alt="collection2"
             className="h-[380px] w-full object-cover object-center"
+            loading="lazy"
           />
           <div className="text-white absolute bottom-10 left-24">
             <p className="text-[12px] space-x-2 tracking-[5px]">
@@ -174,6 +177,7 @@ export default function Home() {
               src="/banner1.jpg"
               alt="collection i image "
               className="h-[380px] w-full object-cover"
+              loading="lazy"
             />
             <div className="absolute flex flex-col items-center">
               <h1 className="text-[20px] text-white">COLLECTION I</h1>
@@ -189,6 +193,7 @@ export default function Home() {
               src="/shop_nav.jpg"
               alt="collection i image "
               className="h-[380px] w-full object-cover"
+              loading="lazy"
             />
             <div className="absolute flex flex-col items-center">
               <h1 className="text-[20px] text-white">COLLECTION II</h1>
@@ -273,6 +278,7 @@ export default function Home() {
                 src="/bigslider.jpg"
                 alt="collection2"
                 className="h-[380px] w-full object-cover object-center"
+                loading="lazy"
               />
             </div>
             <div className="w-full">
@@ -280,6 +286,7 @@ export default function Home() {
                 src="/slider-2.jpg"
                 alt="collection2"
                 className="h-[380px] w-full object-cover object-center"
+                loading="lazy"
               />
             </div>
 
@@ -288,6 +295,7 @@ export default function Home() {
                 src="/slider-3.jpg"
                 alt="collection2"
                 className="h-[380px] w-full object-cover object-center"
+                loading="lazy"
               />
             </div>
           </Slide>
