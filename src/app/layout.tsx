@@ -11,6 +11,8 @@ const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
   subsets: ["latin"],
   weight: ["100", "300", "400", "700", "900"],
+  variable: "--font-lato",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${lato.className}`}>
+      <body className={`${lato.variable} font-lato`}>
         <ToastContainer />
         <Toaster />
         <CartContext>
