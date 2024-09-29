@@ -29,6 +29,9 @@ const config: Config = {
         'light-text': '#676464',
       }
     },
+    fontFamily: {
+      lato: ['var(--font-lato)'],
+    },
   },
   plugins: [],
 }
