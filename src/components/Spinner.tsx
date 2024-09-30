@@ -13,7 +13,6 @@
 // export default Spinner;
 
 const Spinner = ({ height, color }: any) => {
-  console.log(`border-r-${color}`);
   return (
     <div className="flex justify-center items-center">
       <div

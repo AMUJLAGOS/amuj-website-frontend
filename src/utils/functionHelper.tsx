@@ -32,10 +32,8 @@ export const updateQuantityByName = (
       updatedObject,
       ...array.slice(objectIndex + 1),
     ];
-    console.log(newArray);
     return newArray;
   }
-  console.log("No new");
   return array;
 };
 

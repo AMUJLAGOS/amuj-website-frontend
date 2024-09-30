@@ -32,7 +32,6 @@ function RSVP() {
 
   const submitHandler = async () => {
     const response = await PostRequest("rsvp/form", formData);
-    console.log(response);
     if (response.status === 201) {
       toast.success("Data recieved, an email will be sent to you", {
         position: "top-center",
