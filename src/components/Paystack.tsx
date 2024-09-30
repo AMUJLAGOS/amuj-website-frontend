@@ -13,14 +13,11 @@ function Paystack({ email, amount, successful, payRef }: any) {
   };
 
   const onSuccess: any = (reference: any) => {
-    console.log(reference);
     successful(true);
     payRef(reference);
   };
 
-  const onClose = () => {
-    console.log("closed");
-  };
+  const onClose = () => {};
 
   const initializePayment = usePaystackPayment(config);
   return (

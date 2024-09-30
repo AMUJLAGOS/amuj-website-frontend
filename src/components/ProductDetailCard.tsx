@@ -67,7 +67,6 @@ function ProductDetailCard({ productData, hideProduct }: any) {
     if (quantity > 0) {
       setQuantity(quantity - 1);
     }
-    console.log("here");
   };
 
   const add = () => {

@@ -37,7 +37,6 @@ export default function Home() {
 
   const getNewArrival = async () => {
     const response = await GetRequest(allRoutes.HOME_PRODUCTS);
-    // console.log(response);
     setNewArrival(response.data);
   };
 
@@ -53,7 +52,6 @@ export default function Home() {
 
   const showDetails = () => {
     setShowProduct(true);
-    console.log(productDetails);
   };
 
   // useEffect(() => {

@@ -122,7 +122,6 @@ function CheckOut() {
     if (response.status === 201) {
       setOrderDetails(response.data);
     }
-    console.log(response);
   };
 
   const [shipData, setShipData]: any = useState();
@@ -737,10 +736,6 @@ function CheckOut() {
                     <button
                       onClick={() => {
                         setShowStripe(true);
-                        {
-                          console.log(allAmount + shipFee);
-                          console.log(shipData);
-                        }
                       }}
                       className="mt-7 bg-black text-white sm:py-4 phone:px-28 phone:w-auto w-full py-5"
                     >

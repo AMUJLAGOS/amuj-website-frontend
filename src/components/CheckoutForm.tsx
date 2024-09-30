@@ -50,7 +50,6 @@ function CheckoutForm({ amount, succesful, payRef }: any) {
     if (error) {
       setErrorMessage(error.message);
     } else {
-      console.log(paymentIntent.created);
       succesful(true);
       payRef(paymentIntent.created);
     }

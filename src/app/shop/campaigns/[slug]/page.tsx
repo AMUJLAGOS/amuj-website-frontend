@@ -50,7 +50,6 @@ function Collections() {
   }, []);
 
   useEffect(() => {
-    console.log(newIn);
     if (filterByCategory.length !== 0 && filterCategory === "category") {
       const filteredCategory = newInProducts.filter((obj: any) =>
         filterByCategory.includes(obj.category)

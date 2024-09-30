@@ -48,7 +48,6 @@ function Category() {
   }, []);
 
   useEffect(() => {
-    console.log(newIn);
     if (filterByCategory.length !== 0 && filterCategory === "category") {
       const filteredCategory = newInProducts.filter((obj: any) =>
         filterByCategory.includes(obj.category)
@@ -61,8 +60,6 @@ function Category() {
       const filteredColor = filtered.filter((obj: any) =>
         filterByColor.includes(obj.color)
       );
-
-      console.log(filteredColor);
 
       if (!arraysEqual(filtered, filteredColor)) {
         setFiltered(filteredColor);

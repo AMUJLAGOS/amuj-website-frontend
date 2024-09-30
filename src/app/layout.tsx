@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lato.variable} font-lato`}>
         <ToastContainer />
-        <Toaster />
+        <Toaster richColors />
         <CartContext>
           <CurrencyContext> {children}</CurrencyContext>
         </CartContext>
