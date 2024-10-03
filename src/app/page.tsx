@@ -18,6 +18,7 @@ import ProductDetailCard from "@/components/ProductDetailCard";
 import { GetRequest } from "@/utils/urlhandler";
 import { allRoutes } from "@/utils/urlEnums";
 import { useCurrency } from "@/components/CurrencyContext";
+import Image from "next/image";
 
 export default function Home() {
   // const all = ["/collectionII_big.jpg", "/banner1.jpg"];
@@ -83,7 +84,7 @@ export default function Home() {
         <div
           className={`${style.banner} items-center justify-center sm:flex hidden`}
         >
-          <img src="/banner1.jpg" alt="collection i image" loading="lazy" />
+          <img src="/banner1.jpg" alt="collection i image" />
           <div
             className={`absolute text-white flex flex-col items-center ${style.bannerText}`}
           >
@@ -100,7 +101,7 @@ export default function Home() {
         <div
           className={`${style.banner} sm:flex hidden items-center justify-center`}
         >
-          <img src="/banner2.jpg" alt="collection ii image" loading="lazy" />
+          <img src="/banner2.jpg" alt="collection ii image" />
           <div
             className={`absolute text-white flex flex-col items-center ${style.bannerText}`}
           >
@@ -145,7 +146,6 @@ export default function Home() {
             src="/collectionII_big.jpg"
             alt="collection2"
             className="h-[380px] w-full object-cover object-center"
-            loading="lazy"
           />
           <div className="text-white absolute bottom-10 left-24">
             <p className="text-[12px] space-x-2 tracking-[5px]">
@@ -175,7 +175,6 @@ export default function Home() {
               src="/banner1.jpg"
               alt="collection i image "
               className="h-[380px] w-full object-cover"
-              loading="lazy"
             />
             <div className="absolute flex flex-col items-center">
               <h1 className="text-[20px] text-white">COLLECTION I</h1>
@@ -191,7 +190,6 @@ export default function Home() {
               src="/shop_nav.jpg"
               alt="collection i image "
               className="h-[380px] w-full object-cover"
-              loading="lazy"
             />
             <div className="absolute flex flex-col items-center">
               <h1 className="text-[20px] text-white">COLLECTION II</h1>
