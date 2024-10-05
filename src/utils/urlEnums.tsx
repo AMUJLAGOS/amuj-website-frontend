@@ -9,4 +9,6 @@ export const enum allRoutes {
   CONTACT = "contact/create",
   HOME_PRODUCTS = "products/home",
   IG_IMAGE = "instagram",
+  SIZES = "sizes",
+  LENGTHS = "lengths",
 }
