@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-danger-with-children */
 //
 "use client";
@@ -25,6 +26,11 @@ import { AddCart } from "@/utils/dataType";
 import { toast } from "sonner";
 import Shipping from "./_components/Shipping";
 
+type StateType = {
+  length: any[];
+  size: any[];
+};
+
 function ProductDetails() {
   const { slug } = useParams() as { slug: string };
   const [showInfo, setShowInfo] = useState(false);
@@ -37,6 +43,10 @@ function ProductDetails() {
   const [size, setSize]: any = useState("");
   const [showShipping, setShowShipping] = useState(false);
   const { setCart } = useCart();
+  const [state, setState] = useState<StateType>({
+    length: [],
+    size: [],
+  });
 
   // for slider
   const indicators = (index: any) => (
@@ -73,8 +83,25 @@ function ProductDetails() {
       // console.error("Error fetching product:", error);
     }
   }, [slug]);
+
+  const getLengths = async () => {
+    const response = await GetRequest(`${allRoutes.LENGTHS}`);
+    if (response.status === 200) {
+      setState((state: any) => ({ ...state, length: response.data }));
+    }
+  };
+
+  const getSizes = async () => {
+    const response = await GetRequest(`${allRoutes.SIZES}`);
+    if (response.status === 200) {
+      setState((state: any) => ({ ...state, size: response.data }));
+    }
+  };
+
   useEffect(() => {
     getProduct();
+    getSizes();
+    getLengths();
   }, [getProduct]);
 
   // quantity math functions
@@ -217,67 +244,18 @@ function ProductDetails() {
                   <option className="!bg-white text-black text-sm" value="">
                     size
                   </option>
-                  <option
-                    disabled={!productData?.sizes.includes("4")}
-                    className="!bg-white text-black"
-                    value="4"
-                  >
-                    {productData?.sizes.includes("4") ? "4" : "4(out of stock)"}
-                  </option>
-                  <option
-                    disabled={!productData?.sizes.includes("6")}
-                    className="!bg-white text-black"
-                    value="6"
-                  >
-                    {productData?.sizes.includes("6")
-                      ? "6"
-                      : "6 (out of stock)"}
-                  </option>
-                  <option
-                    disabled={!productData?.sizes.includes("8")}
-                    className="!bg-white text-black"
-                    value="8"
-                  >
-                    {productData?.sizes.includes("8")
-                      ? "8"
-                      : "8 (out of stock)"}
-                  </option>
-                  <option
-                    disabled={!productData?.sizes.includes("10")}
-                    className="!bg-white text-black"
-                    value="10"
-                  >
-                    {productData?.sizes.includes("10")
-                      ? "10"
-                      : "10 (out of stock)"}
-                  </option>
-                  <option
-                    disabled={!productData?.sizes.includes("12")}
-                    className="!bg-white text-black"
-                    value="12"
-                  >
-                    {productData?.sizes.includes("12")
-                      ? "12"
-                      : "12 (out of stock)"}
-                  </option>
-                  <option
-                    disabled={!productData?.sizes.includes("14")}
-                    className="!bg-white text-black"
-                    value="14"
-                  >
-                    {productData?.sizes.includes("14")
-                      ? "14"
-                      : "14 (out of stock)"}
-                  </option>
-                  <option
-                    disabled={!productData?.sizes.includes("16")}
-                    className="!bg-white text-black"
-                    value="16"
-                  >
-                    {productData?.sizes.includes("16")
-                      ? "16"
-                      : "16 (out of stock)"}
-                  </option>
+                  {state.size?.map((obj: any, index: number) => (
+                    <option
+                      key={index}
+                      disabled={!productData?.sizes.includes(obj)}
+                      className="!bg-white text-black"
+                      value={obj}
+                    >
+                      {productData?.sizes.includes(obj)
+                        ? obj
+                        : `${obj} (out of stock)`}
+                    </option>
+                  ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <IoIosArrowDown />
@@ -297,12 +275,18 @@ function ProductDetails() {
                   <option className="!bg-white text-[#908B8B]" value="">
                     Select a length
                   </option>
-                  <option className="!bg-white text-[#908B8B]" value="Tall">
-                    Tall
-                  </option>
-                  <option className="!bg-white text-[#908B8B]" value="Short">
-                    Short
-                  </option>
+                  {state.length.map((obj, index: number) => (
+                    <option
+                      key={index}
+                      className="!bg-white text-[#908B8B]"
+                      value="Tall"
+                      disabled={!productData?.lengths?.includes(obj)}
+                    >
+                      {productData?.lengths?.includes(obj)
+                        ? obj
+                        : `${obj} (out of stock)`}
+                    </option>
+                  ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <IoIosArrowDown />
