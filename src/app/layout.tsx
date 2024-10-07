@@ -1,3 +1,4 @@
+//
 import CartContext from "@/components/CartContext";
 import "./globals.css";
 import type { Metadata } from "next";
@@ -6,6 +7,7 @@ import CurrencyContext from "@/components/CurrencyContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Toaster } from "sonner";
+import SubscribePopProvider from "@/components/context/SubscribePop";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
@@ -31,9 +33,11 @@ export default function RootLayout({
       <body className={`${lato.variable} font-lato`}>
         <ToastContainer />
         <Toaster richColors />
-        <CartContext>
-          <CurrencyContext> {children}</CurrencyContext>
-        </CartContext>
+        <SubscribePopProvider>
+          <CartContext>
+            <CurrencyContext> {children}</CurrencyContext>
+          </CartContext>
+        </SubscribePopProvider>
       </body>
     </html>
   );

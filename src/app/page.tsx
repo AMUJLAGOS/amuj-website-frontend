@@ -17,11 +17,12 @@ import { useEffect, useState } from "react";
 import ProductDetailCard from "@/components/ProductDetailCard";
 import { GetRequest } from "@/utils/urlhandler";
 import { allRoutes } from "@/utils/urlEnums";
-import { useCurrency } from "@/components/CurrencyContext";
-import Image from "next/image";
+import { usePop } from "@/components/context/SubscribePop";
+import Subscribe from "@/components/popup/Subscribe";
 
 export default function Home() {
   // const all = ["/collectionII_big.jpg", "/banner1.jpg"];
+  const { show } = usePop();
   const [newArrival, setNewArrival]: any = useState([]);
   const [ig_image, setIgImage]: any = useState([]);
   const [showProduct, setShowProduct] = useState(false);
@@ -72,6 +73,7 @@ export default function Home() {
   return (
     <main className="box-border overflow-hidden">
       <Header home={"Yes"} />
+      {show && <Subscribe />}
       {showProduct && (
         <ProductDetailCard
           productData={productDetails}
@@ -79,6 +81,7 @@ export default function Home() {
         />
       )}
       {/* <ProductDetailCard hideProduct={setShowProduct} /> */}
+
       <section className="flex items-center m-auto w-full top-0">
         {/* banner 1  */}
         <div
