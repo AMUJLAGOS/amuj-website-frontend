@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Spinner from "./Spinner";
 import { FaXTwitter } from "react-icons/fa6";
+import isEmail from "validator/lib/isEmail";
 // import validator from "validator";
 
 function Footer() {
@@ -19,9 +20,10 @@ function Footer() {
   const [loading, setLoading] = useState(false);
   const data = {
     email,
+    name: "",
   };
   const emailHandler = async () => {
-    if (email != "") {
+    if (isEmail(email)) {
       setLoading(true);
       const response = await PostRequest(allRoutes.SUBSCRIBE, data);
       if (response.status == 201) {
