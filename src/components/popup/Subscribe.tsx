@@ -51,9 +51,13 @@ function Subscribe() {
         </div>
         <div className="text-center mt-5 text-sm font-medium">
           <p className="font-semibold">OWN YOUR ALLURE</p>
-          <p className="mt-3">SUBSCRIBE & ENJOY</p>
-          <p className="text-2xl">10% OFF</p>
-          <p>YOUR FIRST PURCHASE</p>
+          {/* <p className="mt-3">SUBSCRIBE & ENJOY</p> */}
+          {/* <p className="text-2xl">10% OFF</p> */}
+          {/* <p>YOUR FIRST PURCHASE</p> */}
+          <p className="mt-2">
+            Subscribe to our newsletter to be the first to hear about our
+            exclusive releases and offers
+          </p>
         </div>
 
         <div>
