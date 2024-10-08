@@ -54,7 +54,7 @@ function Subscribe() {
           {/* <p className="mt-3">SUBSCRIBE & ENJOY</p> */}
           {/* <p className="text-2xl">10% OFF</p> */}
           {/* <p>YOUR FIRST PURCHASE</p> */}
-          <p className="mt-2">
+          <p className="mt-5">
             Subscribe to our newsletter to be the first to hear about our
             exclusive releases and offers
           </p>
@@ -62,24 +62,24 @@ function Subscribe() {
 
         <div>
           <input
-            value={email}
-            type="text"
-            placeholder="Your email address"
-            className="border border-[#908B8B] h-10 px-3 py-5 w-full input mt-7"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
             value={name}
             type="text"
-            placeholder="Your name"
-            className="border border-[#908B8B] mt-3 h-10 px-3 py-5 w-full input"
+            placeholder="Name"
+            className="border border-[#908B8B] mt-7 h-10 px-3 py-5 w-full input"
             onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            value={email}
+            type="text"
+            placeholder="Email address"
+            className="border border-[#908B8B] h-10 px-3 py-5 w-full input mt-4"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <button
             onClick={emailHandler}
             className="bg-black disabled:bg-[#000000b3] disabled:cursor-not-allowed text-white text-xs py-3 px-12 mt-10 w-full"
           >
-            {loading ? <Spinner /> : "SIGN UP NOW"}
+            {loading ? <Spinner /> : "SIGN UP"}
           </button>
         </div>
       </div>
