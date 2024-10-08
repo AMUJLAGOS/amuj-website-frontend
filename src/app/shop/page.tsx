@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import ProductDetailCard from "@/components/ProductDetailCard";
 import RadioHelper from "@/components/RadioHelper";
 import ShopCard from "@/components/ShopCard";
-import Spacer from "@/components/Spacer";
 import { arraysEqual, sortByProperty } from "@/utils/functionHelper";
 import { allRoutes } from "@/utils/urlEnums";
 import { GetRequest } from "@/utils/urlhandler";
