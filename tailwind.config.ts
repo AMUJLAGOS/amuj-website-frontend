@@ -31,6 +31,7 @@ const config: Config = {
     },
     fontFamily: {
       lato: ['var(--font-lato)'],
+      brittany: ['var(--font-brittany)'],
     },
   },
   plugins: [],
