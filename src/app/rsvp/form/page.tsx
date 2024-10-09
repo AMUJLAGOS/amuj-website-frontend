@@ -4,13 +4,20 @@ import { PostRequest } from "@/utils/urlhandler";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IoCheckmark } from "react-icons/io5";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import Spinner from "@/components/Spinner";
 
 function RSVP() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const password = searchParams.get("password");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [telePhone, setTelephone] = useState("");
   const [diet, setDiet] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [guest_name, guest_setName] = useState("");
   const [guest_email, guest_setEmail] = useState("");
@@ -23,19 +30,20 @@ function RSVP() {
     name: name,
     email: email,
     phone_number: telePhone,
-    diet_requirements: diet,
+    // diet_requirements: diet,
     guest_name: guest_name,
     guest_email: guest_email,
     guest_phone_number: guest_telePhone,
-    guest_diet_requirements: guest_diet,
+    // guest_diet_requirements: guest_diet,
+    rsvp_password: password,
   };
 
   const submitHandler = async () => {
+    setLoading(true);
     const response = await PostRequest("rsvp/form", formData);
     if (response.status === 201) {
       toast.success("Data recieved, an email will be sent to you", {
         position: "top-center",
-        hideProgressBar: true,
       });
       setName("");
       setEmail("");
@@ -45,22 +53,52 @@ function RSVP() {
       guest_setEmail("");
       guest_setTelephone("");
       guest_setDiet("");
+    } else {
+      toast.error(response.data.message, { position: "top-center" });
+    }
+    setLoading(false);
+  };
+
+  const checker = async () => {
+    const response = await PostRequest("rsvp/confirm-pass", { password });
+    if (response.status !== 201) {
+      toast.error("wrongPassword", { position: "top-center" });
+      router.push(`/rsvp`);
     }
   };
 
   useEffect(() => {
     // const
     // submitHandler();
-  }, []);
+    checker();
+  }, [password]);
 
   return (
-    <main className="bg-[#9BB493] min-h-[100vh]">
+    <main className="rsvp_bg min-h-screen">
       <div>
-        <div className="text-center text-white tracking-[1px] pt-16">
-          <h1 className="text-3xl font-bold">AN EVENING IN SAGE</h1>
-          <p className=" text-xl font-bold mt-7">10.02.2024</p>
+        <div className="flex items-center justify-center pt-10 gap-5">
+          <img
+            src="/amuj-logo.svg"
+            className="h-10"
+            loading="lazy"
+            alt="amuj-logo"
+          />
+          <img
+            src="/seki.png"
+            className="h-10"
+            loading="lazy"
+            alt="amuj-logo"
+          />
+          <img
+            src="/mc_logo.png"
+            className="h-28"
+            loading="lazy"
+            alt="amuj-logo"
+          />
         </div>
-
+        <h1 className="font-brittany text-[50px] text-center mt-4">
+          Grand Unveiling
+        </h1>
         <div className="sm:w-[600px] w-[95%] m-auto mt-6">
           <div className="flex items-center justify-end text-white">
             <h1 className="font-medium">PLUS ONE</h1>
@@ -104,7 +142,7 @@ function RSVP() {
           </div>
 
           {/* dietary  */}
-
+          {/* 
           <div className="mt-10">
             <h1 className="text-center text-white text-xl font-light">
               Dietary Requirements
@@ -120,7 +158,7 @@ function RSVP() {
                 className="resize-none mt-2 w-full outline-none p-3"
               ></textarea>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -128,8 +166,7 @@ function RSVP() {
       {guest && (
         <div>
           <div className="text-center text-white tracking-[1px] pt-16">
-            <h1 className="text-3xl font-bold">AN EVENING IN SAGE</h1>
-            <p className=" text-xl font-bold mt-7">10.02.2024</p>
+            <h1 className="text-3xl font-bold">Guest</h1>
           </div>
 
           <div className="sm:w-[600px] w-[95%] m-auto mt-6">
@@ -165,7 +202,7 @@ function RSVP() {
 
             {/* dietary  */}
 
-            <div className="mt-10">
+            {/* <div className="mt-10">
               <h1 className="text-center text-white text-xl font-light">
                 Dietary Requirements
               </h1>
@@ -180,15 +217,19 @@ function RSVP() {
                   className="resize-none mt-2 w-full outline-none p-3"
                 ></textarea>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
 
       <div className="w-36 mt-10 m-auto pb-10">
-        <button className="w-full" onClick={() => submitHandler()}>
+        <button
+          className="w-full"
+          disabled={loading}
+          onClick={() => submitHandler()}
+        >
           <div className="bg-white py-2 text-[#9BB493] text-lg w-full font-semibold text-center">
-            SEND
+            {loading ? <Spinner /> : "SEND"}
           </div>
         </button>
       </div>

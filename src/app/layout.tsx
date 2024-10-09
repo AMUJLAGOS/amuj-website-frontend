@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Toaster } from "sonner";
 import SubscribePopProvider from "@/components/context/SubscribePop";
+import localFont from "next/font/local";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
@@ -15,6 +16,12 @@ const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
   variable: "--font-lato",
   display: "swap",
+});
+
+const brittany = localFont({
+  src: "./BrittanySignature.ttf",
+  display: "swap",
+  variable: "--font-brittany",
 });
 
 export const metadata: Metadata = {
@@ -30,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${lato.variable} font-lato`}>
+      <body className={`${lato.variable} ${brittany.variable} font-lato`}>
         <ToastContainer />
         <Toaster richColors />
         <SubscribePopProvider>

@@ -246,3 +246,7 @@ select option {
 select option:hover {
   background-color: #f0f8ff; 
 }
+
+.rsvp_bg {
+  background-image: linear-gradient(to bottom,#f29fb7, #9bb493 );
+}
