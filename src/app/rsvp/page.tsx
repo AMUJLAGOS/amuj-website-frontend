@@ -56,8 +56,8 @@ function RSVP() {
             href={`/rsvp/form?password=${password}`}
             className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 phone:bottom-10 bottom-28"
           >
-            <div className="bg-[#9BB493] px-14 py-4 text-white text-lg font-semibold text-center">
-              RSVP
+            <div className="bg-[#f29fb7] px-14 py-4 text-white text-lg font-semibold text-center">
+              Click me to RSVP
             </div>
           </Link>
         ) : (
