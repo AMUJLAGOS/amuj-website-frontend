@@ -44,7 +44,7 @@ function RSVP() {
         />
         <img src="/seki.png" className="h-10" loading="lazy" alt="amuj-logo" />
         <img
-          src="/mc_logo.png"
+          src="/mc_logo.PNG"
           className="h-28 w-10 object-cover"
           loading="lazy"
           alt="amuj-logo"
@@ -62,19 +62,23 @@ function RSVP() {
           </Link>
         ) : (
           <div>
-            <p className="text-center mt-6">PLEASE JOIN US FOR THE</p>
-            <h1 className="font-brittany phone:text-[90px] text-[60px] text-center mt-4">
+            <p className="text-center mt-6 phone:text-base text-xs">
+              PLEASE JOIN US FOR THE
+            </p>
+            <h1 className="font-brittany phone:text-[90px] text-[70px] text-center mt-4">
               Grand
             </h1>
-            <h1 className="font-brittany phone:text-[90px] text-[60px] text-center">
+            <h1 className="font-brittany phone:text-[90px] text-[70px] text-center">
               Unveiling
             </h1>
-            <p className="text-center mt-8">OF OUR NEWEST COLLECTIONS</p>
-            <p className="text-center mt-16">Kindly RSVP below</p>
+            <p className="text-center mt-8 phone:text-base text-xs">
+              OF OUR NEWEST COLLECTIONS
+            </p>
+            <p className="text-center mt-20">Kindly RSVP below</p>
             <div className="outline-none flex items-center justify-center mt-4">
               <input
                 type="text"
-                className="text-[#9BB493] border-2 border-[#9BB493] p-2 outline-none rounded-lg mr-3"
+                className="text-[#9BB493] w-[150px] border-2 border-[#9BB493] p-2 outline-none rounded-lg mr-3"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
