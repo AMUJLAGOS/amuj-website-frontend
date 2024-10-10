@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 //
 "use client";
 import { PostRequest } from "@/utils/urlhandler";
@@ -76,30 +77,30 @@ function RSVP() {
   return (
     <main className="rsvp_bg min-h-screen">
       <div>
-        <div className="flex items-center justify-center pt-10 gap-5">
+        <div className="flex items-center justify-center pt-10 gap-9">
           <img
             src="/amuj-logo.svg"
-            className="h-10"
+            className="h-8"
             loading="lazy"
             alt="amuj-logo"
           />
           <img
-            src="/seki.png"
-            className="h-10"
+            src="/seki_logo.png"
+            className="h-10 -mt-3"
             loading="lazy"
             alt="amuj-logo"
           />
           <img
             src="/mc_logo.png"
-            className="h-28"
+            className="h-12 object-cover"
             loading="lazy"
             alt="amuj-logo"
           />
         </div>
-        <h1 className="font-brittany text-[50px] text-center mt-4">
+        <h1 className="font-brittany text-[50px] text-center mt-8">
           Grand Unveiling
         </h1>
-        <div className="sm:w-[600px] w-[95%] m-auto mt-6">
+        <div className="sm:w-[600px] w-[90%] m-auto mt-6">
           <div className="flex items-center justify-end text-white">
             <h1 className="font-medium">PLUS ONE</h1>
             <div
@@ -117,7 +118,7 @@ function RSVP() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-[90%] outline-none bg-transparent border-white border-b-4 ml-2"
+              className="w-[90%] outline-none bg-transparent border-white border-b ml-2"
             />
           </div>
 
@@ -127,7 +128,7 @@ function RSVP() {
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-[90%] outline-none bg-transparent border-white border-b-4 ml-2"
+              className="w-[90%] outline-none bg-transparent border-white border-b ml-2"
             />
           </div>
 
@@ -137,7 +138,7 @@ function RSVP() {
               type="text"
               value={telePhone}
               onChange={(e) => setTelephone(e.target.value)}
-              className="w-[90%] outline-none bg-transparent border-white border-b-4 ml-2"
+              className="w-[90%] outline-none bg-transparent border-white border-b ml-2"
             />
           </div>
 
@@ -176,7 +177,7 @@ function RSVP() {
                 type="text"
                 value={guest_name}
                 onChange={(e) => guest_setName(e.target.value)}
-                className="w-[90%] outline-none bg-transparent border-white border-b-4 ml-2"
+                className="w-[90%] outline-none bg-transparent border-white border-b ml-2"
               />
             </div>
 
@@ -186,7 +187,7 @@ function RSVP() {
                 type="text"
                 value={guest_email}
                 onChange={(e) => guest_setEmail(e.target.value)}
-                className="w-[90%] outline-none bg-transparent border-white border-b-4 ml-2"
+                className="w-[90%] outline-none bg-transparent border-white border-b ml-2"
               />
             </div>
 
@@ -196,7 +197,7 @@ function RSVP() {
                 type="text"
                 value={guest_telePhone}
                 onChange={(e) => guest_setTelephone(e.target.value)}
-                className="w-[90%] outline-none bg-transparent border-white border-b-4 ml-2"
+                className="w-[90%] outline-none bg-transparent border-white border-b ml-2"
               />
             </div>
 

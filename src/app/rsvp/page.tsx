@@ -34,18 +34,23 @@ function RSVP() {
     }
   };
   return (
-    <main className="rsvp_bg h-screen">
-      <div className="flex items-center justify-center pt-10 gap-5">
+    <main className="rsvp_bg h-screen overflow-y-scroll">
+      <div className="flex items-center justify-center pt-10 gap-9">
         <img
           src="/amuj-logo.svg"
-          className="h-10"
+          className="h-8"
           loading="lazy"
           alt="amuj-logo"
         />
-        <img src="/seki.png" className="h-10" loading="lazy" alt="amuj-logo" />
         <img
-          src="/mc_logo.PNG"
-          className="h-28 w-10 object-cover"
+          src="/seki_logo.png"
+          className="h-10 -mt-3"
+          loading="lazy"
+          alt="amuj-logo"
+        />
+        <img
+          src="/mc_logo.png"
+          className="h-12 object-cover"
           loading="lazy"
           alt="amuj-logo"
         />
@@ -56,7 +61,7 @@ function RSVP() {
             href={`/rsvp/form?password=${password}`}
             className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 phone:bottom-10 bottom-28"
           >
-            <div className="bg-[#f29fb7] px-14 py-4 text-white text-lg font-semibold text-center">
+            <div className="bg-[#f29fb7] px-14 py-4 w-[290px] text-white text-lg font-semibold text-center">
               Click me to RSVP
             </div>
           </Link>
@@ -65,10 +70,10 @@ function RSVP() {
             <p className="text-center mt-6 phone:text-base text-xs">
               PLEASE JOIN US FOR THE
             </p>
-            <h1 className="font-brittany phone:text-[90px] text-[70px] text-center mt-4">
+            <h1 className="font-brittany phone:text-[90px] text-[80px] text-center mt-4">
               Grand
             </h1>
-            <h1 className="font-brittany phone:text-[90px] text-[70px] text-center">
+            <h1 className="font-brittany phone:text-[90px] text-[80px] text-center">
               Unveiling
             </h1>
             <p className="text-center mt-8 phone:text-base text-xs">
@@ -78,11 +83,12 @@ function RSVP() {
             <div className="outline-none flex items-center justify-center mt-4">
               <input
                 type="text"
-                className="text-[#9BB493] w-[150px] border-2 border-[#9BB493] p-2 outline-none rounded-lg mr-3"
+                className="w-[150px] border-2 border-[#9BB493] p-2 outline-none rounded-lg mr-3"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button
+                disabled={loading}
                 onClick={passwordHandler}
                 className="h-10 w-10 rounded-full bg-[#f29fb7] flex justify-center items-center"
               >
