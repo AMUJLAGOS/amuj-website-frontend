@@ -91,10 +91,10 @@ function RSVP() {
             alt="amuj-logo"
           />
           <img
-            src="/mc_logo.png"
+            src="/mc_logo1.png"
             className="h-12 object-cover"
             loading="lazy"
-            alt="amuj-logo"
+            alt="mc-logo"
           />
         </div>
         <h1 className="font-brittany text-[50px] text-center mt-8">

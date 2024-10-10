@@ -49,10 +49,10 @@ function RSVP() {
           alt="amuj-logo"
         />
         <img
-          src="/mc_logo.png"
-          className="h-12 object-cover"
+          src="/mc_logo1.png"
+          className="h-12"
           loading="lazy"
-          alt="amuj-logo"
+          alt="mc-logo"
         />
       </div>
       <div className="">
